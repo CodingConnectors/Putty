@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/common-layout :: commonLayout(~{this::head},~{this::main})}">
+<head>
+	
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>고객센터 | 퍼티</title>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		//스크립트 스타일 적용 (jQuery nanoscroller)
+		$(".nano").nanoScroller({alwaysVisible:true});
+		
+	});
+	
+	$(document).ready(function(){
+		var placeholderTarget = $('input[type="text"],input[type="password"],textarea');
+		
+		//포커스시
+		placeholderTarget.on('focus',function(){ $(this).siblings('label').fadeOut('fast');});
+		
+		//포커스아웃시
+		placeholderTarget.on('focusout', function(){ if($(this).val() == ''){ $(this).siblings('label').fadeIn('fast');}
+		});
+	
+	});
+	
+	function sch_list(){
+		if(!$("#faq_sch_word").val()){
+			alert("검색어를 입력하세요");
+			return;
+		}
+		document.info_form.action = "../views/faq/faq_list.htm";
+		document.info_form.submit();
+		
+	}
+	
+	function sch_keyword_list(keyword){
+		$("#faq_sch_word").val(keyword);
+		sch_list();
+		
+	}
+	
+		
+	
+</script>
+
+<script>
+    function cut_byte(element, maxLength) {
+      // 입력된 텍스트 가져오기
+      var inputText = element.value;
+
+      // 현재 텍스트의 바이트 길이 계산
+      var byteLength = getByteLength(inputText);
+
+      // 최대 길이를 초과한 경우 텍스트 자르기
+      if (byteLength > maxLength) {
+        // 최대 길이까지 자른 텍스트 설정
+        element.value = truncateText(inputText, maxLength);
+      }
+    }
+
+    function getByteLength(text) {
+      // 문자열의 바이트 길이 계산
+      var count = 0;
+      for (var i = 0; i < text.length; i++) {
+        var charCode = text.charCodeAt(i);
+        if (charCode <= 0x7F) {
+          count += 1;
+        } else if (charCode <= 0x7FF) {
+          count += 2;
+        } else if (charCode <= 0xFFFF) {
+          count += 3;
+        } else {
+          count += 4;
+        }
+      }
+      return count;
+    }
+
+    function truncateText(text, maxLength) {
+      // 최대 길이까지 문자열 자르기
+      var truncatedText = '';
+      var currentLength = 0;
+      for (var i = 0; i < text.length; i++) {
+        var charCode = text.charCodeAt(i);
+        var charLength = (charCode <= 0x7F) ? 1 : (charCode <= 0xFFFF) ? 3 : 4;
+        if (currentLength + charLength <= maxLength) {
+          truncatedText += text.charAt(i);
+          currentLength += charLength;
+        } else {
+          break;
+        }
+      }
+      return truncatedText;
+    }
+    
+    function cut_byte(element, maxLength) {
+  // 입력된 텍스트 가져오기
+  var inputText = element.value;
+
+  // 현재 텍스트의 바이트 길이 계산
+  var byteLength = getByteLength(inputText);
+
+  // 최대 길이를 초과한 경우 텍스트 자르기
+  if (byteLength > maxLength) {
+    // 최대 길이까지 자른 텍스트 설정
+    element.value = truncateText(inputText, maxLength);
+  }
+}
+    
+  </script>
+
+</head>
+
+<body>
+	<form name="info_form" id="info_form" method="post" action="#"
+	enctype="multipart/form-data" onsubmit="return false;">
+	
+		<div class="cscenter_top height214">
+			<div class="container">
+				<div class="title">상담센터</div>
+				<div class="cs_search_box">
+					<label for="faq_sch_word" id="search_input_label" style="display: block;"></label>
+					<input type="text" class="search_box" name="faq_sch_word" id="faq_sch_word" value onkeyup="cut_byte(this,50);" placeholder="궁금하신 내용을 입력해 주세요.">
+					<a href="javascript:sch_list();" class="search_icoBtn">검색</a>
+				
+				</div>
+			<div class="keyword">
+				<span onclick="sch_keyword_list('배송조회');"># 배송조회</span>
+				<span onclick="sch_keyword_list('방문수령');"># 방문수령</span>
+				<span onclick="sch_keyword_list('적립금');"># 적립금</span>
+				<span onclick="sch_keyword_list('교환');"># 교환</span>
+				<span onclick="sch_keyword_list('세금계산서');"># 세금계산서</span>
+				<span onclick="sch_keyword_list('주문취소');"># 주문취소</span>
+				
+			</div>
+			
+		</div>
+			
+	</div>
+	
+	<div class="cscenter_wrap">
+		<div class="container">
+			<div class="main_link_box clearfix">
+				<div class="customer_voice">
+					<a href="../faq/faq_board.html">
+						<span class="link_title">
+							"고객의소리"
+							<i></i>
+						</span>
+	            	</a>
+				<span class="balloon_box">
+					"퍼티를 이용하면서"
+					<br>
+					"만족스러운 점이나 불편했던 점,"
+					<br>
+					"주문/배송 등 일반문의를 남겨주세요."
+					<i></i>	
+				</span>
+
+				</div>
+				<div class="frequently_asked">
+					<a href="../faq/frequently_asked.html">
+						<span class="link_title">
+							"자주 묻는 질문"
+							<i></i>
+						</span>
+					</a>
+					<span class="balloon_box" style="z-index: 10">
+						"퍼티 회원분들께서"
+						<br>
+						"자주 궁금해하시는 사항 모음"
+						<i></i>
+					</span>
+				</div>
+				
+
+				</div>
+				<div class="notice">
+					<a href="../faq/faq_notice.html">
+						<span class="link_title">
+							"공지사항"
+							<i></i>
+						</span>
+					</a>
+					<span class="balloon_box" style="z-index: 10">
+						"퍼티 회원분들께"
+						<br>
+						"전달하는 공지사항"
+						<i></i>
+					</span>
+				</div>
+			</div>
+			
+			<div class="contents_title clearfix">
+				" 자주 묻는 질문 TOP 5 "
+				
+				
+			</div>
+			
+			
+		</div>
+	</div>
+	
+	
+	
+	</form>
+
+
+</body>
+
+</html>
