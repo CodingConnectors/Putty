@@ -1,0 +1,302 @@
+@charset "UTF-8";
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* "a" 태그의 스타일 초기화 */
+a {
+  color: inherit; /* 부모 요소의 색상을 상속받음 */
+  text-decoration: none; /* 기본적으로 밑줄 없음 */
+}
+
+/* 방문한 링크의 스타일 초기화 */
+a:visited {
+  color: inherit; /* 부모 요소의 색상을 상속받음 */
+}
+
+/* 마우스 호버 시의 "a" 태그 스타일 초기화 */
+a:hover {
+  color: inherit; /* 부모 요소의 색상을 상속받음 */
+  text-decoration: none; /* 기본적으로 밑줄 추가 */
+}
+
+/* 클릭한 상태의 "a" 태그 스타일 초기화 */
+a:active {
+  color: inherit; /* 부모 요소의 색상을 상속받음 */
+}
+
+
+header {
+	display: flex;
+	justify-content: center;
+	border-bottom: 1px solid orangered;
+}
+#header {
+	flex-direction: column;
+	height: 150px;
+	width: 1280px;
+	position: relative;
+	
+}
+#header > nav > ul {
+	display: flex;
+}
+#header > .navi01 {
+	height: 35px;
+	border-bottom: 1px solid #dddddd;
+	display: flex;
+	align-items: center;
+}
+#header > .navi01 > ul{
+	margin-left: auto;
+}
+#header > .navi01 > ul > li {
+	padding: 5px;
+}
+
+#header > .navi02 {
+	display: flex;
+	justify-content: space-between;
+	justify-items: center;
+	align-items: center;
+	height: 70px;
+}
+#header > .navi02 > .header-input {
+	width: 450px;
+	height: 35px;
+	border-radius: 50px;
+	border: 3px solid burlywood;
+	display: flex;
+	align-items: center;
+}
+#header > .navi02 > .header-input > form {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+#header > .navi02 > .header-input > form > input {
+	outline: none;
+	border: none;
+	margin-left: 5%;
+	width: 90%;
+	height: 30px;
+	font-size: 18px;
+}
+#header > .navi02 > .header-input > form > button {
+	border: none;
+	background-color: transparent;
+	cursor: pointer
+}
+#eventBox {
+	width: 400px;
+	height: 60px;
+	background-color: #dddddd;
+}
+
+#header > .navi03 {
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	justify-items: center;
+	align-items: center;
+}
+.navi03 > ul {
+	display: flex;
+	justify-content: center;
+	justify-items: center;
+	align-items: center;
+	height: 30px;
+	width: 1200px;
+}
+.navi03 > ul >li {
+	width: 200px;
+	display: flex;
+	justify-content: center;
+	justify-items: center;
+	justify-content: center;
+	align-items: center;
+	height: 20px;
+}
+.navi03 > .dropBox {
+	position: absolute;
+	display: none;
+	justify-content: center;
+	justify-items: center;
+	justify-content: center;
+	align-items: center;
+	top: 100%;
+	width: 1200px;
+	height: 100px;
+	background-color: #dddddd;
+}
+.navi03:hover .dropBox {
+	display: flex;
+}
+.navi03 > .dropBox > ul > li {
+	width: 200px;
+	text-align: center;
+}
+.navi03 > .dropBox > ul > li > a:hover {
+	color: burlywood;
+}
+
+body{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'Roboto', sans-serif;
+}
+main {
+	display: flex;
+	justify-content: center;
+	
+	margin-top: 80px;
+}
+.main {
+	height: 1200px;
+	width: 1280px;
+	background-color: antiquewhite;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+table {
+	border-top: 2px solid #4a4a4a;
+	border-bottom: 2px solid #4a4a4a;
+	width: 1280px;
+}
+thead {
+	border-bottom: 1px solid #4a4a4a;
+	height: 50px;
+}
+thead > tr > th {
+	
+    vertical-align: middle;
+}
+tbody > tr {
+	height: 120px;
+}
+tbody > tr > td {
+	text-align: center;
+    vertical-align: middle;
+}
+.listOrderButton > * {
+	width: 80px;
+	height: 25px;
+	background-color: #dddddd;
+}
+.listOrderButton>*:last-child {
+	margin-top: 5px;
+}
+.settlement {
+	display: flex;
+	width: 1240px;
+	height: 150px;
+	margin-top: 50px;
+	background-color: #dddddd;
+}
+.settlement > dl{
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	justify-items: center;
+	align-items: center;
+}
+.settlement > dl:not(:last-child) {
+	width: 200px;
+	font-size: 18px;
+}
+.settlement > dl:last-child {
+	flex: 1;
+	font-size: 24px;
+}
+.totalOrderButton {
+	width: 1280px;
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 20px;
+}
+.totalOrderButton > * {
+	width: 200px;
+	height: 40px;
+	background-color: #dddddd;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+
+footer {
+	display: flex;
+	justify-content: center;
+}
+.footer {
+	width: 1280px;
+	height: 200px;
+	background-color: blanchedalmond;
+}
+.footer > .footer01 > ul {
+	display: flex;
+	margin-left: 100px;
+}
+.footer > .footer01 > ul > li {
+	padding: 10px;
+}
+.footer02 {
+	display: flex;
+	margin-top: 30px;
+}
+.footer02 > #footer02-2 {
+	width: 300px;
+}
+.footer02 > #footer02-3 {
+	width: 300px;
+}
+.social-icon {
+	filter: grayscale(100%);
+	cursor: pointer;
+}
+.social-icon:hover {
+	filter: grayscale(0%);
+}
