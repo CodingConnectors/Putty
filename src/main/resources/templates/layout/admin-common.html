@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/css/common/admin-common.css" rel="stylesheet" /> 
+<script>
+	$(function() {
+		$(".aside_menu").click(clickedBtnMenu);
+	});
+	///////////////
+	function clickedBtnMenu() {
+			$(this).siblings('.aside_menu_drop').slideToggle(200);
+	}
+</script>
+</head>
+<body>
+	<aside>
+		<div class="aside_logo center"><img height="60px" src="/img/common/logo.png"></div>
+		<div>
+			<ul>
+				<li class="aside_menu">상품관리</li>
+				<ul class="aside_menu_drop">
+					<a href="/admin/product-registration"><li>상품등록</li></a>
+					<a href="#"><li>상품조회</li></a>
+				</ul>
+			</ul>
+		</div>
+		<div>
+			<ul>
+				<li class="aside_menu">상품관리</li>
+				<ul class="aside_menu_drop">
+					<a href="/admin/product-registration"><li>상품등록</li></a>
+					<a href="#"><li>상품조회</li></a>
+				</ul>
+			</ul>
+		</div>
+	</aside>
+	<header>
+		<div>페이지 제목</div>
+		<nav class="member-nav">
+			<span>관리자아이디</span>
+			<span class="logout center">로그아웃</span>
+		</nav>
+	</header>
+	<footer></footer>
+</body>
+</html>
