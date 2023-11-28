@@ -2,13 +2,101 @@
 
 <html xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{layout/common-layout :: commonLayout(~{this::head},~{this::main} )}">
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<main>
-		
-	</main>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;400;600;800&family=Reem+Kufi:wght@400;600&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="/css/index/layout.css">
+		<link rel="stylesheet" href="/css/index/index.css">
+		<link rel="stylesheet" href="/css/index/index-modal.css">
+		<script>
+			function modal() {
+				document.getElementById('shopping-cart-btn-2').style.visibility = "visible";
+			}
+			
+			function favorite() {
+				document.getElementById('favorite').classList.toggle('active');
+			}
+		</script>
+	</head>
+	<body>
+		<main>
+			<section class="swipper-section">
+				<a href="/admin">관리자 페이지</a>
+			</section>
+			<section class="bestItem-section-1 view-size flex">
+				<div class="inherit">
+					<div class="category center-3">
+						<p class="category-1">BEST ITEM</p>
+						<p class="category-2">Weekly Sales</p>
+					</div>
+					<div class="best-choice-list flex">
+						
+					</div>
+					<div class="best-list-wrap flex">
+						<ul class="flex space-between flex-wrap">
+							<li class="best-item-li">
+								<div class="best-item-wrap">
+									<div class="best-item-img-wrap relative flex">
+										<span class="best-item-img"></span>
+										<div class="best-item-btn flex space-evenly">
+											<a href="#">
+												<button class="more"></button>
+											</a>
+											<button class="shopping-cart-btn" onclick="modal()"></button>
+											<button id="favorite" class="favorite-btn" onclick="favorite()"></button>
+										</div>
+									</div>
+									<div class="best-item-info-wrap">
+										<div class="best-item-info-1">
+											<a href="#">공간 활용 고양이 윈도우 해먹</a>
+										</div>
+										<div class="best-item-info-2 flex center-1 start">
+											<span class="sale">99%</span>
+											<span class="price">10000원</span>
+											<span class="sale-price">100원</span>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section class="bestItem-section-2">
+				
+			</section>
+			<section class="newArrivals-section-1 view-size flex">
+				<div class="inherit">
+					<div class="category center-3">
+						<p class="category-1">NEW ARRIVALS</p>
+						<p class="category-2">Pick up with free gift</p>
+					</div>
+				</div>
+			</section>
+			<section class="newArrivals-section-2">
+				
+			</section>
+			<div id="shopping-cart-btn-2" class="modal-shopping-cart-wrap flex  center-1  center-2">
+				<div class="modal-shopping-cart-body">
+					<div class="modal-shopping-cart-title">장바구니</div>
+					<div class="modal-shopping-cart-main flex center-1">
+						<div class="modal-shopping-cart-main-1 flex">
+							<div class="modal-shopping-bag flex center-1 center-2">
+								<span class="modal-shopping-bag-icon"></span>
+							</div>
+							<div class="modal-shopping-cart-notice">
+								
+							</div>
+						</div>
+					</div>
+					<div class="modal-shopping-cart-btn">
+						
+					</div>
+				</div>
+			</div>
+		</main>
+	</body>
 </html>

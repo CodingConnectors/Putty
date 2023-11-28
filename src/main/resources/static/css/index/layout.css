@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 16px;
+	color: #212121;
+	text-decoration: none;
+	list-style: none;
+}
+
+.view-size {
+	width: 1280px;
+	margin: 0 auto;
+}
+
+.relative {
+	position: relative;
+}
+
+.inherit {
+	width: inherit;
+}
+
+.flex {
+	display: flex;
+}
+
+.center-1 {
+	justify-content: center;
+}
+
+.center-2 {
+	align-items: center;
+}
+
+.center-3 {
+	text-align: center;
+}
+
+.start {
+	justify-content: start;
+}
+
+.space-between {
+	justify-content: space-between;
+}
+
+.space-evenly {
+	justify-content: space-evenly;
+}
+
+.flex-wrap {
+	flex-wrap: wrap;
+}
