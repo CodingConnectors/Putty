@@ -2,18 +2,90 @@
 
 *{
 
-
-
-margin:0;
-
-padding:0;
-
-box-sizing: border-box;
+   
+   font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+	color: #1A1A1A;
 
 }
 
 body{
-	font-family: 'Jost', noto sans, -apple-system, 'Malgun Gothic', '맑은 고딕', helvetica, 'Apple SD Gothic Neo', sans-serif;
+	   font-family: 'Noto Sans KR', sans-serif;
     font-weight: 400;
+    font-size: 16px;
 	
 }
+
+.cscenter_top.height214{
+	height: 214px;
+}
+	
+	
+div{
+	display: block;
+}
+
+.cscenter_top.container{
+	height: 100%;
+	width:100%;
+	box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16);
+	background-color: white;
+	position: relative;
+	z-index: 1;
+	
+}
+
+.container{
+	min-width: 1300px;
+	width: 100%;
+	margin: 0 auto;
+	
+}
+
+.cscenter_top .title{
+	font-size: 28px;
+	font-weight: bold;
+	line-height: 1em;
+	padding-top: 38px;
+	text-align: center;
+}
+
+.cscenter_top .cs_search_box{
+	width: 600px;
+	height: 44px;
+	margin: 20px auto 0;
+	padding: 11px 25px 12px;
+	border-radius: 100px;
+	background-color: #deb88721;
+	position: relative;
+}
+
+.cs_search_box .search_input{
+	
+	width: 500px;
+	border: 0px;
+	background: transparent;
+	line-height: 21px;
+	color:burlywood;
+	letter-spacing: -0.5px;
+	font-size: 14px;
+	
+}
+
+.cs_search_box .search_icoBtn{
+	
+	position: absolute;
+	top:2px;
+	right:17px;
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	font-size: 0;
+	text-indent: -10000px;
+	background: url("../static/img/faq/search_FILL0_wght400_GRAD0_opsz24.png") center center no-repeat;
+	background-size: 20px 20px;
+}
+	
