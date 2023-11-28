@@ -4,12 +4,13 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
-import javax.sound.sampled.Port;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.services.s3.AmazonS3Client;
@@ -72,22 +73,32 @@ public class ProductServiceProcess implements ProductService {
 	@Override
 	public void save(ProductDTO productDTO, ProductImgDTO productImgDTO) {
 		ProductEntity productEn = productRepo.save(productDTO.toEntity());
-		String uploadKey=s3FromTempToImages(productImgDTO);
-		productImgRepo.save(ProductImgEntity.builder()
-								.bucketKey(uploadKey)
-								.orgName(productImgDTO.getOrgName())
-								.productEn(productEn)
-								.build());
+		
+		for(int i=0; i<productImgDTO.getOrgName().length; i++) {
+			if(!productImgDTO.getOrgName()[i].equals("")) {
+				String uploadKey=s3FromTempToImages(productImgDTO, i);
+				productImgRepo.save(ProductImgEntity.builder()
+										.bucketKey(uploadKey)
+										.orgName(productImgDTO.getOrgName()[i])
+										.productEn(productEn)
+										.build());
+			}
+		}
 	}
-	private String s3FromTempToImages(ProductImgDTO productImgDTO) {
+	private String s3FromTempToImages(ProductImgDTO productImgDTO, int i) {
 		String uploadKey = uploadPath
 							+ UUID.randomUUID().toString()
-							+ productImgDTO.getOrgName().substring(productImgDTO.getOrgName().lastIndexOf("."));
+							+ productImgDTO.getOrgName()[i].substring(productImgDTO.getOrgName()[i].lastIndexOf("."));
 		
 		
-		CopyObjectRequest cor=new CopyObjectRequest(bucketName, productImgDTO.getTempKey(), bucketName, uploadKey);
+		CopyObjectRequest cor=new CopyObjectRequest(bucketName, productImgDTO.getTempKey()[i], bucketName, uploadKey);
 		client.copyObject(cor.withCannedAccessControlList(CannedAccessControlList.PublicRead));
-		client.deleteObject(bucketName,productImgDTO.getTempKey());
+		client.deleteObject(bucketName,productImgDTO.getTempKey()[i]);
 		return uploadKey;
+	}
+
+	@Override
+	public void findAll(Model model) {
+		model.addAttribute("list",productRepo.findAll().stream().map(ProductEntity::toListDTO).collect(Collectors.toList()));
 	}
 }

@@ -1,0 +1,89 @@
+@charset "UTF-8";
+
+
+main {
+	display: flex;
+	justify-content: center;
+	
+	margin-top: 80px;
+}
+.main {
+	height: 1200px;
+	width: 1280px;
+	background-color: antiquewhite;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+body{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'Roboto', sans-serif;
+}
+table {
+	border-top: 2px solid #4a4a4a;
+	border-bottom: 2px solid #4a4a4a;
+	width: 1280px;
+}
+thead {
+	border-bottom: 1px solid #4a4a4a;
+	height: 50px;
+}
+thead > tr > th {
+	
+    vertical-align: middle;
+}
+tbody > tr {
+	height: 120px;
+}
+tbody > tr > td {
+	text-align: center;
+    vertical-align: middle;
+}
+.listOrderButton > * {
+	width: 80px;
+	height: 25px;
+	background-color: #dddddd;
+}
+.listOrderButton>*:last-child {
+	margin-top: 5px;
+}
+.settlement {
+	display: flex;
+	width: 1240px;
+	height: 150px;
+	margin-top: 50px;
+	background-color: #dddddd;
+}
+.settlement > dl{
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	justify-items: center;
+	align-items: center;
+}
+.settlement > dl:not(:last-child) {
+	width: 200px;
+	font-size: 18px;
+}
+.settlement > dl:last-child {
+	flex: 1;
+	font-size: 24px;
+}
+.totalOrderButton {
+	width: 1280px;
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 20px;
+}
+.totalOrderButton > * {
+	width: 200px;
+	height: 40px;
+	background-color: #dddddd;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 10px;
+	margin-right: 10px;
+}
