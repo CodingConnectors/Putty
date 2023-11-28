@@ -76,11 +76,11 @@
 	
 }
 
-.favorite-btn {
+.favorite-btn-1 {
 	background-image: url(/img/index/icon/favorite.svg);
 }
 
-.favorite-btn.active {
+.favorite-btn-2 {
 	background-image: url(/img/index/icon/favorite-fill.svg);
 }
 
