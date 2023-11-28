@@ -12,13 +12,25 @@
 		<link rel="stylesheet" href="/css/index/index.css">
 		<link rel="stylesheet" href="/css/index/index-modal.css">
 		<script>
+			//index 상품의 장바구니 모달
 			function modal() {
-				document.getElementById('shopping-cart-btn-2').style.visibility = "visible";
+				document.getElementById('modal-shopping-cart').style.visibility = "visible";
 			}
 			
-			function favorite() {
-				document.getElementById('favorite').classList.toggle('active');
-			}
+			//index 상품의 찜 버튼
+			$(document).ready(function() {
+			  let favorite = true;
+			
+			  $('.favorite-btn').click(function() {
+			    favorite = !favorite;
+			
+			    if (favorite) {
+			      $(this).removeClass('favorite-btn-2').addClass('favorite-btn-1');
+			    } else {
+			      $(this).removeClass('favorite-btn-1').addClass('favorite-btn-2');
+			    }
+			  });
+			});
 		</script>
 	</head>
 	<body>
@@ -46,7 +58,7 @@
 												<button class="more"></button>
 											</a>
 											<button class="shopping-cart-btn" onclick="modal()"></button>
-											<button id="favorite" class="favorite-btn" onclick="favorite()"></button>
+											<button class="favorite-btn favorite-btn-1"></button>
 										</div>
 									</div>
 									<div class="best-item-info-wrap">
@@ -79,7 +91,8 @@
 			<section class="newArrivals-section-2">
 				
 			</section>
-			<div id="shopping-cart-btn-2" class="modal-shopping-cart-wrap flex  center-1  center-2">
+			<div id="modal-shopping-cart" class="modal-shopping-cart-wrap flex center-1 center-2">
+				<div class="modal-overlay"></div>
 				<div class="modal-shopping-cart-body">
 					<div class="modal-shopping-cart-title">장바구니</div>
 					<div class="modal-shopping-cart-main flex center-1">
@@ -88,12 +101,10 @@
 								<span class="modal-shopping-bag-icon"></span>
 							</div>
 							<div class="modal-shopping-cart-notice">
-								
 							</div>
 						</div>
 					</div>
 					<div class="modal-shopping-cart-btn">
-						
 					</div>
 				</div>
 			</div>
