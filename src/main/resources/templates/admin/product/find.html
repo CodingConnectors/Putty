@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/admin-common-layout.html :: adminCommonLayout(~{this::head},~{this::main} )}">
+<head>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/css/admin/product/find.css">
+</head>
+<body>
+	<main>
+		<h1>상품조회페이지</h1>
+		<form action="" method="post">
+			<input type="text" name="no" placeholder="상품등록번호를 입력하세요"/>
+		</form>
+		<table>
+			<thead>
+				<tr>
+					<th>상품번호</th>
+					<th>상품이름</th>
+					<th>가격</th>
+					<th>재고</th>
+					<th>상품설명</th>
+				</tr>
+			</thead>
+			<tbody th:each="prod:${list}">
+				<tr class="table-content">
+					<td th:text="${prod.no}">번호</td>
+					<td th:text="${prod.name}">이름</td>
+					<td th:text="${prod.price}">가격</td>
+					<td th:text="${prod.stock}">재고</td>
+					<td th:text="${prod.content}">설명</td>
+				</tr>
+			</tbody>
+		</table>
+	</main>
+</body>
+</html>

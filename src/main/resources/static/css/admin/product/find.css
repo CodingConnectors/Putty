@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+table {
+	border-top: 2px solid #4a4a4a;
+	border-bottom: 2px solid #4a4a4a;
+	width: 1280px;
+}
+thead {
+	border-bottom: 1px solid #4a4a4a;
+	height: 50px;
+}
+thead > tr > th {
+	
+    vertical-align: middle;
+}
+tbody > tr {
+	height: 60px;
+}
+tbody > tr > td {
+	text-align: center;
+    vertical-align: middle;
+}

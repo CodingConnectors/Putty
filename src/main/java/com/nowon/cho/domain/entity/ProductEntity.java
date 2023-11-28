@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.nowon.cho.domain.dto.FindProductListDTO;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,4 +32,16 @@ public class ProductEntity extends BaseEntity{
 	@Column (nullable = false)
 	private int stock;
 	private String content;
+	
+	public FindProductListDTO toListDTO() {
+		return FindProductListDTO.builder()
+				.no(no)
+				.name(name)
+				.price(price)
+				.stock(stock)
+				.content(content)
+				.updatedDate(updatedDate)
+				.createdDate(createdDate)
+				.build();
+	}
 }
