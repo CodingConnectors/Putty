@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/admin-common-layout.html :: adminCommonLayout(~{this::head},~{this::main} )}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/css/admin/product/registration.css" rel="stylesheet"/>
+<script>
+	function changedImg(element){
+		
+		var formData = new FormData();
+		formData.append("productImg", $(element)[0].files[0]);
+		
+		$.ajax({
+			url:"/temp-upload",
+			data: formData,
+			type: "post",
+			contentType: false,
+			processData: false,
+			success: function(map){
+				$(element).parent().css("background-image", `url(${map.url})`);
+				$(element).siblings(".tempKey").val(map.tempKey);
+				$(element).siblings(".orgName").val(map.orgName);
+				$(element).parent().find(".input-imgplz").css("display","none");
+				
+            	/*addImageInput();*/
+			}
+		});
+	}
+	function addImageInput() {
+    var container = $("#imageInputsContainer");
+    var newInput = $(
+					'<label class="input-img">\
+                            <input type="file" name="image" accept="image/*" onchange="changedImg(this)" />\
+							<input type="hidden" class="tempKey" name="tempKey" />\
+							<input type="hidden" class="orgName" name="orgName" />\
+                            <span class="input-imgplz">+</span>\
+                     </label>'
+                             );
+
+
+    // 새로운 label을 컨테이너에 추가
+    container.append(newInput);
+
+}
+</script>
+</head>
+<body>
+	<main>
+		<form action="/admin/product-registration" method="post" enctype="multipart/form-data">
+			<p>
+				<span>상품이름</span>
+				<input type="text" name="name" placeholder="상품이름" />
+			</p>
+			<p>
+				<span>상품가격</span>
+				<input type="text" name="price" placeholder="상품가격" />
+			</p>
+			<p>
+				<span>재고</span>
+				<input type="text" name="stock" placeholder="재고" />
+			</p>
+			<p>
+				<span>상품설명</span>
+				<input type="text" name="content" placeholder="상품설명" />
+			</p>
+			
+			<div id="imageInputsContainer">
+				<label class="input-img">
+					<input type="file" name="image" accept="image/*" onchange="changedImg(this)" />
+					<input type="hidden" class="tempKey" name="tempKey" />
+					<input type="hidden" class="orgName" name="orgName" />
+					<span class="input-imgplz">+</span>
+				</label>
+			</div>
+			
+			<p><button>전송</button></p>
+		</form>
+	</main>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/common-layout :: commonLayout(~{this::head},~{this::main} )}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<main>
+		<div class="main">
+			<table>
+				<thead>
+					<tr>
+						<th>선택</th>
+						<th>이미지</th>
+						<th>상품정보</th>
+						<th>가격</th>
+						<th>수량</th>
+						<th>할인금액</th>
+						<th>적립금</th>
+						<th>총 금액</th>
+						<th>배송비</th>
+						<th>주문</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+							<td><input type="checkbox"/></td>
+							<td><img width="100px" src="/css/img/img01.jpg"/></td>
+							<td>D17 애견 패딩 코듀로이 패딩 브라운</td>
+							<td>29,000원</td>
+							<td>4</td>
+							<td>-8,700원</td>
+							<td>870포인트</td>
+							<td>78,300원</td>
+							<td>3000원</td>
+							<td class="listOrderButton">
+								<a href="#">바로주문</a>
+								<a href="#">삭제</a>
+							</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<div class="settlement">
+				<dl>
+					<dt>총 상품금액</dt>
+					<dd>87,000원</dd>
+				</dl>
+				<dl>
+					<dt>총 할인</dt>
+					<dd>-8,700원</dd>
+				</dl>
+				<dl>
+					<dt>적립예정 포인트</dt>
+					<dd>870포인트</dd>
+				</dl>
+				<dl>
+					<dt>총 배송비</dt>
+					<dd>3,000원</dd>
+				</dl>
+				<dl>
+					<dt>결제하실 금액</dt>
+					<dd>78,300원</dd>
+				</dl>
+			</div>
+			<div class="totalOrderButton">
+				<a href="#"><div>선택주문하기</div></a>
+				<a href="#"><div>전체주문하기</div></a>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
