@@ -10,5 +10,25 @@ public class FaqController {
 	public String faqinfo() {
 		return "faq/faq_info";
 	}
+	
+	@GetMapping("/faq/frequently_asked")
+	public String frequently_asked() {
+		return "faq/frequently_asked";
+	}
+	
+	@GetMapping("/faq/faq_board")
+	public String faq_board() {
+		return "faq/faq_board";
+	}
+	
+	@GetMapping("faq/faq_notice")
+	public String faq_notice() {
+		return "faq/faq_notice";
+	}
+	
+	@GetMapping("faq/faq_list")
+	public String faq_list() {
+		return "faq/faq_list";
+	}
 
 }

@@ -15,7 +15,7 @@
 
 
 
-<title>공지/게시판 | 퍼티</title>
+<title>고객센터 | 퍼티</title>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -41,7 +41,7 @@
 			alert("검색어를 입력하세요");
 			return;
 		}
-		document.info_form.action = "../views/faq/faq_list.htm";
+		document.info_form.action = "/faq/frequently_asked";
 		document.info_form.submit();
 		
 	}
@@ -125,15 +125,16 @@
 </head>
 
 <body>
+	<main>
 	<form name="info_form" id="info_form" method="post" action="#"
 	enctype="multipart/form-data" onsubmit="return false;">
 	
 		<div class="cscenter_top height214">
 			<div class="container">
-				<div class="title">상담센터</div>
+				<div class="title">고객센터</div>
 				<div class="cs_search_box">
 					<label for="faq_sch_word" id="search_input_label"></label>
-					<input type="text" class="search_input" name="faq_sch_word" id="faq_sch_word" value onkeyup="cut_byte(this,50);" placeholder="궁금하신 내용을 입력해 주세요." onkeypress="if(event.keyCode==13) sch_list();">
+					<input type="text" class="search_input" name="faq_sch_word" id="faq_sch_word" value onkeyup="cut_byte(this,100);" placeholder="궁금하신 내용을 입력해 주세요." onkeypress="if(event.keyCode==13) sch_list();">
 					<a href="javascript:sch_list();" class="search_icoBtn" style="border: none;">검색</a>
 				
 				</div>
@@ -154,60 +155,56 @@
 	<div class="cscenter_wrap">
 		<div class="container">
 			<div class="main_link_box clearfix">
+				
 				<div class="customer_voice">
-					<a href="../faq/faq_board.html">
+					<a href="../faq/faq_board">
+						<img class="white_icon" src="https://image5.compuzone.co.kr/img/images/mypage21/item_consult_65x65.png">
 						<span class="link_title">
-							"고객의소리"
+							문의 게시판
 							<i></i>
 						</span>
 	            	</a>
-				<span class="balloon_box">
-					"퍼티를 이용하면서"
-					<br>
-					"만족스러운 점이나 불편했던 점,"
-					<br>
-					"주문/배송 등 일반문의를 남겨주세요."
-					<i></i>	
-				</span>
+			
 
 				</div>
 				<div class="frequently_asked">
-					<a href="../faq/frequently_asked.html">
+					<a href="/faq/frequently_asked">
+						<img class="white_icon" src="https://image5.compuzone.co.kr/img/images/mypage21/customer_Inquiry_65x65.png">
 						<span class="link_title">
-							"자주 묻는 질문"
+							자주 묻는 질문
 							<i></i>
 						</span>
 					</a>
-					<span class="balloon_box" style="z-index: 10">
-						"퍼티 회원분들께서"
-						<br>
-						"자주 궁금해하시는 사항 모음"
-						<i></i>
-					</span>
+					
 				</div>
 				
 
-				</div>
+				
 				<div class="notice">
-					<a href="../faq/faq_notice.html">
+					<a href="../faq/faq_notice">
+						<img class="white_icon" src="https://image5.compuzone.co.kr/img/images/mypage21/as_icon_65x65.png">
 						<span class="link_title">
-							"공지사항"
+							공지사항
 							<i></i>
 						</span>
 					</a>
-					<span class="balloon_box" style="z-index: 10">
-						"퍼티 회원분들께"
-						<br>
-						"전달하는 공지사항"
-						<i></i>
-					</span>
+				</div>
+				
+				<div class="notice">
+					<a href="../faq/faq_list">
+						<img class="white_icon" src="https://image5.compuzone.co.kr/img/images/mypage22/ico_pc2_51x45.png">
+						<span class="link_title">	
+							내가 한 질문
+							<i></i>
+						</span>
+					</a>
 				</div>
 			</div>
 			
 			<div class="contents_title clearfix">
-				" 자주 묻는 질문 TOP 4 "
+				<strong>자주 묻는 질문 TOP 4</strong>
 				<a class="viewAll_btn" href="../faq/frequently_asked.html">
-				"전체보기"
+				전체보기
 				<i></i>
 				</a>
 			</div>
@@ -217,119 +214,13 @@
 				<div class="qna_list">
 					<div class="question active">
 						<p class="q_tit">Q</p>
-						"주문 후 상품의 옵션이나 배송지를 변경할 수 있나요?"
+						주문 후 상품의 옵션이나 배송지를 변경할 수 있나요?
 						<i></i>
 					</div>
-					<div class="answer active">
-						<div class="nano has scrollbar">
-							<div class="nano-content" tabindex="0" style="right: -17px;">
-								<div class="answer_wrap">
-									<p></p>
-				                    <p style="line-height: 1.6;">
-										<span style="font-size: 12px;">네, 주문 건이 상품 발송 상태 이전이라면 옵션, 배송지 변경이 가능합니다.</span>
-										"&nbsp;"
-									</p>
-									
-				                    <p style="line-height: 1.6;">
-										<span style="font-size: 12px;">
-											<br>
-										</span>
-							
-									</p>
-				                          
-									
-				                    <p style="line-height: 1.6;">
-										<span style="font-size: 12px; font-weight: 700;">■ 옵션 변경</span>
-										<br>
-									</p>
-				                          
-									
-				                    <p style="line-height: 1.6;">
-										<font face="맑은 고딕">
-										<span style="font-size: 12px;">주문 후 아직 결제하지 않은 경우에는 해당 주문을 취소하신 후 옵션을 변경하여 다시 주문하시는 것을 권장합니다.</span>
-										</font>
-									</p>
-				                          
-									
-				                    <p style="line-height: 1.6;">
-										<font face="맑은 고딕">
-										<span style="font-size: 13.3333px;">
-											<span style="font-size: 12px;">주문 후 결제까지 완료한 경우에는 주문한 상품의 주문 상태가</span>
-											<b>
-												<span style="font-size: 12px;">상품 발송 이전 상태</span>
-											</b>
-											<span style="font-size: 12px;">라면 상품의 옵션 변경이 가능합니다.</span>
-										</span>
-										</font>
-									</p>
-				                          
-				                          
-				                    <p style="line-height: 1.6;">
-										<font face="맑은 고딕">
-										<span style="font-size: 12px;">단, 주문 상태가 상품 발송인 경우에는 제품의 출고가 진행되어 옵션 변경이 불가합니다.</span>
-										</font>
-									</p>
-				                          
-									
-				                    <p style="line-height: 1.6;">
-										
-										<span style="font-family:  맑은 고딕;">[MY퍼티] > [MY주문] > [주문내역] > [상세보기]에서 옵션 변경이 가능합니다.</span>
-										<font face="맑은 고딕">
-											<span style="font-size: 13.3333px;">
-											<br>
-											
-										</span>
-									</font>
-									</p>
-				                          
-									
-				                    <p style="line-height: 1.6;">
-										<font face="맑은 고딕">
-										<span style="font-size: 13.3333px;">
-												<br>
-											</span>
-										</font>
-									</p>
-				                          
-									
-				                    <p style="line-height: 1.6;">
-										<font face="맑은 고딕">
-										<span style="font-size: 12px;">
-												<b>■ 배송지 변경</b>
-											</span>
-										</font>
-									</p>
-				                          
-									
-				                    <p style="line-height: 1.6;">
-										<font face="맑은 고딕">
-										<span style="font-size: 13.3333px;">
-												<span style="font-size: 12px;">배송지의 변경은 주문한 상품의 주문 상태가&nbsp;</span>
-											</span>
-										</font>
-										<span style="font-family: 맑은 고딕; font-weight:700;">상품 발송 이전 상태라면 배송지 변경이 가능합니다.</span>
-									</p>
-				                         
-				                    <p style="line-height: 1.6;">
-										<font face="맑은 고딕">
-										<span style="font-size: 12px;">[MY퍼티] > [MY주문] > [주문내역] > [상세보기] > [배송지 수정]에서 배송지를 변경할 수 있습니다.
-												
-											</span>
-										</font>
-									</p>
-								</div>
-							</div>
-							<div class="nano-pane" style="display: none; opacity: 1; visibility: visible;">
-								<div class="nano-slider" style="height: 384px; transform: translate(0px, 0px);"></div>
-							</div>
-			
-						</div>
-					
-					</div>
-					
+				
 					<div class="question">
 						<p class="q_tit">Q</p>
-						"배송조회는 어떻게 하나요?"
+						배송조회는 어떻게 하나요?
 						<i></i>
 					</div>
 					
@@ -337,23 +228,23 @@
 					
 					<div class="question">
 						<p class="q_tit">Q</p>
-						"교환/반품 신청은 언제까지 가능한가요?"
+						교환/반품 신청은 언제까지 가능한가요?
 						<i></i>
 					</div>
 					
 					
 					<div class="question">
 						<p class="q_tit">Q</p>
-						"주문 시 당일 수령도 가능한가요?"
+						주문 시 당일 수령도 가능한가요?
 						<i></i>
 					</div>
 					
 					
 					
 					<div class="contents_title clearfix">
-						" 공지사항 "
+						공지사항
 						<a class="viewAll_btn" href="../faq/faq_notice.html">
-								"전체보기"
+								전체보기
 							<i></i>
 						</a>
 						
@@ -468,8 +359,8 @@
 		
 		});
 		
-	</script>
-
+		</script>
+	</main>
 
 </body>
 

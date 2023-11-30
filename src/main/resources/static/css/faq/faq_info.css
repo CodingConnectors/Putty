@@ -2,7 +2,7 @@
 
 *{
 
-   
+
    font-family: 'Noto Sans KR', sans-serif;
     font-weight: 400;
 	margin:0;
@@ -12,8 +12,9 @@
 
 }
 
+
 body{
-	   font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
     font-weight: 400;
     font-size: 16px;
 	
@@ -69,11 +70,18 @@ div{
 	border: 0px;
 	background: transparent;
 	line-height: 21px;
-	color:burlywood;
+	color:brown;
 	letter-spacing: -0.5px;
 	font-size: 14px;
-	
+	outline: transparent;
 }
+
+.cs_search_box  >::placeholder{
+	
+	color:brown ;
+}
+
+
 
 .cs_search_box .search_icoBtn{
 	
@@ -85,7 +93,187 @@ div{
 	display: inline-block;
 	font-size: 0;
 	text-indent: -10000px;
-	background: url("../static/img/faq/search_FILL0_wght400_GRAD0_opsz24.png") center center no-repeat;
-	background-size: 20px 20px;
+	background-image: url('/img/faq/search_FILL0_wght400_GRAD0_opsz24.png');
+	background-repeat: no-repeat;
+	background-size: 30px 30px;
+	background-position: center, center;
 }
-	
+
+.cscenter_top .keyword{
+	text-align: center;
+	margin-top: 10px;
+	font-size: 0;
+
+}
+
+.cscenter_top .keyword span{
+	margin-right: 20px;
+	color: rgb(210, 160, 94);
+	font-size: 16px;
+	cursor: pointer;
+}
+
+
+.cscenter_wrap .container{
+	background: #deb88721;
+	padding: 41px 0 80px;
+}
+
+.main_link_box{
+	width: 1000px;
+	height: 170px;
+	margin: 0 auto;
+}
+
+.main_link_box > div:first-child{
+	margin-left: 0;
+}
+
+.main_link_box > div{
+	width: 170px;
+	height: 170px;
+	display: inline-block;
+	border-radius: 170px;
+	box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16);
+	background-color: rgb(255, 255, 255);
+	float: left;
+	position: relative;
+}
+
+.main_link_box a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding-top: 27px;
+    text-align: center;
+}
+
+
+a:visited {
+    text-decoration: none;
+    color: #6c6c6c;
+}
+
+.main_link_box a .link_title {
+    display: block;
+    font-size: 18px;
+    font-family: '맑은고딕', 'malgun gothic';
+    color: #6C6C6C;
+    letter-spacing: -0.025em;
+    line-height: 22px;
+    margin-top: 12px;
+}
+
+.main_link_box a .link_title i {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #6C6C6C;
+    border-right: 2px solid #6C6C6C;
+    transform: rotate(45deg);
+    vertical-align: 2px;
+    margin-left: 1px;
+}
+
+.main_link_box > div {
+    margin-left: 105px;
+}
+
+.contents_title {
+    font-family: 'Noto-M';
+    font-size: 20px;
+    letter-spacing: -0.025em;
+    width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 22px;
+    line-height: 29px;
+    margin-top: 44px;
+   	
+}
+
+.contents_title .viewAll_btn {
+    float: right;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+    color: rgb(255, 128, 0);
+    font-family: 'Noto-R';
+    letter-spacing: -0.025em;
+}
+
+.viewAll_btn {
+    display: block;
+    margin-top: 2px;
+    color: rgb(255, 128, 0);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.contents_title .viewAll_btn > i {
+    display: inline-block;
+    margin-left: 4px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid rgb(255, 128, 0);
+    border-right: 2px solid rgb(255, 128, 0);
+    transform: rotate(45deg);
+    vertical-align: 1px;
+}
+
+.viewAll_btn > i {
+    display: inline-block;
+    margin-left: 4px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid rgb(255, 128, 0);
+    border-right: 2px solid rgb(255, 128, 0);
+    transform: rotate(45deg);
+    vertical-align: 1px;
+}
+
+i {
+    font-style: italic;
+}
+
+.contents_box {
+    width: 1000px;
+    height: auto;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+}
+
+div.contents_title.clearfix > strong {
+	color: rgb(255, 128, 0);
+}
+
+.qna_list .question {
+    font-size: 16px;
+    line-height: 65px;
+    border-bottom: 1px solid #E8E8E8;
+    cursor: pointer;
+}
+
+.qna_tit, .question, .wrong_tit {
+    display: table;
+    width: 100%;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 0;
+}
+
+.line {
+    background: #3A3A3A;
+    height: 2px;
+}
+
+.qna_list .question .q_tit {
+    float: left;
+    width: 50px;
+    height: 65px;
+    line-height: 62px;
+    color: rgb(255, 128, 128);
+    font-size: 24px;
+    font-family: 'spoqa B';
+    text-align: center;
+}
