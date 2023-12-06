@@ -8,36 +8,57 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;400;600;800&family=Reem+Kufi:wght@400;600&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 		<link rel="stylesheet" href="/css/index/layout.css">
 		<link rel="stylesheet" href="/css/index/index.css">
 		<link rel="stylesheet" href="/css/index/index-modal.css">
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 		<script>
-			//index 상품의 장바구니 모달
 			function modal() {
 				document.getElementById('modal-shopping-cart').style.visibility = "visible";
 			}
-			
-			//index 상품의 찜 버튼
+		
 			$(document).ready(function() {
-			  let favorite = true;
-			
-			  $('.favorite-btn').click(function() {
-			    favorite = !favorite;
-			
-			    if (favorite) {
-			      $(this).removeClass('favorite-btn-2').addClass('favorite-btn-1');
-			    } else {
-			      $(this).removeClass('favorite-btn-1').addClass('favorite-btn-2');
-			    }
-			  });
+				let favorite = true;
+		
+				$('.favorite-btn').click(function() {
+	    			favorite = !favorite;
+		
+	    			if (favorite) {
+	    				$(this).removeClass('favorite-btn-2').addClass('favorite-btn-1');
+	    			} else {
+	    				$(this).removeClass('favorite-btn-1').addClass('favorite-btn-2');
+	    			}
+				});
 			});
 		</script>
 	</head>
 	<body>
 		<main>
-			<section class="swipper-section">
-				<a href="/admin">관리자 페이지</a>
-			</section>
+			<div class="swiper mySwiper">
+		    	<div class="swiper-wrapper">
+		      		<div class="swiper-slide">
+				  		<p id="index-swiper-img-1" class="swiper-slide-img"></p>
+			  		</div>
+		      		<div class="swiper-slide">
+				  		<p id="index-swiper-img-2" class="swiper-slide-img"></p>
+			  		</div>
+		      		<div class="swiper-slide">
+				  		<p id="index-swiper-img-3" class="swiper-slide-img"></p>
+			  		</div>
+		    	</div>
+		    	<div class="swiper-button-next"></div>
+		    	<div class="swiper-button-prev"></div>
+			</div>
+			<script>
+				var swiper = new Swiper(".mySwiper", {
+					loop: true,
+					navigation: {
+						nextEl: ".swiper-button-next",
+						prevEl: ".swiper-button-prev",
+					},
+				});
+			</script>
 			<section class="bestItem-section-1 view-size flex">
 				<div class="inherit">
 					<div class="category center-3">
@@ -48,7 +69,7 @@
 						
 					</div>
 					<div class="best-list-wrap flex">
-						<ul class="flex space-between flex-wrap">
+						<ul class="best-item-ul flex space-between flex-wrap">
 							<li class="best-item-li">
 								<div class="best-item-wrap">
 									<div class="best-item-img-wrap relative flex">
@@ -96,11 +117,34 @@
 				<div class="modal-shopping-cart-body">
 					<div class="modal-shopping-cart-title">장바구니</div>
 					<div class="modal-shopping-cart-main flex center-1">
-						<div class="modal-shopping-cart-main-1 flex">
+						<div class="modal-shopping-cart-main-1 flex center-2">
 							<div class="modal-shopping-bag flex center-1 center-2">
 								<span class="modal-shopping-bag-icon"></span>
 							</div>
+							<span></span>
 							<div class="modal-shopping-cart-notice">
+								<div>장바구니 이용 안내</div>
+								<div>
+									<p>1</p>
+									<p>
+										해외 배송 상품과 국내 배송 상품은 함께 결제하실 수 없으니 
+										장바구니 별로 따로 결제해 주시기 바랍니다.
+									</p>
+								</div>
+								<div>
+									<p>2</p>
+									<p>
+										해외 배송 가능 상품의 경우 국내 배송 장바구니에 담았다가 
+										해외 배송 장바구니로 이동하여 결제하실 수 있습니다.
+									</p>
+								</div>
+								<div>
+									<p>3</p>
+									<p>
+										장바구니와 관심 상품을 이용하여 원하시는 상품만 주문하거나 
+										관심상품으로 등록하실 수 있습니다.
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>

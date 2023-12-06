@@ -12,13 +12,11 @@
 .modal-shopping-cart-body {
 	width: 800px;
 	height: 600px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 	line-height: 45px;
-	border: 1px solid #2F4F4F;
+	position: fixed;
+	z-index: 1;
 	background-color: #FFF;
+	box-shadow: 0px 0px 5px #A9A9A9;
 }
 
 .modal-shopping-cart-title {
@@ -26,12 +24,13 @@
 	padding-left: 15px;
 	font-size: 18px;
 	font-weight: 600;
+	color: #696969;
 	background-color: #F7EDD7;
 }
 
 .modal-shopping-cart-main-1 {
-	width: 600px;
-	height: 150px;
+	width: 675px;
+	height: 200px;
 	margin: 30px 0;
 	border: 1px solid #DCDCDC;
 }
@@ -52,17 +51,26 @@
 	background-size: contain;
 }
 
-.modal-shopping-cart-notice {
-	width: 450px;
+.modal-shopping-cart-main-1 > span {
+	height: 110px;
+	border: 1px solid #DCDCDC;
 }
 
-.modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* 어둡게 만들기 위한 배경색 */
-    z-index: 1;
+.modal-shopping-cart-notice {
+	width: 525px;
+	margin: auto 0;
+	padding-left: 25px;
+}
+
+.modal-shopping-cart-notice > div {
+	display: flex;
+	align-items: center;
+}
+
+.modal-shopping-cart-notice > div > p {
+	height: 30px;
+	margin: 0 5px;
+	line-height: 30px;
+	font-size: 10px;
+	color: #696969;
 }
