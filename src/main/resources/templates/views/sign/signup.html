@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="/css/sign/sign.css">
+	<link rel="stylesheet" href="/css/sign/signup.css">
+</head>
+<body>
+<main>
+	<h1>회원가입</h1>
+	<div class="container_signup">
+		<div class="content_lg">
+			<div class="signup_area">
+				<div class="signup_title">
+					<div class="signin_title_img"><a href="/"><img src="/img/sign/favicon.png"></a></div>
+				</div>
+				<div class="signup_main">
+					<div class="signup_main_title">
+						회원가입
+					</div>
+				<form action="/signup" method="post">
+					<div class="user_data">
+						<div class="user_input">
+							<div class="input_title">이메일 주소</div>
+							<div class="input_item">
+								<input type="email" placeholder="ex)putty@cute.com" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex)putty@cute.com'" autocomplete="off" class="input_txt" name="email">
+							</div>
+						</div>
+						<div class="user_input">
+						<div class="input_title">비밀번호</div>
+						<div class="input_item">
+							<input type="password"  maxlength='16' placeholder="영문, 숫자, 특수문자를 조합해서 입력해주세요.(8~16자)" onfocus="this.placeholder = ''" onblur="this.placeholder = '영문, 숫자, 특수문자를 조합해서 입력해주세요.(8~16자)'" autocomplete="off" class="input_txt" name="password">
+						</div>
+						</div>
+						<div class="user_input">
+							<div class="input_title">비밀번호</div>
+							<div class="input_item">
+								<input type="password"  maxlength='16' placeholder="비밀번호를 재입력 해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 재입력 해주세요.'" autocomplete="off" class="input_txt" name="password">
+							</div>
+						</div>
+						<div class="user_input">
+							<div class="input_title">이름</div>
+							<div class="input_item">
+								<input type="text" placeholder="이름을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이름을 입력해주세요.'" autocomplete="off" class="input_txt" name="name">
+							</div>
+						</div>
+						<div class="user_input">
+							<div class="input_title">휴대폰 번호</div>
+							<div class="input_item">
+								<input type="tel" placeholder="휴대폰 번호를 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '휴대폰 번호를 입력해주세요.'" autocomplete="off" class="input_txt" name="tel_num">
+							</div>
+						</div>
+					</div>
+					<div class="access_terms">
+						<div class="terms_title">약관</div>
+						<div class="agree_all">
+							<label for="modal_switch">
+								<div class="agree_all_check">
+									<input type="checkbox" name="all_check_box" id="modal_switch">
+									이용약관 및 개인정보수집 이용, 쇼핑정보 수신에 모두 동의합니다.
+								</div>
+							</label>
+						</div>
+						<div class="agree_check">
+							<div class="terms_agree"></div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</main>
+</body>
+</html>

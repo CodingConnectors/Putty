@@ -1,1 +1,115 @@
 @charset "UTF-8";
+
+.container_signup{
+	margin:107px auto 0; height: 754px; width: 1440px;
+	box-sizing: border-box;
+}
+
+.content_lg{
+	display: flex;
+	justify-content: center;
+	width: 1280px; height: 754px;
+	padding-left: 40px; padding-right: 40px;
+	margin-left: 80px; margin-right: 80px;
+}
+
+.signup_area{
+	width: 400px; height: 954px;
+	padding-top: 60px; padding-bottom: 160px;
+	margin-left: 400px; margin-right: 400px;
+}
+
+.signup_main{
+	width: 400px; height: 470px;
+}
+
+.signup_main_title{
+	display: flex; justify-content: center;
+	padding-bottom: 41px; height: 81px;
+	font-size: 32px; font-weight: 600;
+	border-bottom: 2px solid #fce18a;
+}
+
+/*///////////////////////////////////////////////*/
+
+.signup_title{
+	width: 400px; height: 130px;
+	padding-bottom: 50px;
+	display: flex; justify-content: center;
+}
+
+.signin_title_img{
+	width: 150px; height: 80px;
+}
+
+.signin_title_img:hover{
+	filter: invert(15%);
+}
+
+/*///////////////////////////////////////////////*/
+
+.user_data{
+	width: 400px; height: 386px;
+}
+
+.user_input{
+	width: 400px; height: 80px;
+	padding: 10px 0 14px;
+    position: relative;
+}
+
+.input_title{
+	width: 400px; height: 18px;
+	font-size: 13px; font-weight: 1000;
+}
+
+.input_item{
+	width: 400px; height: 38px;
+	position: relative;
+}
+
+.input_txt:focus {
+  	color: white;
+	background: #fce18a;
+	border-radius: 10px;
+	height: 30px; margin-top: 8px;
+	font-weight: 700;
+}
+
+.input_txt{
+	width: 400px; height: 38px;
+	padding: 8px 30px 8px 0;
+	font-size: 13px; 
+	border-bottom: 1px solid #ebebeb;
+	outline: 0;
+}
+
+/*///////////////////////////////////////////////*/
+
+.access_terms{
+	width: 400px; height: 400px;
+}
+
+.terms_title{
+	width: 400px; height: 90px;
+	display: flex; justify-content: center;
+	padding-top: 25px;padding-bottom: 25px;
+	font-size: 32px; font-weight: 600;
+}
+
+.agree_all{
+	width: 400px; height: 50px;
+	margin-bottom: 20px;
+	background-color: white;
+	border: #fce18a solid 2px;
+	border-radius: 10px; 
+	
+}
+
+.agree_all_check{
+	display: flex;
+	justify-content: space-between;
+	font-size: 12px;
+	padding: 16px 4px 16px 4px;
+	cursor: pointer;
+}
