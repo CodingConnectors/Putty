@@ -17,6 +17,7 @@ body{
 	font-family: 'Noto Sans KR', sans-serif;
     font-weight: 400;
     font-size: 16px;
+   
 	
 }
 
@@ -244,7 +245,7 @@ i {
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 }
 
-div.contents_title.clearfix > strong {
+div.contents_title > strong {
 	color: rgb(255, 128, 0);
 }
 
@@ -271,9 +272,155 @@ div.contents_title.clearfix > strong {
     float: left;
     width: 50px;
     height: 65px;
-    line-height: 62px;
     color: rgb(255, 128, 128);
     font-size: 24px;
     font-family: 'spoqa B';
     text-align: center;
+     align-items: center;
+}
+
+
+.question{
+	width: 100%;
+	align-items: center;
+	cursor: pointer;
+	padding-left: 20px;
+}
+
+.question_drop{
+	display: none;
+	background-color:#deb88721;
+	line-height: 30px;
+}
+.question_drop > * {
+	height: 200px;
+	align-items: center;
+	padding-left: 40px;
+	
+}
+.question_drop > b{
+	
+	padding-left: 0px;
+	font-weight: 800;
+}
+
+.notice_list .notice a {
+    display: block;
+    font-size: 16px;
+    line-height: 65px;
+    border-bottom: 1px solid #E8E8E8;
+    color: #1a1a1a;
+    font-family: 'Noto-R';
+    letter-spacing: -0.025em;
+    padding: 0 20px;
+}
+
+.notice_list .notice a .fl_right {
+    float: right;
+}
+
+em, address {
+    font-style: normal;
+}
+
+.two_box {
+    width: 1000px;
+    margin: 50px auto 0;
+     text-align:center;
+     display: flex;
+ 	
+}
+
+
+
+
+
+.two_box .box.left {
+    margin-right: 20px;
+
+   
+}
+
+.two_box .box {
+    border-radius: 10px 0 10px 0;
+}
+
+.two_box .box {
+    width: 490px;
+    height: 150px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    display: flex;
+    padding: 30px 40px;
+    align-items: flex-start;
+    
+    justify-content: space-around;
+}
+
+.two_box .box .icon {
+    width: 90px;
+    height: 90px;
+    background-color: #f9f9f9;
+    border-radius: 50%;
+ 	 display: flex;
+    padding-top: 20px;
+    justify-content: center;
+  
+}
+
+.two_box .box .text_box {
+    display: inline-block;
+    margin-left: 30px;
+    padding-top: 5px;
+    
+}
+
+.two_box .box .text_box h3 {
+    font-size: 18px;
+    letter-spacing: -0.025em;
+    line-height: 1em;
+    margin-bottom: 20px;
+}
+
+.two_box .box .text_box p {
+    margin-top: 12px;
+}
+
+.two_box .box.consulting .text_box p span.strong {
+    width: 84px;
+}
+
+.two_box .box .text_box p span.strong {
+    font-size: 14px;
+    color: #1A1A1A;
+    letter-spacing: -0.025em;
+    width: 120px;
+    font-family: 'Noto-M';
+    display: inline-block;
+    line-height: 1em;
+}
+
+.two_box .box .text_box p span {
+    font-size: 11px;
+    color: #949494;
+    letter-spacing: -0.025em;
+    line-height: 1em;
+   
+}
+
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 50px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
 }

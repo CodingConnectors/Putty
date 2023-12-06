@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Noto-R';
+    color: #1A1A1A;
+}
+
+div {
+    display: block;
+}
+
+
+
+.myPage21 {
+    position: relative;
+    padding-bottom: 100px;
+    width: 100%;
+    min-width: 1300px;
+    background: #deb88721;
+    box-shadow: 2px 5px 4px 1px rgba(0, 0, 0, 0.03) inset;
+}
+
+.myP_inner {
+    position: relative;
+}
+
+.myP_inner {
+    width: 1300px;
+    margin: 0 auto;
+}
+
+.myP_left {
+    float: left;
+    width: 220px;
+}
+
+.my_gnb {
+    margin-top: 25px;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+.my_gnb .depth1 {
+    position: relative;
+    width: 100%;
+}
+
+
+.my_gnb .depth1 > a {
+	
+	color: #949494;
+    position: relative;
+    display: block;
+    padding: 17px 0;
+    width: 100%;
+    color: #1a1a1a;
+    font-size: 18px;
+    font-family:'Noto Sans KR', sans-serif;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+
+.myP_left .cs_box {
+    margin-top: 20px;
+    padding: 20px 0 20px 29px;
+    width: 220px;
+    background: rgb(251, 245, 238);
+    border-radius: 10px 0 10px 0;
+    box-shadow: 1px 2px 2px 0 rgba(0, 0, 0, 0.16);
+    border: 1px solid #e1e1e1;
+}
+
+.cs_box > h2 {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+.cs_box > h3 {
+    margin-bottom: 5px;
+    font-size: 32px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+.SpqBlue {
+    color: rgb(255, 128, 0) !important;
+    font-family: 'spoqa R';
+}
+
+.cs_box > p {
+	margin: 0;
+    padding: 0;
+    color: #949494;
+    font-size: 16px;
+    font-family: 'spoqa R';
+}
+
+.myP_SWbtn {
+    position: relative;
+    display: inline-block;
+    min-width: 44px;
+    padding: 0 10px;
+    height: 26px;
+    line-height: 24px;
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 2px;
+    color: #1a1a1a !important;
+    font-size: 12px!important;
+ 	font-family:'Nanum Gothic', sans-serif;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+    letter-spacing: -1px;
+}
+
+/*//////////////////////// 공통 메뉴 적용 css /////////////////////////*/
