@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+.myP_right {
+  	display:inline-block;
+    margin: 0 0 0 80px;
+    width: 1000px;
+}
