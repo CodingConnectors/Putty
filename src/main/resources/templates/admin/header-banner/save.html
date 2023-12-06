@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/admin-common-layout.html :: adminCommonLayout(~{this::head},~{this::main} )}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/css/admin/header-banner/save.css"/>
+<script>
+	function changedImg(element){
+		
+		var formData = new FormData();
+		formData.append("productImg", $(element)[0].files[0]);
+		
+		$.ajax({
+			url:"/temp-upload",
+			data: formData,
+			type: "post",
+			contentType: false,
+			processData: false,
+			success: function(map){
+				$(element).parent().css("background-image", `url(${map.url})`);
+				$(element).siblings(".tempKey").val(map.tempKey);
+				$(element).siblings(".orgName").val(map.orgName);
+				$(element).parent().find(".input-imgplz").css("display","none");
+				
+            	addImageInput();
+			}
+		});
+	}
+	function addImageInput() {
+    var container = $("#imageInputsContainer");
+    var newInput = $(
+					'<label class="input-img">\
+                            <input type="file" name="image" accept="image/*" onchange="changedImg(this)" />\
+							<input type="hidden" class="tempKey" name="tempKey" />\
+							<input type="hidden" class="orgName" name="orgName" />\
+                            <span class="input-imgplz">+</span>\
+                     </label>'
+                             );
+
+
+    // 새로운 label을 컨테이너에 추가
+    container.append(newInput);
+
+}
+</script>
+</head>
+<body>
+	<main>
+		<h1>헤더 이벤트 이미지 등록</h1>
+		<form action="/admin/header-banner/save" method="post" enctype="multipart/form-data">
+			<p>
+				<input type="file" name="name">
+			</p>
+			
+			<p>
+				<div id="imageInputsContainer">
+					<label class="input-img">
+						<input type="file" name="image" accept="image/*" onchange="changedImg(this)" />
+						<input type="hidden" class="tempKey" name="tempKey" />
+						<input type="hidden" class="orgName" name="orgName" />
+						<span class="input-imgplz">+</span>
+					</label>
+				</div>
+			</p>
+			<button>등록</button>
+		</form>
+		
+	</main>
+</body>
+</html>

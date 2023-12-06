@@ -66,10 +66,13 @@ a:active {
 }
 
 
+*{
+	font-family: 'Noto Sans KR', sans-serif;
+}
 header {
 	display: flex;
 	justify-content: center;
-	border-bottom: 1px solid orangered;
+	border-bottom: 1px solid burlywood;
 }
 #header {
 	flex-direction: column;
@@ -125,12 +128,25 @@ header {
 #header > .navi02 > .header-input > form > button {
 	border: none;
 	background-color: transparent;
-	cursor: pointer
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	padding: 5px;
+}
+#eventSB {
+	overflow: hidden;
 }
 #eventBox {
-	width: 400px;
+	width: 200px;
 	height: 60px;
-	background-color: #dddddd;
+	display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+#eventBox > .eventBoxImg {
+	height: 100%;
+	background-size: cover;
+    flex: 0 0 100%; /* flex 속성을 사용하여 각 슬라이드가 가로로 전체 폭을 차지하도록 함 */
+	
 }
 
 #header > .navi03 {
@@ -168,6 +184,7 @@ header {
 	width: 1200px;
 	height: 100px;
 	background-color: #dddddd;
+	z-index: 999;
 }
 .navi03:hover .dropBox {
 	display: flex;
@@ -191,22 +208,27 @@ footer {
 	height: 200px;
 	background-color: blanchedalmond;
 }
+.footer > .footer01 {
+	background-color: #424242;
+}
 .footer > .footer01 > ul {
 	display: flex;
 	margin-left: 100px;
 }
 .footer > .footer01 > ul > li {
 	padding: 10px;
+	color: antiquewhite;
 }
 .footer02 {
 	display: flex;
+	justify-content: space-between;
 	margin-top: 30px;
 }
-.footer02 > #footer02-2 {
-	width: 300px;
+.footer02-content>p{
+	color: #999999;
 }
-.footer02 > #footer02-3 {
-	width: 300px;
+.footer-phone {
+	font-size: 22px;
 }
 .social-icon {
 	filter: grayscale(100%);

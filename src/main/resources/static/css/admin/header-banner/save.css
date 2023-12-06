@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 form > p > input[type=text] {
 	margin-left: 100px;
 }
@@ -18,8 +17,8 @@ form > p > span{
 	display:inline-flex;
 		
 	border: 1px dashed lightskyblue;
-	width: 200px;
-	height: 200px;
+	width: 400px;
+	height: 60px;
 	
 	justify-content: center;
 	align-items: center;

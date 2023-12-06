@@ -39,10 +39,10 @@ public class ProductServiceProcess implements ProductService {
 	
 	@Value("${cloud.aws.s3.bucket}")
 	private String bucketName;
-	@Value("${cloud.aws.s3.upload-temp}")
-	private String tempPath;
 	@Value("${cloud.aws.s3.upload-path}")
 	private String uploadPath;
+	@Value("${cloud.aws.s3.upload-temp}")
+	private String tempPath;
 	
 	@Override
 	public Map<String, String> tempUpload(MultipartFile productImg) {

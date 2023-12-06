@@ -1,12 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="/css/common/common.css" rel="stylesheet"/>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet">
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="/css/common/common.css" rel="stylesheet"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet">
+	<script>
+		$(function() {
+			$.ajax({
+				url: '/admin/header-banne/find',
+				method: 'GET',
+				dataType: 'JSON',
+				success: function(data) {
+					var imageContainer = $('#eventBox');
+
+	          		$.each(data, function(index, imageUrl) {
+		                var imgElement = $('<div class="eventBoxImg"></div>').css('background-image','url('+imageUrl+')');
+		                imageContainer.append(imgElement);
+            		});
+				}
+			});
+			const sliderContainer = $('#eventBox');
+            let currentIndex = 0;
+
+            function showSlide(index) {
+                const translateValue = -index * 100 + '%';
+                sliderContainer.css('transform', 'translateX(' + translateValue + ')');
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % $('.eventBoxImg').length;
+                showSlide(currentIndex);
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + $('.eventBoxImg').length) % $('.eventBoxImg').length;
+                showSlide(currentIndex);
+            }
+
+            // 이미지 슬라이드 이동 간격 설정 (ms)
+            const slideInterval = 3000;
+
+            // 자동으로 다음 슬라이드로 이동
+            setInterval(nextSlide, slideInterval);
+		});
+	</script>
 </head>
 <body>
 	<header>
@@ -20,8 +60,8 @@
 				<ul>
 					<li><a href="/admin/index">관리자페이지이동</a></li>
 					<li><a href="/basket">장바구니</a></li>
-					<li><a href="#">로그인</a></li>
-					<li><a href="#">회원가입</a></li>
+					<li><a href="/signin">로그인</a></li>
+					<li><a href="/signup">회원가입</a></li>
 					<li><a href="#">배송조회</a></li>
 					<li><a href="#">마이샵</a></li>
 					<li><a href="/faq/faq_info">고객센터</a></li>
@@ -39,7 +79,9 @@
 						</button>
 					</form>
 				</div>
-				<div id="eventBox"></div>
+				<div id="eventSB">
+					<div id="eventBox"></div>
+				</div>
 			</div>
 			<nav class="navi03">
 				<ul>
@@ -93,20 +135,23 @@
 			<div class="footer02">
 				<div id="footer02-1"><img src="/img/common/logo.png"></div>
 				<div id="footer02-2">
-					<div>010-8888-8888</div>
-					<div>
+					<div class="footer-phone">010-8888-8888</div>
+					<div class="footer02-content">
 						<p>평일 오전 09:20 ~ 오후 5:50</p>
 						<p>점심시간 오후 13:10 ~ 오후 14:00</p>
 						<p>토 / 일 / 공휴일 휴무</p>
 					</div>
 				</div>
-				<div id="footer02-3">
-					<p>조영훈</p>
-					<p>최현종</p>
-					<p>한재훈</p>
-					<p>김병욱</p>
+				<div class="footer02-content">
+					<p>대표 조영훈</p>
+					<p>부대표 최현종</p>
+					<p>TimeKeeper 한재훈</p>
+					<p>서기 김병욱</p>
 				</div>
-				<div id="footer02-4">aaa</div>
+				<div class="footer02-content">
+					<p>[방문상담·구매·A/S] 주소 : 서울특별시 노원구 상계로3길 21 화일빌딩 3층 6층 </p>
+					<p>[택배A/S접수] 서울특별시 노원구 상계로3길 21 화일빌딩 3층 6층 ｜ [고객센터] 1588-8377 (팩스번호 02-718-8276)</p>
+				</div>
 			</div>
 		</div>
 	</footer>
