@@ -28,21 +28,19 @@
 		});
 	}
 	function addImageInput() {
-    var container = $("#imageInputsContainer");
-    var newInput = $(
-					'<label class="input-img">\
-                            <input type="file" name="image" accept="image/*" onchange="changedImg(this)" />\
-							<input type="hidden" class="tempKey" name="tempKey" />\
-							<input type="hidden" class="orgName" name="orgName" />\
-                            <span class="input-imgplz">+</span>\
-                     </label>'
-                             );
+	    var container = $("#imageInputsContainer");
+	    var newInput = $(
+						'<label class="input-img">\
+	                            <input type="file" name="image" accept="image/*" onchange="changedImg(this)" />\
+								<input type="hidden" class="tempKey" name="tempKey" />\
+								<input type="hidden" class="orgName" name="orgName" />\
+	                            <span class="input-imgplz">+</span>\
+	                     </label>'
+	                             );
+    	// 새로운 label을 컨테이너에 추가
+    	container.append(newInput);
 
-
-    // 새로운 label을 컨테이너에 추가
-    container.append(newInput);
-
-}
+	}
 </script>
 </head>
 <body>

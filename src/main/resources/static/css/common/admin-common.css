@@ -105,6 +105,7 @@ header {
 }
 header > .member-nav {
 	display: flex;
+	gap: 15px;
 	align-items: center;
 }
 header > .member-nav> .logout {
