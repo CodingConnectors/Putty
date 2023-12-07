@@ -2,6 +2,112 @@
 
 .myP_right {
   	display:inline-block;
-    margin: 0 0 0 80px;
+    margin: 40px 0 0 80px;
     width: 1000px;
+}
+
+.question_tab_list li a .icon_wrap {
+    margin: 15px auto 0;
+    display: inline-block;
+}
+
+.myP_right * {
+    letter-spacing: -0.5px;
+}
+
+em, address {
+    font-style: normal;
+}
+
+.question_tab_list li a {
+    display: inline-block;
+    width: 102px;
+    height: 115px;
+    background: #fff;
+    border: 1px solid #D8D8D8;
+    border-radius: 2px;
+    text-align: center;
+}
+
+.question_tab_list li {
+    float: left;
+    margin-right: 10px;
+    font-size: 0;
+}
+
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cscenter_question .question_tab_list {
+    margin-bottom: 20px;
+}
+
+body, input, textarea, select, button, table {
+    font-family: '맑은고딕',malgun gothic,'돋움',Dotum,AppleGothic,sans- serif;
+    font-size: 12px;
+}
+
+.question_tab_list li {
+    float: left;
+    margin-right: 10px;
+    font-size: 0;
+}
+
+.question_tab_list li a:hover, .question_tab_list li a:focus, .question_tab_list li.on a {
+    border: 1px solid rgb(214, 168, 105);
+       color: rgb(214, 168, 105);
+       
+       
+}
+
+.question_tab_list li a .icon_wrap {
+    margin: 15px auto 0;
+    display: inline-block;
+}
+
+.question_tab_list li a:hover .icon_wrap .icon, .question_tab_list li a:focus .icon_wrap .icon, .question_tab_list li.on a .icon_wrap .icon {
+    background-position: 0 0;
+     filter: brightness(0) saturate(100%) invert(80%) sepia(5%) saturate(4045%) hue-rotate(347deg) brightness(89%) contrast(87%);
+   
+}
+
+.question_tab_list li a .icon_wrap.all .icon {
+   background: url(//image5.compuzone.co.kr/img/images/mypage21/icon_all_48x48.png)no-repeat;
+    background-position: 100% 0;
+    filter: brightness(0) saturate(100%) invert(80%) sepia(5%) saturate(4045%) hue-rotate(347deg) brightness(89%) contrast(87%);
+   
+}
+
+
+.question_tab_list li a .icon_wrap .icon {
+    display: block;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto;
+    background-position: 100% 0;
+    
+}
+
+.question_tab_list li a:hover .link_title, .question_tab_list li a:focus .link_title, .question_tab_list li.on a .link_title {
+    color: rgb(214, 168, 105);
+    
+    
+}
+
+.question_tab_list li a .link_title {
+    display: block;
+    font-size: 14px;
+    font-family: 'Noto-M';
+    color: #3A3A3A;
+    letter-spacing: -0.025em;
+    line-height: 16px;
+    margin-top: 7px;
+}
+
+#CategoryNo_21 > a:hover > em > span.icon{
+	
+	filter: invert(100%) sepia(26%) saturate(563%) hue-rotate(213deg) brightness(118%) contrast(82%);
 }
