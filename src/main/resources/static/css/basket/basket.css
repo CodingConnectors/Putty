@@ -30,11 +30,17 @@ thead > tr > th {
 tbody > tr {
 	height: 120px;
 }
+tbody > tr:not(:last-child) {
+	border-bottom: 1px solid #a9a9a9;
+}
 tbody > tr > td {
     vertical-align: middle;
 }
 tbody > tr > td:not(:nth-child(3)) {
 	text-align: center;
+}
+.product_volume {
+	width: 35px;
 }
 .listOrderButton {
 	display: flex;

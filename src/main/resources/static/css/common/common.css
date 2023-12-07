@@ -92,9 +92,11 @@ header {
 }
 #header > .navi01 > ul{
 	margin-left: auto;
+	display: flex;
+	gap: 15px;
 }
 #header > .navi01 > ul > li {
-	padding: 5px;
+	font-size: 14px;
 }
 
 #header > .navi02 {
