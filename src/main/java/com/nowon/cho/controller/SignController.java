@@ -33,7 +33,7 @@ public class SignController {
 	public String signin(String email, String password) {
 		System.out.println(email);
 		System.out.println(password);
-		return "redirect:/index";
+		return "redirect:/";
 	}
 	
 	@PostMapping("/signup")
