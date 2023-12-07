@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .container_signup{
-	margin:107px auto 0; height: 754px; width: 1440px;
+	margin:0px auto 0; height: 754px; width: 1440px;
 	box-sizing: border-box;
 }
 
@@ -108,8 +108,52 @@
 
 .agree_all_check{
 	display: flex;
-	justify-content: space-between;
+	font-size: 12px;
+	padding: 16px 4px 16px 4px;
+	cursor: pointer; user-select: none !important;
+}
+
+.agree_check{
+	border-top: 1px solid #ebebeb;
+	width: 400px; height: 120px;
+	padding-top: 20px;
+}
+
+.terms_agree{
+	justify-content: start;
 	font-size: 12px;
 	padding: 16px 4px 16px 4px;
 	cursor: pointer;
+	
+	background-color: white;
+	border: #fce18a solid 2px;
+	border-radius: 10px;
+	user-select: none !important;
+}
+
+.userdata_agree{
+	display: flex;
+	font-size: 12px;
+	padding: 16px 4px 16px 4px; margin-top: 10px;
+	cursor: pointer;
+	
+	background-color: white;
+	border: #fce18a solid 2px;
+	border-radius: 10px;
+	user-select: none !important;
+}
+
+.check_box_top{
+	display: flex;
+}
+
+.agree_txt{
+	padding-left: 8px;
+}
+
+.terms_txt{
+	width: 500px;
+		height: 100px;
+		border: 1px solid black;
+		overflow-y: scroll;
 }
