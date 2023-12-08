@@ -182,14 +182,20 @@ header {
 	justify-items: center;
 	justify-content: center;
 	align-items: center;
+	opacity: 0.9;
 	top: 100%;
 	width: 1200px;
 	height: 100px;
-	background-color: #dddddd;
+	background-color: #e9e9e9;
 	z-index: 999;
 }
 .navi03:hover .dropBox {
 	display: flex;
+}
+.navi03 > .dropBox > ul {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
 .navi03 > .dropBox > ul > li {
 	width: 200px;
