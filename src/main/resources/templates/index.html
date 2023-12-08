@@ -61,6 +61,9 @@
 						nextEl: ".swiper-button-next",
 						prevEl: ".swiper-button-prev",
 					},
+					autoplay: {
+						delay: 5000
+					}
 				});
 			</script>
 			<section class="bestItem-section-1 view-size flex">
@@ -921,8 +924,8 @@
 						<p>장바구니</p>
 						<button class="modal-shopping-cart-close" onclick="modalClose()"></button>
 					</div>
-					<div class="modal-shopping-cart-main flex center-1">
-						<div class="modal-shopping-cart-main-1 flex center-2">
+					<div class="modal-shopping-cart-main-wrap flex center-1">
+						<div class="modal-shopping-cart-main flex center-1">
 							<div class="modal-shopping-bag flex center-1 center-2">
 								<span class="modal-shopping-bag-icon"></span>
 							</div>
@@ -952,6 +955,7 @@
 								</div>
 							</div>
 						</div>
+						<div></div>
 					</div>
 					<div class="modal-shopping-cart-btn">
 					</div>

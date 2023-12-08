@@ -48,14 +48,14 @@ button {
 	background-image: url(/img/index/icon/close.svg);
 }
 
-.modal-shopping-cart-main-1 {
+.modal-shopping-cart-main {
 	width: 675px;
 	height: 150px;
 	margin: 30px 0;
 	border: 1px solid #DCDCDC;
 }
 
-.modal-shopping-cart-main-1 > div {
+.modal-shopping-cart-main > div {
 	height: inherit;
 }
 
@@ -71,7 +71,7 @@ button {
 	background-size: contain;
 }
 
-.modal-shopping-cart-main-1 > span {
+.modal-shopping-cart-main > span {
 	height: 110px;
 	border: 1px solid #DCDCDC;
 }
