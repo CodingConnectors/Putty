@@ -1,23 +1,41 @@
 @charset "UTF-8";
 
-
-form > p > input[type=text] {
-	margin-left: 100px;
+.productForm {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.productForm > p > input[type=text] {
+	width: 400px;
+	height: 40px;
+	font-size: 16px;
+}
+.productForm > p > textarea {
+  width: 400px;
+  height: 150px;
+  font-size: 16px;
 }
 input[type=file]{
 	display: none;
 }
-form > p {
-	position: relative;
-	height: 30px;
+.productForm > p {
+	height: auto;
+	display: flex;
+	align-items: center;
 }
-form > p > span{
-	position: absolute;
+.productForm > p > span{
+	width: 100px;
+	display: block;
+}
+#imageInputsContainer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
 }
 .input-img {
 	display:inline-flex;
 		
-	border: 1px dashed lightskyblue;
+	border: 2px dashed burlywood;
 	width: 200px;
 	height: 200px;
 	
@@ -28,4 +46,18 @@ form > p > span{
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;
+}
+.productForm > p > button {
+	width: 200px;
+	height: 40px;
+	cursor: pointer;
+	background-color: burlywood;
+	color: #333;
+	font-size: 18px;
+	font-weight: 700;
+	border: none;
+}
+.productForm > p > button:hover {
+	color: ghostwhite;
+	border: 1px solid #333;
 }

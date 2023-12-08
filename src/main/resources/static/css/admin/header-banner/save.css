@@ -13,10 +13,16 @@ form > p {
 form > p > span{
 	position: absolute;
 }
+
+#imageInputsContainer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
 .input-img {
 	display:inline-flex;
 		
-	border: 1px dashed lightskyblue;
+	border: 2px dashed burlywood;
 	width: 400px;
 	height: 60px;
 	
@@ -27,4 +33,19 @@ form > p > span{
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;
+}
+
+.HBsaveForm > p > button {
+	width: 200px;
+	height: 40px;
+	cursor: pointer;
+	background-color: burlywood;
+	color: #333;
+	font-size: 18px;
+	font-weight: 700;
+	border: none;
+}
+.HBsaveForm > p > button:hover {
+	color: ghostwhite;
+	border: 1px solid #333;
 }
