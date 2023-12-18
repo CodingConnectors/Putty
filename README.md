@@ -20,6 +20,7 @@
 - Framework : Springboot(2.7.17)
 - Database : amazon RDS MariaDB 10.6.14
 - ORM : JPA
+- Websocket(java 17이상), STOMP, rebbitMQ
 - Tamplate : thymeleaf
               lombok
 
