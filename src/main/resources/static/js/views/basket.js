@@ -6,6 +6,7 @@ checkboxes.forEach(function(checkbox) {
   checkbox.addEventListener('change', calculateTotal);
 });
 document.querySelectorAll('.product_volume').forEach(function (input) {
+    updateProductPerTotal(input);
     input.addEventListener('change', function () {
         updateProductPerTotal(input);
         calculateTotal();
