@@ -3,6 +3,7 @@ package com.nowon.cho.domain.entity.product;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -29,6 +30,7 @@ public class ProductsEntity {
 	@Column(nullable = false)
 	long price;
 	
+	@Lob
 	String productContent;
 	
 	@Column(nullable = false)
