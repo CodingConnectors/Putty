@@ -1,4 +1,6 @@
-package com.nowon.cho.domain.entity.product;
+package com.nowon.cho.domain.entity.products;
+
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,27 +24,27 @@ import lombok.NoArgsConstructor;
 public class ProductsEntity {
 	
 	@Id
-	long productNo;
+	private long productNo;
 	
 	@Column(nullable = false)
-	String productName;
+	private String productName;
 	
 	@Column(nullable = false)
-	long price;
+	private long price;
 	
 	@Lob
-	String productContent;
+	private String productContent;
 	
 	@Column(nullable = false)
-	long productStack;
+	private long productStack;
 	
 	@CreationTimestamp
-	long registrationDate;
+	private LocalDateTime registrationDate;
 	
 	@Column(nullable = false)
-	long sale;
+	private long sale;
 	
-	long sale_discount;
-	long sale_sum;
-	long wishlistCnt;
+	private long sale_discount;
+	private long sale_sum;
+	private long wishlistCnt;
 }
