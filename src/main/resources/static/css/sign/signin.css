@@ -59,13 +59,7 @@
 	position: relative;
 }
 
-.input_txt:focus {
-  	color: white;
-	background: #fce18a;
-	border-radius: 10px;
-	height: 30px; margin-top: 8px;
-	font-weight: 700;
-}
+
 
 .input_txt{
 	width: 400px; height: 38px;
