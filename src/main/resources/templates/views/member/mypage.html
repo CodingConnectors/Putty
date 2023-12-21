@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="/css/member/member.css">
+	<link rel="stylesheet" href="/css/member/mypage.css">
+</head>
+<body>
+<main>
+	<h1>회원가입</h1>
+	<div class="container_mypage">
+		<div class="content_lg">
+			<div class="mypage_area">
+				<div class="mypage_title">
+					<div class="signin_title_img"><a href="/"><img src="/img/sign/favicon.png"></a></div>
+				</div>
+				<div class="mypage_main">
+					<div class="mypage_main_title">
+						마이 페이지
+					</div>
+				<div class="user_data">
+					<div class="user_input">
+						<div class="input_title">이메일 주소</div>
+						<div class="input_item">
+							<input type="text" class="input_txt" id="email" name="email" value="${member.email }" readonly>
+						</div>
+					</div>
+					
+					<div class="user_input">
+						<div class="input_title">이름</div>
+						<div class="input_item">
+							<input type="text" class="input_txt" id="name" name="name" value="${member.name }" readonly>
+						</div>
+					</div>
+					<div class="user_input">
+						<div class="input_title">휴대폰 번호</div>
+						<div class="input_item">
+							<input type="text" class="input_txt" id="tel" name="tel" value="${member.tel }" readonly>
+						</div>
+					</div>
+					<div class="user_input_address">
+					<div class="input_title">대표 배송지</div>
+					<div class="input_item_address">
+						<input type="text" id="postcode" value="${member.post_code }" readonly class="input_txt_post_code" name="post_code">
+						<input type="text" id="roadAddress" value="${member.road_address }" readonly class="input_txt" name="road_address">
+						<input type="text" id="jibunAddress" value="${member.jibun_address }" readonly class="input_txt" name="jibun_address">
+						<input type="text" id="detailAddress" value="${member.address_detail }" readonly class="input_txt" name="address_detail">
+						<input type="text" id="extraAddress" value="${member.address_reference }" readonly class="input_txt" name="address_reference">
+					</div>
+					</div>
+						<div class="save_btn_box">
+							<a href="/members_data"><button class="save_box">회원 정보 수정</button></a>
+						</div>
+						<div class="del_btn_box">
+							<button type="button" onclick="removeMember();" class="del_box"> 탈퇴하기 </button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		function removeMember() {
+			if (window.confirm("정말로 탈퇴하시겠습니까?")) {
+				location.href = "/";
+			}
+		}
+	</script>
+	
+</main>
+</body>
+</html>

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.container_signup{
+.container_mypage{
 	margin:0px auto 0; height: 1157px; width: 1440px;
 	box-sizing: border-box;
 }
@@ -13,17 +13,18 @@
 	margin-left: 80px; margin-right: 80px;
 }
 
-.signup_area{
+.mypage_area{
 	width: 400px; height: 1157px;
 	padding-top: 60px; padding-bottom: 160px;
 	margin-left: 400px; margin-right: 400px;
+	user-select: none !important;
 }
 
-.signup_main{
-	width: 400px; height: 470px;
+.mypage_main{
+	width: 400px; height: 900px;
 }
 
-.signup_main_title{
+.mypage_main_title{
 	display: flex; justify-content: center;
 	padding-bottom: 41px; height: 81px;
 	font-size: 32px; font-weight: 600;
@@ -32,28 +33,34 @@
 
 /*///////////////////////////////////////////////*/
 
-.signup_title{
+.mypage_title{
 	width: 400px; height: 130px;
 	padding-bottom: 50px;
 	display: flex; justify-content: center;
 }
 
-.signup_title_img{
+.signin_title_img{
 	width: 150px; height: 80px;
 }
 
-.signup_title_img:hover{
+.signin_title_img:hover{
 	filter: invert(15%);
 }
 
 /*///////////////////////////////////////////////*/
 
 .user_data{
-	width: 400px; height: 386px;
+	width: 400px; height: 900px;
 }
 
 .user_input{
 	width: 400px; height: 80px;
+	padding: 10px 0 14px;
+    position: relative;
+}
+
+.user_input_address{
+	width: 400px; height: 238px;
 	padding: 10px 0 14px;
     position: relative;
 }
@@ -76,10 +83,35 @@
 	outline: 0;
 }
 
+.input_item_address{
+	width: 400px; height: 120px;
+	position: relative;
+}
+
+.input_txt_post_code{
+	width: 230px; height: 38px;
+	padding: 8px 30px 8px 0;
+	font-size: 13px; 
+	border-bottom: 1px solid #ebebeb;
+	outline: 0;
+}
+
+.btn_post_code{
+	width: 100px; height: 35px;
+	background-color: #fce18a;
+	font-size: 13px; font-weight: 700; color: white;
+	border-radius: 10px; cursor: pointer;
+	margin-left: 35px;
+}
+
+.post_code_box{
+	width: 400px; height: 45px;
+}
+
 /*///////////////////////////////////////////////*/
 
 .access_terms{
-	width: 400px; height: auto;
+	width: 400px; height: 500px;
 }
 
 .terms_title{
@@ -106,7 +138,6 @@
 }
 
 .agree_check{
-	position: relative;
 	border-top: 1px solid #ebebeb;
 	width: 400px; height: auto;
 	padding: 0px 4px 8px 4px;
@@ -120,9 +151,10 @@
 
 .terms_agree{
 	padding-top: 10px;
+	padding-bottom: 12px;
 	font-size: 12px;
 	
-	height: 30px;
+	height: 38px;
 	display: flex;
 	justify-content: space-between;
 	
@@ -141,24 +173,14 @@
 
 .check_box{
 	display: flex; cursor: pointer;
-	width: 380px;
 }
 
 .drop_area{
-	cursor: pointer;
-	display: flex;
-	width: 388px;
+	padding-left: 170px; cursor: pointer;
 }
 
 .drop_button{
 	width: 30px; height: 15px;
-	position: absolute;
-    top: 12px;
-    right: 10px;
-}
-
-.drop_button::after{
-	transform: scaleY(-1);
 }
 
 .agree_txt{
@@ -166,7 +188,7 @@
 }
 
 .terms_txt{
-	display: none;
+	display: inline-block;
 	justify-content: center;
 	width: 388px;
 	height: 70px;
@@ -174,25 +196,43 @@
 	overflow-y: scroll;
 	font-size: 11px;
 	color: #828282;
+		
 }
 
-.signup_btn_box{
+.save_btn_box{
 	width: 400px; height: 72px;
 	padding-top: 20px;
 }
 
-.signup_box{
+.save_box{
 	width: 400px; height: 52px;
 	background-color: #fce18a;
 	font-size: 16px; font-weight: 700; color: white;
 	border-radius: 10px; cursor: pointer;
 }
 
-.signup_box:hover{
+.save_box:hover{
 	background-color: white;
 	font-size: 16px; font-weight: 800; color: #fce18a;
 	border: #fce18a solid 2px;
 	border-radius: 10px; cursor: pointer;
 }
 
-/*///////////////////////////////////////////////*/
+.del_btn_box{
+	width: 400px; height: 72px;
+	padding-top: 20px;
+}
+
+.del_box{
+	width: 400px; height: 52px;
+	background-color: #999;
+	font-size: 16px; font-weight: 700; color: white;
+	border-radius: 10px; cursor: pointer;
+}
+
+.del_box:hover{
+	background-color: white;
+	font-size: 16px; font-weight: 800; color: #999;
+	border: #999 solid 2px;
+	border-radius: 10px; cursor: pointer;
+}
