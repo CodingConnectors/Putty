@@ -1,13 +1,20 @@
 package com.nowon.cho.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import com.nowon.cho.domain.dto.MemberDTO;
+import com.nowon.cho.service.SignService;
 
 
 
 @Controller
 public class SignController {
+	
+	@Autowired
+	private  SignService signservice;
 	
 	@GetMapping("/signin")
 	public String signin() {
@@ -36,12 +43,10 @@ public class SignController {
 		return "redirect:/";
 	}
 	
+	
 	@PostMapping("/signup")
-	public String signup(String email, String password, String name, long tel_num) {
-		System.out.println(email);
-		System.out.println(password);
-		System.out.println(name);
-		System.out.println(tel_num);
+	public String signup(MemberDTO dto) throws Exception {
+		signservice.saveMember(dto);
 		return "redirect:/signin";
 	}
 	
