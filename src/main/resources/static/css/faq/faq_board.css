@@ -18,3 +18,25 @@ body{
     font-weight: 400;
 	
 }
+
+
+.myP_right {
+  	display:inline-block;
+    margin: 40px 0 0 80px;
+    width: 1000px;
+}
+
+
+.contents_box {
+    width: 1000px;
+    height: auto;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+}
+
+.line {
+    background: #3A3A3A;
+    height: 2px;
+}
