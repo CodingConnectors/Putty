@@ -1,8 +1,15 @@
 package com.nowon.cho.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import com.nowon.cho.faq.service.BoardService;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 public class FaqController {
 	
@@ -16,11 +23,6 @@ public class FaqController {
 		return "faq/frequently_asked";
 	}
 	
-	@GetMapping("/faq/faq_board")
-	public String faq_board() {
-		return "faq/faq_board";
-	}
-	
 	@GetMapping("faq/faq_notice")
 	public String faq_notice() {
 		return "faq/faq_notice";
@@ -30,5 +32,6 @@ public class FaqController {
 	public String faq_list() {
 		return "faq/faq_list";
 	}
+	
 
 }

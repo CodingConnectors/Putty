@@ -19,7 +19,7 @@ button {
 
 .modal-shopping-cart-body {
 	width: 800px;
-	height: 600px;
+	height: 800px;
 	line-height: 45px;
 	position: fixed;
 	z-index: 1;
@@ -32,7 +32,7 @@ button {
 	height: 45px;
 	padding-left: 15px;
 	border-radius: 5px 5px 0 0;
-	background-color: #F7EDD7;
+	background-color: #FDF7E4;
 }
 
 .modal-shopping-cart-title > p {
@@ -50,17 +50,19 @@ button {
 
 .modal-shopping-cart-main {
 	width: 675px;
-	height: 150px;
+	height: 595px;
 	margin: 30px 0;
-	border: 1px solid #DCDCDC;
+	flex-direction: column;
 }
 
-.modal-shopping-cart-main > div {
-	height: inherit;
+.modal-shopping-bag-wrap {
+	width: 150px;
 }
 
 .modal-shopping-bag {
-	width: 150px;
+	width: 130px;
+	height: 100px;
+	border-right: 1px solid #DCDCDC;
 }
 
 .modal-shopping-bag-icon {
@@ -71,20 +73,14 @@ button {
 	background-size: contain;
 }
 
-.modal-shopping-cart-main > span {
-	height: 110px;
+.modal-shopping-cart-notice-wrap {
+	height: 150px;
+	margin-bottom: 20px;
 	border: 1px solid #DCDCDC;
 }
 
 .modal-shopping-cart-notice {
-	width: 525px;
-	margin: auto 0;
-	padding-left: 25px;
-}
-
-.modal-shopping-cart-notice > div {
-	display: flex;
-	align-items: center;
+	padding-left: 30px;
 }
 
 .modal-shopping-cart-notice > div > p {
@@ -93,4 +89,44 @@ button {
 	line-height: 30px;
 	font-size: 10px;
 	color: #696969;
+}
+
+.modal-shopping-cart-product-head {
+	border-bottom: 3px solid #DCDCDC;
+}
+
+.modal-shopping-cart-product-head > span {
+	height: 40px;
+	font-weight: 600;
+}
+
+.modal-shopping-cart-product-info > ul {
+	border-bottom: 1px solid #DCDCDC;
+}
+
+.modal-shopping-cart-product-info > ul > li {
+	height: 30px;
+	line-height: 30px;
+	padding: 10px;
+	font-size: 14px;
+}
+
+.modal-product-li {
+	width: 90px;
+	text-align: center;
+}
+
+.modal-product-name {
+	width: 200px;
+}
+
+.modal-product-detail-btn {
+	width: 60px;
+	height: 30px;
+	font-size: 14px;
+}
+
+.modal-shopping-cart-order {
+	height: 99px;
+	border-top: 1px solid #DCDCDC;
 }
