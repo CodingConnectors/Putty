@@ -5,6 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.nowon.cho.faq.service.BoardService;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -19,11 +21,6 @@ public class FaqController {
 	@GetMapping("/faq/frequently_asked")
 	public String frequently_asked() {
 		return "faq/frequently_asked";
-	}
-	
-	@GetMapping("/faq/faq_board")
-	public String faq_board() {
-		return "faq/faq_board";
 	}
 	
 	@GetMapping("faq/faq_notice")
