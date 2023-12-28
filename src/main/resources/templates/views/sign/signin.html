@@ -42,7 +42,8 @@
 					</li>
 				</ul>
 				<div class="social_signin">
-					<button type="button" class="social_signin_btn">
+					<div id="naverIdLogin" style="display:none;"></div>
+					<button type="button" class="social_signin_btn" id="naverLogin">
 						<div class="signin_btn_txt">
 							<img src="/img/sign/naver.png" class="naver_icon">
 							네이버로 로그인
@@ -58,6 +59,25 @@
 			</div>
 		</div>
 	</div>
+	
+	<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+	
+	<script>
+		const naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "8TrWqRddviUW_UQe21gJ",
+				callbackUrl: "http://putty0.store/naverLogin",
+				loginButton: {color: "green", type: 2, height: 50}
+			}
+		);
+		naverLogin.init();
+		
+		$(document).on("click", "#naverLogin", function(){
+        var naverLogin = document.getElementById("naverIdLogin").firstChild;
+        naverLogin.click();
+    	});
+	</script>
+	
 </main>
 </body>
 </html>
