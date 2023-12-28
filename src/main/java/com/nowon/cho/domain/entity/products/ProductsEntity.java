@@ -4,8 +4,11 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -17,6 +20,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "products")
+@SequenceGenerator(name = "gen_products_seq", sequenceName = "products_seq", allocationSize = 1)
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,6 +28,7 @@ import lombok.NoArgsConstructor;
 public class ProductsEntity {
 	
 	@Id
+	@GeneratedValue(generator = "gen_products_seq", strategy = GenerationType.SEQUENCE)
 	private long productNo;
 	
 	@Column(nullable = false)
@@ -36,7 +41,7 @@ public class ProductsEntity {
 	private String productContent;
 	
 	@Column(nullable = false)
-	private long productStack;
+	private long productStock;
 	
 	@CreationTimestamp
 	private LocalDateTime registrationDate;
@@ -44,7 +49,7 @@ public class ProductsEntity {
 	@Column(nullable = false)
 	private long sale;
 	
-	private long sale_discount;
-	private long sale_sum;
+	private long saleDiscount;
+	private long saleSum;
 	private long wishlistCnt;
 }

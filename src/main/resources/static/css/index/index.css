@@ -14,10 +14,13 @@ button {
 	background-repeat: no-repeat;
 	background-color: transparent;
 	cursor: pointer;
+}
+
+.index-products-btn {
 	transition: 0.1s ease-in-out;
 }
 
-button:hover {
+.index-products-btn:hover {
 	transform: scale(1.15);
 }
 
@@ -220,7 +223,7 @@ button:hover {
 	visibility: hidden;
 }
 
-.more {
+.more-btn {
 	background-image: url(/img/index/icon/more.svg);
 }
 

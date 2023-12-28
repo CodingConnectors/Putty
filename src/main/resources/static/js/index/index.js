@@ -17,10 +17,10 @@ function createIndexBestProducts() {
 					<canvas class="best-item-img"></canvas>
 					<div class="item-btn flex space-evenly">
 						<a href="#">
-							<button class="more"></button>
+							<button class="index-products-btn more-btn"></button>
 						</a>
-						<button class="shopping-cart-btn" onclick="modal()"></button>
-						<button class="favorite-btn favorite-btn-1"></button>
+						<button class="index-products-btn shopping-cart-btn" onclick="modal()"></button>
+						<button class="index-products-btn favorite-btn favorite-btn-1"></button>
 					</div>
 				</div>
 				<div class="item-info-wrap">
@@ -57,10 +57,10 @@ function createIndexNewArrivalsProducts() {
 						<canvas class="newArrivals-item-img"></canvas>
 						<div class="item-btn flex space-evenly">
 							<a href="#">
-								<button class="more"></button>
+								<button class="index-products-btn more-btn"></button>
 							</a>
-							<button class="shopping-cart-btn" onclick="modal()"></button>
-							<button class="favorite-btn favorite-btn-1"></button>
+							<button class="index-products-btn shopping-cart-btn" onclick="modal()"></button>
+							<button class="index-products-btn favorite-btn favorite-btn-1"></button>
 						</div>
 					</div>
 					<div class="item-info-wrap">

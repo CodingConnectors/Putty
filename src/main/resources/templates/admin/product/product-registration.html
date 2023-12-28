@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/admin-common-layout.html :: adminCommonLayout(~{this :: head}, ~{this :: main})}">
+	<head>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;400;600;800&family=Reem+Kufi:wght@400;600&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="/css/admin/product/product-registration.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script>
+			function tempImg(element) {
+				var formData = new FormData();
+				
+				formData.append("multipartFile", $(element)[0].files[0]);
+				
+				$.ajax({
+					url: "/temp-product-img",
+					data: formData,
+					type: "post",
+					contentType: false,
+					processData: false,
+					success: function(data) {
+						$(element).parent().css("background-image", `url(${data.url})`);
+						$(element).siblings(".tempKey").val(data.tempKey);
+						$(element).siblings(".orgName").val(data.orgName);
+						
+						addInputImage();
+					}
+				});
+			}
+			
+			function addInputImage() {
+				var container = $("#admin-product-input");
+				var addInput = $(`
+					<label class="admin-product-img">
+						<input type="file" name="productImg" accept="image/*" onchange="tempImg(this)">
+						<input type="hidden" class="tempKey" name="tempKey">
+						<input type="hidden" class="orgName" name="orgName">
+						<span>+</span>
+					</label>
+					`
+					);
+				
+				container.append(addInput);
+			}
+		</script>
+	</head>
+	<body>
+		<main>
+			<section class="admin-products-wrap flex">
+				<article class="admin-products-head">
+					<span>상품 등록</span>
+				</article>
+				<article class="admin-products-body">
+					<div class="admin-products-body-head flex">
+						<span>상품 정보</span>
+					</div>
+					<div class="admin-products-body-main-wrap flex">
+						<form class="admin-products-body-main" action="/products" method="post" enctype="multipart/form-data">
+							<div class="admin-products-body-list-1 flex">
+								<div class="admin-product-name flex">
+									<span>상품 이름</span>
+								</div>
+								<div class="admin-product-input flex">
+									<input class="product-input-name" type="text" name="productName">
+								</div>
+							</div>
+							<div class="admin-products-body-list-1 flex">
+								<div class="admin-product-name flex">
+									<span>상품 정가</span>
+								</div>
+								<div class="admin-product-input flex">
+									<input class="product-input-num" type="text" name="price">
+								</div>
+							</div>
+							<div class="admin-products-body-list-1 flex">
+								<div class="admin-product-name flex">
+									<span>할인율</span>
+								</div>
+								<div class="admin-product-input flex">
+									<input class="product-input-num" type="text" name="saleDiscount">
+								</div>
+							</div>
+							<div class="admin-products-body-list-1 flex">
+								<div class="admin-product-name flex">
+									<span>재고</span>
+								</div>
+								<div class="admin-product-input flex">
+									<input class="product-input-num" type="text" name="productStock">
+								</div>
+							</div>
+							<div class="admin-products-body-list-2 flex">
+								<div class="admin-product-name flex">
+									<span>상품 이미지</span>
+								</div>
+								<div id="admin-product-input" class="admin-product-input flex">
+									<label class="admin-product-img">
+										<input type="file" name="productImg" accept="image/*" onchange="tempImg(this)">
+										<input type="hidden" class="tempKey" name="tempKey">
+										<input type="hidden" class="orgName" name="orgName">
+										<span>+</span>
+									</label>
+								</div>
+							</div>
+							<div class="admin-products-body-list-3 flex">
+								<div class="admin-product-name flex">
+									<span>상품 설명</span>
+								</div>
+								<div class="admin-product-input flex">
+									<textarea name="productContent"></textarea>
+								</div>
+							</div>
+							<div class="admin-product-submit flex">
+								<button>상품 등록</button>
+							</div>
+						</form>
+					</div>
+				</article>
+			</section>
+		</main>
+	</body>
+</html>
