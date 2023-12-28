@@ -90,15 +90,6 @@
 	outline: 0;
 }
 
-.input_txt:focus {
-  	color: white;
-	background: #fce18a;
-	border-radius: 10px;
-	font-weight: 700;
-	height: 30px; margin-top: 8px;
-	border: #ebebeb solid 1px;
-}
-
 /*///////////////////////////////////////////////*/
 
 .help_btn_box{
