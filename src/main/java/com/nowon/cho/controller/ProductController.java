@@ -24,7 +24,7 @@ public class ProductController {
 	
 	@GetMapping("/admin/product-registration")
 	public String productRegistration() {
-		return "admin/product/registration";
+		return "admin/product/product-registration";
 	}
 	@ResponseBody
 	@PostMapping("/temp-upload") 

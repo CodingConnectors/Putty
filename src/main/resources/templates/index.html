@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{layout/common-layout :: commonLayout(~{this::head},~{this::main} )}">
+	th:replace="~{layout/common-layout :: commonLayout(~{this :: head}, ~{this :: main})}">
 	<head>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,10 +91,10 @@
 										</div>
 										<div class="best-choice-info-btn flex center-1 space-evenly">
 											<a href="#">
-												<button class="more"></button>
+												<button class="index-products-btn more-btn"></button>
 											</a>
-											<button class="shopping-cart-btn" onclick="modal()"></button>
-											<button class="favorite-btn favorite-btn-1"></button>
+											<button class="index-products-btn shopping-cart-btn" onclick="modal()"></button>
+											<button class="index-products-btn favorite-btn favorite-btn-1"></button>
 										</div>
 									</div>
 								</li>
@@ -116,10 +116,10 @@
 										</div>
 										<div class="best-choice-info-btn flex center-1 space-evenly">
 											<a href="#">
-												<button class="more"></button>
+												<button class="index-products-btn more-btn"></button>
 											</a>
-											<button class="shopping-cart-btn" onclick="modal()"></button>
-											<button class="favorite-btn favorite-btn-1"></button>
+											<button class="index-products-btn shopping-cart-btn" onclick="modal()"></button>
+											<button class="index-products-btn favorite-btn favorite-btn-1"></button>
 										</div>
 									</div>
 								</li>
@@ -160,39 +160,67 @@
 						<button class="modal-shopping-cart-close" onclick="modalClose()"></button>
 					</div>
 					<div class="modal-shopping-cart-main-wrap flex center-1">
-						<div class="modal-shopping-cart-main flex center-1">
-							<div class="modal-shopping-bag flex center-1 center-2">
-								<span class="modal-shopping-bag-icon"></span>
+						<div class="modal-shopping-cart-main flex">
+							<div class="modal-shopping-cart-notice-wrap inherit flex center-1">
+								<div class="modal-shopping-bag-wrap flex center-1 center-2">
+									<div class="modal-shopping-bag flex center-1 center-2">
+										<span class="modal-shopping-bag-icon"></span>
+									</div>
+								</div>
+								<div class="modal-shopping-cart-notice inherit">
+									<div class="flex center">장바구니 이용 안내</div>
+									<div class="flex center">
+										<p>1</p>
+										<p>
+											해외 배송 상품과 국내 배송 상품은 함께 결제하실 수 없으니 
+											장바구니 별로 따로 결제해 주시기 바랍니다.
+										</p>
+									</div>
+									<div class="flex center">
+										<p>2</p>
+										<p>
+											해외 배송 가능 상품의 경우 국내 배송 장바구니에 담았다가 
+											해외 배송 장바구니로 이동하여 결제하실 수 있습니다.
+										</p>
+									</div>
+									<div class="flex center">
+										<p>3</p>
+										<p>
+											장바구니와 관심 상품을 이용하여 원하시는 상품만 주문하거나 
+											관심상품으로 등록하실 수 있습니다.
+										</p>
+									</div>
+								</div>
 							</div>
-							<span></span>
-							<div class="modal-shopping-cart-notice">
-								<div>장바구니 이용 안내</div>
-								<div>
-									<p>1</p>
-									<p>
-										해외 배송 상품과 국내 배송 상품은 함께 결제하실 수 없으니 
-										장바구니 별로 따로 결제해 주시기 바랍니다.
-									</p>
+							<div class="modal-shopping-cart-products inherit">
+								<div class="modal-shopping-cart-product-head inherit flex center-2">
+									<span>총 n개의 상품</span>
 								</div>
-								<div>
-									<p>2</p>
-									<p>
-										해외 배송 가능 상품의 경우 국내 배송 장바구니에 담았다가 
-										해외 배송 장바구니로 이동하여 결제하실 수 있습니다.
-									</p>
-								</div>
-								<div>
-									<p>3</p>
-									<p>
-										장바구니와 관심 상품을 이용하여 원하시는 상품만 주문하거나 
-										관심상품으로 등록하실 수 있습니다.
-									</p>
+								<div class="modal-shopping-cart-product-info">
+									<ul class="modal-product-thead flex space-between">
+										<li class="modal-product-li">상품 이미지</li>
+										<li class="modal-product-name">상품 이름</li>
+										<li class="modal-product-li">판매가</li>
+										<li class="modal-product-li">수량</li>
+										<li class="modal-product-li">상품 정보</li>
+									</ul>
+									<ul class="modal-product-tbody flex space-between">
+										<li class="modal-product-li">No Image</li>
+										<li class="modal-product-name">Pruduct Name</li>
+										<li class="modal-product-li">Price</li>
+										<li class="modal-product-li">Volume</li>
+										<li class="modal-product-li">
+											<button class="modal-product-detail-btn">
+												<a href="#">자세히</a>
+											</button>
+										</li>
+									</ul>
 								</div>
 							</div>
+							<div></div>
 						</div>
-						<div></div>
 					</div>
-					<div class="modal-shopping-cart-btn">
+					<div class="modal-shopping-cart-order inherit">
 					</div>
 				</div>
 			</div>
