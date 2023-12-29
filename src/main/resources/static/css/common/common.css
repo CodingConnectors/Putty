@@ -65,6 +65,13 @@ a:active {
   color: inherit; /* 부모 요소의 색상을 상속받음 */
 }
 
+.flex {
+	display: flex;
+}
+.wrap {
+	display: flex;
+	flex-wrap: wrap;
+}
 
 *{
 	font-family: 'Noto Sans KR', sans-serif;

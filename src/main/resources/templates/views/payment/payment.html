@@ -2,12 +2,111 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{layout/common-layout :: commonLayout(~{this::head},~{this::main} )}">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/css/payment/payment.css"/>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+	<script defer src="/js/views/payment/payment.js"></script>
+	<script defer src="/js/api/daum/postcode.js"></script>
 </head>
 <body>
 	<main>
-		<h1>결제페이지</h1>
+		<div class="main-payment">
+			<div class="order-area">
+				<h2>주문정보</h2>
+				<div>
+					<h3>배송정보</h3>
+					<div class="shipping_information">
+						<button id="address_search">주소검색</button>
+						<input type="text" id="postcode" name="postcode" placeholder="우편번호">
+						<input type="text" id="roadAddress" name="주소" placeholder="주소">
+						<span id="guide"></span>
+						<input type="text" name="detail" placeholder="상세주소">
+						<input type="text" name="recipient" placeholder="받는 사람 이름">
+						<input type="text" name="phone" placeholder="전화번호">
+						<input type="text" name="dedetail" placeholder="요청사항">
+					</div>
+				</div>
+				<div>
+					<h3>상품정보</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>이름</th>
+								<th>가격</th>
+								<th>수량</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>테스트이름</td>
+								<td>테스트가격</td>
+								<td>테스트수량</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div>
+					<h3>결제방법</h3>
+					<ul class="payment-method flex">
+						<li>
+							<label>
+								<input type="radio" name="payment-gateway" value="kcp" />
+								<span>카드결제</span>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="radio" name="payment-gateway" value="" />
+								<span>무통장입금</span>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="radio" name="payment-gateway" value="kakaopay" checked/>
+								<img src="/img/payment/kakaopay_icon.png">
+								<span>카카오페이</span>
+							</label>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="payment-area">
+				<div class="settlement flex">
+					<div>
+						<span>상품금액</span>
+						<div>
+							<span>0</span>
+							<span>원</span>
+						</div>
+					</div>
+					<div>
+						<span>배송비</span>
+						<div>
+							<span>0</span>
+							<span>원</span>
+						</div>
+					</div>
+					<div>
+						<span>할인금액</span>
+						<div>
+							<span>-</span>
+							<span>0</span>
+							<span>원</span>
+						</div>
+					</div>
+					<div>
+						<span>합계</span>
+						<div>
+							<span>0</span>
+							<span>원</span>
+						</div>
+					</div>
+					<div class="payment-button" id="payment-button">결제하기</div>
+				</div>
+			</div>
+		</div>
 	</main>
 </body>
 </html>
