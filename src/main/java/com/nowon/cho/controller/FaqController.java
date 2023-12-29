@@ -23,12 +23,12 @@ public class FaqController {
 		return "faq/frequently_asked";
 	}
 	
-	@GetMapping("faq/faq_notice")
+	@GetMapping("/faq/faq_notice")
 	public String faq_notice() {
 		return "faq/faq_notice";
 	}
 	
-	@GetMapping("faq/faq_list")
+	@GetMapping("/faq/faq_list")
 	public String faq_list() {
 		return "faq/faq_list";
 	}
