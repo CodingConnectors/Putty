@@ -38,16 +38,20 @@ public class SecurityConfig {
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((authorize) -> authorize
-					.antMatchers("/css/**","/img/**","/js/**").permitAll()//접근가능
-					.antMatchers("/","/signin","/signup","/find_email","/find_email_after","/find_password","/find_password_after").permitAll()//접근가능
-					.antMatchers("/basket").permitAll()//접근가능
 					
-					//유저권한 접근
-					.antMatchers("/member/**").hasAnyRole("USER")
-					//관리자권한 접근
-					.antMatchers("/admin/**").hasAnyRole("ADMIN")
-					
-					.anyRequest().authenticated()//나머지는 인증(로그인)해야해요
+					.antMatchers("/**").permitAll()
+				/*
+				 * .antMatchers("/css/**","/img/**","/js/**").permitAll()//접근가능
+				 * .antMatchers("/","/signin","/signup","/find_email","/find_email_after",
+				 * "/find_password","/find_password_after").permitAll()//접근가능
+				 * .antMatchers("/basket").permitAll()//접근가능
+				 */					
+				/*
+				 * //유저권한 접근 .antMatchers("/member/**").hasAnyRole("USER") //관리자권한 접근
+				 * .antMatchers("/admin/**").hasAnyRole("ADMIN")
+				 * 
+				 * .anyRequest().authenticated()
+				 *///나머지는 인증(로그인)해야해요
 					)
 			//.formLogin(Customizer.withDefaults())
 			
