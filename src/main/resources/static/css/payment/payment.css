@@ -1,0 +1,145 @@
+@charset "UTF-8";
+
+
+main{
+	display: flex;
+	justify-content: center;
+}
+.main-payment{
+	display: flex;
+}
+.order-area {
+	display: flex;
+	flex-direction: column;
+	height: 1000px;
+	width: 600px;
+}
+.shipping_information input[type=text] {
+	height: 35px;
+}
+	.shipping_information {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .shipping_information input {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin: 10px 0;
+        box-sizing: border-box;
+    }
+
+    #address_search {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin: 10px 0;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+    #guide {
+        color: #999;
+        display: block;
+        margin-top: 10px;
+    }
+
+
+table {
+	border-top: 2px solid #4a4a4a;
+	border-bottom: 2px solid #4a4a4a;
+	width: 100%;
+}
+thead {
+	border-bottom: 1px solid #4a4a4a;
+	height: 50px;
+}
+thead > tr > th {
+	
+    vertical-align: middle;
+}
+tbody > tr {
+	height: 60px;
+}
+tbody > tr > td {
+	text-align: center;
+    vertical-align: middle;
+}
+
+.payment-method {
+	margin-top: 10px;
+}
+.payment-method > *{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.payment-method > li > label{
+	width: 165px;
+	height: 35px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.payment-area {
+}
+.payment-area > .settlement{
+	flex-direction: column;
+	width: 250px;
+	padding: 10px;
+	border: 5px solid burlywood;
+	border-radius: 20px;
+	gap: 15px;
+}
+.payment-area > .settlement > div:not(:last-child){
+	display: flex;
+	justify-content: space-between;
+}
+.payment-button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	background-color: burlywood;
+	width: 200px;
+	height: 60px;
+	cursor: pointer;
+}
+
+
+
+
+        .payment-method li {
+            margin-right: 20px;
+        }
+
+        .payment-method input[type="radio"] {
+            display: none;
+        }
+
+        .payment-method label {
+            display: inline-block;
+            cursor: pointer;
+            padding: 10px;
+            outline: 2px solid #ddd;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .payment-method label:hover {
+            background-color: #f9f9f9;
+        }
+
+        .payment-method img {
+            max-width: 60px;
+            margin-right: 5px;
+        }
+
+        .payment-method span {
+            vertical-align: middle;
+        }
