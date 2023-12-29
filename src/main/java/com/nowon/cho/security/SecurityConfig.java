@@ -55,13 +55,12 @@ public class SecurityConfig {
 					)
 			//.formLogin(Customizer.withDefaults())
 			
-			.formLogin(formLogin -> formLogin
-					.loginPage("/signin")
-					.loginProcessingUrl("/signin")
-					.usernameParameter("email") //default=username--form
-					.passwordParameter("password") //default=password--form
-					.permitAll()
-					)
+			/*
+			 * .formLogin(formLogin -> formLogin .loginPage("/signin")
+			 * .loginProcessingUrl("/signin") .usernameParameter("email")
+			 * //default=username--form .passwordParameter("password")
+			 * //default=password--form .permitAll() )
+			 */
 					
 		;
 		return http.build();
