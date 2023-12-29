@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-canvas {
+img {
 	background-size: contain;
 	background-repeat: no-repeat;
 }
@@ -190,7 +190,6 @@ button {
 .best-item-img {
 	width: 290px;
 	height: 290px;
-	background-image: url(/img/index/best_item/img-best-item-0.jpg);
 	filter: brightness(1);
 	transition: 0.2s ease-in-out;
 }

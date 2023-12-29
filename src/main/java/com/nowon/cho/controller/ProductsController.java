@@ -3,6 +3,8 @@ package com.nowon.cho.controller;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,6 +20,12 @@ import lombok.RequiredArgsConstructor;
 public class ProductsController {
 	
 	private final ProductsService productsService;
+	
+	@GetMapping("/productList")
+	public String productList(Model model) {
+		productsService.findProducts(model);
+		return "product/products";
+	}
 	
 	@PostMapping("/products")
 	public String productRegistration(ProductsDTO productsDTO, ProductsImgDTO productsImgDTO) {
