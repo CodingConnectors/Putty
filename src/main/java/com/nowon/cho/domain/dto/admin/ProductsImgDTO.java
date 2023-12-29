@@ -10,4 +10,5 @@ public class ProductsImgDTO {
 	private String[] tempKey;
 	private String[] orgName;
 	private long[] size;
+	private boolean[] imgType;
 }

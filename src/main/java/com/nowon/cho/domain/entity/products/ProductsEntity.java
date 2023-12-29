@@ -46,9 +46,6 @@ public class ProductsEntity {
 	@CreationTimestamp
 	private LocalDateTime registrationDate;
 	
-	@Column(nullable = false)
-	private long sale;
-	
 	private long saleDiscount;
 	private long saleSum;
 	private long wishlistCnt;

@@ -74,28 +74,31 @@ public class ProductsServiceProcess implements ProductsService {
 		
 		for (int i = 0; i < productsImgDTO.getOrgName().length; i++) {
 			if (!productsImgDTO.getOrgName()[i].equals("")) {
-				String imgNewName = tempToProducImg(productsImgDTO, i);
+				String bucketKey = tempToProductImg(productsImgDTO, i);
+				String imgNewName = UUID.randomUUID().toString() + productsImgDTO.getOrgName()[i].substring(productsImgDTO.getOrgName()[i].lastIndexOf("."));
 				
 				productsImgEntityRepository.save(ProductsImgEntity.builder()
 						.imgOrgName(productsImgDTO.getOrgName()[i])
 						.imgNewName(imgNewName)
+						.bucketKey(bucketKey)
 						.imgSize(0)
+						.imgType(productsImgDTO.getImgType()[i])
 						.productsEntity(productsEntity)
 						.build());
 			}
 		}
 	}
 
-	private String tempToProducImg(ProductsImgDTO productsImgDTO, int i) {
-		String imgNewName = UPLOAD_PATH
+	private String tempToProductImg(ProductsImgDTO productsImgDTO, int i) {
+		String bucketKey = UPLOAD_PATH
 				+ UUID.randomUUID().toString()
 				+ productsImgDTO.getOrgName()[i].substring(productsImgDTO.getOrgName()[i].lastIndexOf("."));
 		
-		CopyObjectRequest copyObjectRequest = new CopyObjectRequest(BUCKET_NAME, productsImgDTO.getTempKey()[i], BUCKET_NAME, imgNewName);
+		CopyObjectRequest copyObjectRequest = new CopyObjectRequest(BUCKET_NAME, productsImgDTO.getTempKey()[i], BUCKET_NAME, bucketKey);
 		
 		amazonS3Client.copyObject(copyObjectRequest.withCannedAccessControlList(CannedAccessControlList.PublicRead));
 		amazonS3Client.deleteObject(BUCKET_NAME, productsImgDTO.getTempKey()[i]);
 		
-		return imgNewName;
+		return bucketKey;
 	}
 }

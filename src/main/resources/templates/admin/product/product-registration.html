@@ -24,16 +24,19 @@
 						$(element).siblings(".tempKey").val(data.tempKey);
 						$(element).siblings(".orgName").val(data.orgName);
 						
-						addInputImage();
+						if (element.parentNode.parentNode.id == 'admin-product-img-detail')
+							addInputImage();
 					}
 				});
 			}
 			
 			function addInputImage() {
-				var container = $("#admin-product-input");
+				var container = $("#admin-product-img-detail");
+						
 				var addInput = $(`
 					<label class="admin-product-img">
 						<input type="file" name="productImg" accept="image/*" onchange="tempImg(this)">
+						<input type="hidden" class="imgType" name="imgType" value="0">
 						<input type="hidden" class="tempKey" name="tempKey">
 						<input type="hidden" class="orgName" name="orgName">
 						<span>+</span>
@@ -93,9 +96,24 @@
 								<div class="admin-product-name flex">
 									<span>상품 이미지</span>
 								</div>
-								<div id="admin-product-input" class="admin-product-input flex">
+								<div id="admin-product-img-main" class="admin-product-input flex">
 									<label class="admin-product-img">
 										<input type="file" name="productImg" accept="image/*" onchange="tempImg(this)">
+										<input type="hidden" class="imgType" name="imgType" value="1">
+										<input type="hidden" class="tempKey" name="tempKey">
+										<input type="hidden" class="orgName" name="orgName">
+										<span>+</span>
+									</label>
+								</div>
+							</div>
+							<div class="admin-products-body-list-2 flex">
+								<div class="admin-product-name flex">
+									<span>상품 상세 이미지</span>
+								</div>
+								<div id="admin-product-img-detail" class="admin-product-input flex">
+									<label class="admin-product-img">
+										<input type="file" name="productImg" accept="image/*" onchange="tempImg(this)">
+										<input type="hidden" class="imgType" name="imgType" value="0">
 										<input type="hidden" class="tempKey" name="tempKey">
 										<input type="hidden" class="orgName" name="orgName">
 										<span>+</span>
