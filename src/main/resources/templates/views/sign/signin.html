@@ -3,6 +3,11 @@
 <head>
 	<link rel="stylesheet" href="/css/sign/sign.css">
 	<link rel="stylesheet" href="/css/sign/signin.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<!--구글로그인-->
+	<meta name="google-signin-scope" content="profile email">
+	<meta name ="google-signin-client_id" content="239354396494-hfd6ba7dokc9un2q47oauc7mipd71d6r.apps.googleusercontent.com">
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
 <main>
@@ -42,14 +47,15 @@
 					</li>
 				</ul>
 				<div class="social_signin">
-					<div id="naverIdLogin" style="display:none;"></div>
+					<div id="naverIdLogin" style="display: none;"></div>
 					<button type="button" class="social_signin_btn" id="naverLogin">
 						<div class="signin_btn_txt">
 							<img src="/img/sign/naver.png" class="naver_icon">
 							네이버로 로그인
 						</div>
 					</button>
-					<button type="button" class="social_signin_btn">
+					<div class="g-signin2" data-onsuccess="onSignIn" id="googleIdLogin" style="display: none;"></div>
+					<button type="button" class="social_signin_btn" id="googleLogin">
 						<div class="signin_btn_txt">
 							<img src="/img/sign/google.png" class="google_icon">
 							구글로 로그인
@@ -67,15 +73,35 @@
 			{
 				clientId: "8TrWqRddviUW_UQe21gJ",
 				callbackUrl: "http://putty0.store/naverLogin",
+				isPopup: true,
 				loginButton: {color: "green", type: 2, height: 50}
 			}
 		);
 		naverLogin.init();
-		
-		$(document).on("click", "#naverLogin", function(){
-        var naverLogin = document.getElementById("naverIdLogin").firstChild;
-        naverLogin.click();
-    	});
+	</script>
+	
+	<script>
+		$(document).on("click", "#naverLogin", function(){ 
+		var btnNaverLogin = document.getElementById("naverIdLogin").firstChild;
+		btnNaverLogin.click();
+	});
+	</script>
+	
+	<script>
+		function onSignIn(googleUser) {
+			var profile = googleUser.getBasicProfile();
+			console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+			console.log('Name: ' + profile.getName());
+			console.log('Image URL: ' + profile.getImageUrl());
+			console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+		}
+	</script>
+	
+	<script>
+		$(document).on("click", "#googleLogin", function(){ 
+		var btnGoogleLogin = document.getElementById("googleIdLogin").firstChild;
+		btnGoogleLogin.click();
+	});
 	</script>
 	
 </main>

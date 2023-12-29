@@ -21,36 +21,23 @@
 				<form action="/members" method="post">
 					<div class="user_data">
 						<div class="user_input">
-							<div class="input_title">이메일 주소</div>
+							<div class="input_title">휴대폰 번호<span id="tel_numError"></div>
 							<div class="input_item">
-								<input type="text" class="input_txt" id="email" name="email" value="${member.email }" readonly>
-							</div>
-						</div>
-						
-						<div class="user_input">
-							<div class="input_title">이름</div>
-							<div class="input_item">
-								<input type="text" class="input_txt" id="name" name="name" value="${member.name }" readonly>
-							</div>
-						</div>
-						<div class="user_input">
-							<div class="input_title">휴대폰 번호</div>
-							<div class="input_item">
-								<input type="text" class="input_txt" id="tel" name="tel" value="${member.tel }" readonly>
+								<input type="tel" placeholder="변경할 휴대폰 번호를 입력해주세요. (-없이)" onfocus="this.placeholder = ''" onblur="this.placeholder = '변경할 휴대폰 번호를 입력해주세요. (-없이)'" autocomplete="off" class="input_txt" name="tel_num">
 							</div>
 						</div>
 						<div class="user_input_address">
 						<div class="input_title">대표 배송지 등록</div>
 						<div class="input_item_address">
 							<div class="post_code_box">
-								<input type="text" id="sample4_postcode" placeholder="우편번호" class="input_txt_post_code" name="post_code">
+								<input type="text" id="sample4_postcode" placeholder="우편번호" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" class="input_txt_post_code" name="post_code">
 								<input type="button" class="btn_post_code" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 							</div>
-							<input type="text" id="sample4_roadAddress" placeholder="도로명주소" class="input_txt" name="address">
-							<input type="text" id="sample4_jibunAddress" placeholder="지번주소" class="input_txt" name="address">
+							<input type="text" id="sample4_roadAddress" placeholder="도로명주소" onfocus="this.placeholder = ''" onblur="this.placeholder = '도로명주소'" class="input_txt" name="address">
+							<input type="text" id="sample4_jibunAddress" placeholder="지번주소" onfocus="this.placeholder = ''" onblur="this.placeholder = '지번주소'" class="input_txt" name="address">
 							<span id="guide" style="color:#999;display:none" class="input_txt"></span>
-							<input type="text" id="sample4_detailAddress" placeholder="상세주소" class="input_txt" name="address_detail">
-							<input type="text" id="sample4_extraAddress" placeholder="참고항목" class="input_txt">
+							<input type="text" id="sample4_detailAddress" placeholder="상세주소" onfocus="this.placeholder = ''" onblur="this.placeholder = '상세주소'" class="input_txt" name="address_detail">
+							<input type="text" id="sample4_extraAddress" placeholder="참고항목" onfocus="this.placeholder = ''" onblur="this.placeholder = '참고항목'" class="input_txt">
 						</div>
 						</div>
 						<div class="user_input">
@@ -62,13 +49,13 @@
 						<div class="user_input">
 						<div class="input_title">변경할 비밀번호</div>
 						<div class="input_item">
-							<input type="password"  maxlength='16' placeholder="비밀번호를 영문, 숫자, 특수문자를 조합해서 입력해주세요.(8~16자)" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 영문, 숫자, 특수문자를 조합해서 입력해주세요.(8~16자)'" autocomplete="off" class="input_txt" name="password">
+							<input type="password"  maxlength='16' placeholder="비밀번호를 영문, 숫자, 특수문자를 조합해서 입력해주세요.(8~16자)" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 영문, 숫자, 특수문자를 조합해서 입력해주세요.(8~16자)'" autocomplete="off" class="input_txt" name="change_password">
 						</div>
 						</div>
 						<div class="user_input">
 							<div class="input_title">변경할 비밀번호 확인</div>
 							<div class="input_item">
-								<input type="password"  maxlength='16' placeholder="변경할 비밀번호를 재입력 해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '변경할 비밀번호를 재입력 해주세요.'" autocomplete="off" class="input_txt" name="password">
+								<input type="password"  maxlength='16' placeholder="변경할 비밀번호를 재입력 해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '변경할 비밀번호를 재입력 해주세요.'" autocomplete="off" class="input_txt" name="check_change_password">
 							</div>
 							<div class="save_btn_box">
 								<input type="submit" value="저장하기" class="save_box"></input>
