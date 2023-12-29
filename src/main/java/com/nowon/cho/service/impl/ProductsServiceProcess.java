@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.services.s3.AmazonS3Client;
@@ -100,5 +102,12 @@ public class ProductsServiceProcess implements ProductsService {
 		amazonS3Client.deleteObject(BUCKET_NAME, productsImgDTO.getTempKey()[i]);
 		
 		return bucketKey;
+	}
+
+	@Override
+	public void findProducts(Model model) {
+		model.addAttribute("productList", productsEntityRepository.findAll().stream()
+				.map(ProductsEntity :: toProductListDTO)
+				.collect(Collectors.toList()));
 	}
 }
