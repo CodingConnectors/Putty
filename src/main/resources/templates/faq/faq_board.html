@@ -43,7 +43,7 @@
                             <a href="/faq/faq_info" class="depth1_b_m">고객센터</a>
                         </li>
                         <li class="depth1 ">
-                            <a href="/faq/faq_board" class="depth1_b_m">문의 게시판</a>
+                            <a href="/member/faq_board" class="depth1_b_m">문의 게시판</a>
                         </li>
                         <li class="depth1 ">
                             <a href="/faq/frequently_asked" class="depth1_b_m">자주 묻는 질문</a>
@@ -52,7 +52,7 @@
                             <a href="/faq/faq_notice" class="depth1_b_m">공지사항</a>
                         </li>
                         <li class="depth1">
-                            <a href="/faq/faq_list" class="depth1_b_m">내가 한 질문</a>
+                            <a href="/member/faq_list" class="depth1_b_m">내가 한 질문</a>
                         </li>
                        
                     </ul>
@@ -61,7 +61,7 @@
                         <h3 class="SpqBlue">1588-8377</h3>
                         <p>월~금 09:00~18:00</p>
                         <p>주말, 공휴일 휴무</p>
-                        <a class="myP_SWbtn" href="/faq/faq_board" target="_blank" style="margin-top:15px;">고객의소리</a>
+                        <a class="myP_SWbtn" href="/member/faq_board" target="_blank" style="margin-top:15px;">고객의소리</a>
                     </div>
                 </div>
               <!-- 게시글리스트, 글 수정버튼, 글 삭제 버튼, 글 작성 버튼 ,글 검색창  -->
@@ -81,7 +81,7 @@
 									<tr th:each="board : ${list}">
 										<td th:text="${board.id}">1</td>            <!--localhost:8080/board/view?id=:board.id-->
 										<td>
-											<a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}"></a>
+											<a th:text="${board.title}" th:href="@{/member/board/view(id=${board.id})}"></a>
 										</td>
 									</tr>
 									
