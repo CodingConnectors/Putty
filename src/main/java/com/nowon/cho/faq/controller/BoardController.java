@@ -16,13 +16,13 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 
-    @GetMapping("/board/write") //localhost:8080/board/write
+    @GetMapping("/member/board/write") //localhost:8080/board/write
     public String boardWriteForm() {	
 
         return "faq/boardwrite";
     }
 
-    @PostMapping("/board/writepro")
+    @PostMapping("/member/board/writepro")
     public String boardWritePro(Board board){
 
        boardService.write(board);
@@ -30,32 +30,30 @@ public class BoardController {
         return "";
     }
     
-	@GetMapping("/faq/faq_board")
+	@GetMapping("/member/faq_board")
 	public String faq_board(Model model) {	
 		
 		//리스트
 		model.addAttribute( "list", boardService.boardList());
 		
-		
-		
 		return "faq/faq_board";
 	}
 	
-	@GetMapping("/board/view") //localhost:8080/board/view?id=1
+	@GetMapping("/member/board/view") //localhost:8080/board/view?id=1
 	public String boardView(Model model, Integer id) {
 		
 		model.addAttribute("board",boardService.boardView(id));
 		
-		return "faq/boardview";
+		return "/faq/boardview";
 		
 	}
 	
-	@GetMapping("/board/delete")
+	@GetMapping("/member/board/delete")
 	public String boardDelete(Integer id) {
 		
 		boardService.boardDelete(id);
 		
-		return "redirect:/faq/faq_board";
+		return "redirect:/member/faq_board";
 	}
     
     

@@ -28,7 +28,7 @@ public class FaqController {
 		return "faq/faq_notice";
 	}
 	
-	@GetMapping("/faq/faq_list")
+	@GetMapping("/member/faq_list")
 	public String faq_list() {
 		return "faq/faq_list";
 	}
