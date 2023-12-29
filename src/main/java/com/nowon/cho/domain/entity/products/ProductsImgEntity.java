@@ -36,7 +36,13 @@ public class ProductsImgEntity extends BaseEntity {
 	private String imgNewName;
 	
 	@Column(nullable = false)
+	private String bucketKey;
+	
+	@Column(nullable = false)
 	private long imgSize;
+	
+	@Column(nullable = false)
+	private boolean imgType;
 	
 	@ManyToOne
 	ProductsEntity productsEntity;

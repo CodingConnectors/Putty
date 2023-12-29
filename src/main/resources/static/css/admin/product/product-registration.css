@@ -53,7 +53,7 @@ input {
 
 .admin-products-body-main {
 	width: 1230px;
-	height: 625px;
+	height: 626px;
 	position: relative;
 	border: 1px solid#A9A9A9;
 }
@@ -64,12 +64,12 @@ input {
 }
 
 .admin-products-body-list-2 {
-	height: 170px;
+	height: 140px;
 	border-bottom: 1px solid #A9A9A9;
 }
 
 .admin-products-body-list-3 {
-	height: 250px;
+	height: 140px;
 	border-bottom: 1px solid #A9A9A9;
 }
 
@@ -94,7 +94,7 @@ input {
 
 .admin-product-input > textarea {
 	width: 500px;
-	height: 230px;
+	height: 120px;
 	border: 1px solid #D8D9DA;
 	outline: none;
 }
@@ -109,6 +109,25 @@ input {
 	width: 150px;
 	height: 30px;
 	border: 1px solid #D8D9DA;
+}
+
+.admin-product-img {
+	width: 120px;
+	height: 120px;
+	margin-right: 10px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px dashed #D8D9DA;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	font-size: 32px;
+	cursor: pointer;
+}
+
+.admin-product-img > input[type="file"] {
+	display: none;
 }
 
 .admin-product-submit {
@@ -126,22 +145,9 @@ input {
 	font-size: 16px;
 	color: #FFF;
 	cursor: pointer;
+	transition: 0.1s ease-in-out;
 }
 
-.admin-product-img {
-	width: 150px;
-	height: 150px;
-	padding-right: 10px;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	border: 1px dashed #D8D9DA;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
-	font-size: 32px;
-}
-
-.admin-product-img > input[type="file"] {
-	display: none;
+.admin-product-submit > button:hover {
+	color: #A1EAFB;
 }
