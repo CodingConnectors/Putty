@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #EDEDED;
+}
+
+input {
+	outline: none;
+}
+
+.flex {
+	display: flex;
+}
+
+.admin-products-wrap {
+	width: 1280px;
+	flex-direction: column;
+}
+
+.admin-products-head {
+	padding-bottom: 35px;
+	font-size: 32px;
+	font-weight: 600;
+}
+
+.admin-products-body {
+	height: 795px;
+	border: 1px solid #6B7282;
+	background-color: #FFF;
+}
+
+.admin-products-body-head {
+	height: 45px;
+	align-items: center;
+	background-color: #6B7282;
+}
+
+.admin-products-body-head > span {
+	padding-left: 15px;
+	color: #FFF;
+}
+
+.admin-products-body-main-wrap {
+	height: 675px;
+	justify-content: center;
+	align-items: center;
+}
+
+.admin-products-body-main {
+	width: 1230px;
+	height: 626px;
+	position: relative;
+	border: 1px solid#A9A9A9;
+}
+
+.admin-products-body-list-1 {
+	height: 50px;
+	border-bottom: 1px solid #A9A9A9;
+}
+
+.admin-products-body-list-2 {
+	height: 140px;
+	border-bottom: 1px solid #A9A9A9;
+}
+
+.admin-products-body-list-3 {
+	height: 140px;
+	border-bottom: 1px solid #A9A9A9;
+}
+
+.admin-product-name {
+	width: 175px;
+	align-items: center;
+	background-color: #EEEEEE;
+	border-right: 1px solid #A9A9A9;
+}
+
+.admin-product-name > span {
+	padding-left: 15px;
+	font-weight: 600;
+}
+
+.admin-product-input {
+	width: 1045px;
+	padding-left: 10px;
+	align-items: center;
+	background-color: #FFF;
+}
+
+.admin-product-input > textarea {
+	width: 500px;
+	height: 120px;
+	border: 1px solid #D8D9DA;
+	outline: none;
+}
+
+.product-input-name {
+	width: 500px;
+	height: 30px;
+	border: 1px solid #D8D9DA;
+}
+
+.product-input-num {
+	width: 150px;
+	height: 30px;
+	border: 1px solid #D8D9DA;
+}
+
+.admin-product-img {
+	width: 120px;
+	height: 120px;
+	margin-right: 10px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px dashed #D8D9DA;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	font-size: 32px;
+	cursor: pointer;
+}
+
+.admin-product-img > input[type="file"] {
+	display: none;
+}
+
+.admin-product-submit {
+	width: 1230px;
+	padding-top: 25px;
+	justify-content: center;
+}
+
+.admin-product-submit > button {
+	width: 100px;
+	height: 50px;
+	border: none;
+	border-radius: 3px;
+	background-color: #6B7282;
+	font-size: 16px;
+	color: #FFF;
+	cursor: pointer;
+	transition: 0.1s ease-in-out;
+}
+
+.admin-product-submit > button:hover {
+	color: #A1EAFB;
+}
