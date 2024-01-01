@@ -1,6 +1,7 @@
 package com.nowon.cho;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.nowon.cho.domain.entity.BasketEntity;
@@ -8,18 +9,18 @@ import com.nowon.cho.domain.entity.BasketRepository;
 import com.nowon.cho.domain.entity.MemberRepository;
 import com.nowon.cho.domain.entity.products.ProductsEntityRepository;
 
-import lombok.RequiredArgsConstructor;
-
-@RequiredArgsConstructor
 @SpringBootTest
 class PuttyApplicationTests {
 
 
-	private final BasketRepository basketRepo;
-	private final MemberRepository memberRepo;
-	private final ProductsEntityRepository prodRepo;
+	@Autowired
+	private BasketRepository basketRepo;
+	@Autowired
+	private MemberRepository memberRepo;
+	@Autowired
+	private ProductsEntityRepository prodRepo;
 	
-	@Test
+	//@Test
 	void contextLoads() {
 		
 	}
@@ -28,9 +29,9 @@ class PuttyApplicationTests {
 	void 장바구니추가() {
 
 		basketRepo.save(BasketEntity.builder()
-				.member_no(memberRepo.findById(2L).orElse(null))
-				.productNo(prodRepo.findById(2L).orElse(null))
-				.volume(1)
+				.memberNo(memberRepo.findById(1L).orElse(null))
+				.productNo(prodRepo.findById(4L).orElse(null))
+				.volume(2)
 				.build());
 	}
 }

@@ -12,14 +12,16 @@ import com.nowon.cho.domain.entity.products.ProductsEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @Table(name = "Basket")
 @IdClass(BasketEntityId.class)
+@Entity
+@Getter
 public class BasketEntity {
 	@Id
 	@ManyToOne
@@ -28,7 +30,7 @@ public class BasketEntity {
 	@Id
 	@ManyToOne
 	@JoinColumn(name = "member_no")
-	private MemberEntity member_no;
+	private MemberEntity memberNo;
 	
 	private long volume;
 }
