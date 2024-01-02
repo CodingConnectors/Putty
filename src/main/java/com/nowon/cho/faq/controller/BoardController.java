@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,12 +23,12 @@ public class BoardController {
         return "faq/boardwrite";
     }
 
-    @PostMapping("/member/board/writepro")
+    @PostMapping("/member/board/write")
     public String boardWritePro(Board board){
 
        boardService.write(board);
 
-        return "";
+        return "redirect:/member/faq_board";
     }
     
 	@GetMapping("/member/faq_board")
@@ -55,6 +56,27 @@ public class BoardController {
 		
 		return "redirect:/member/faq_board";
 	}
+	
+	@GetMapping("/member/board/modify/{id}")
+	public String boardModify(@PathVariable("id") Integer id, Model model) {
+		
+		model.addAttribute("board",boardService.boardView(id));
+		
+		return "/faq/boardmodify";
+		
+	}
     
+	@PostMapping("/member/board/update/{id}")
+	public String boardUpdate(@PathVariable("id") Integer id, Board board) {
+		
+		Board boardTemp = boardService.boardView(id);
+		boardTemp.setTitle(board.getTitle());
+		boardTemp.setContent(board.getContent());
+		
+		boardService.write(boardTemp);
+		
+		return "redirect:/member/faq_board";
+		
+	}
     
 }
