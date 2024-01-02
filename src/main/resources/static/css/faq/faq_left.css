@@ -123,4 +123,15 @@ ul, ol {
     letter-spacing: -1px;
 }
 
-/*//////////////////////// 공통 메뉴 적용 css /////////////////////////*/
+body > main > div > div > div.myP_right > div > div > table > thead > tr > th:nth-child(3) > a{
+	
+	
+	color: red;
+}
+
+body > main > div > div > div.myP_right > div > div > table > thead > tr > th:nth-child(1),th:nth-child(2){
+	
+	color: rgb(128, 64, 0);
+	
+}
+
