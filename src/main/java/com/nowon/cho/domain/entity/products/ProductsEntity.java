@@ -1,6 +1,5 @@
 package com.nowon.cho.domain.entity.products;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,9 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.CreationTimestamp;
-
 import com.nowon.cho.domain.dto.admin.FindProductsDTO;
+import com.nowon.cho.domain.entity.BaseEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,7 +27,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class ProductsEntity {
+public class ProductsEntity extends BaseEntity {
 	
 	@Id
 	@GeneratedValue(generator = "gen_products_seq", strategy = GenerationType.SEQUENCE)
@@ -47,10 +45,8 @@ public class ProductsEntity {
 	@Column(nullable = false)
 	private long productStock;
 	
-	@CreationTimestamp
-	private LocalDateTime registrationDate;
-	
 	private long saleDiscount;
+	private long saleSum;
 	private long wishlistCnt;
 	
 	@OneToMany(mappedBy = "productsEntity")

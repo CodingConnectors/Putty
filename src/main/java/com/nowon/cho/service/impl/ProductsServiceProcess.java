@@ -7,6 +7,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
@@ -106,7 +107,7 @@ public class ProductsServiceProcess implements ProductsService {
 
 	@Override
 	public void findProducts(Model model) {
-		model.addAttribute("productList", productsEntityRepository.findAll().stream()
+		model.addAttribute("productList", productsEntityRepository.findAll(Sort.by(Sort.Order.desc("productNo"))).stream()
 				.map(ProductsEntity :: toProductListDTO)
 				.collect(Collectors.toList()));
 	}
