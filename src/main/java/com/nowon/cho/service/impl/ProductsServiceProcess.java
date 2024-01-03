@@ -2,6 +2,7 @@ package com.nowon.cho.service.impl;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -107,7 +108,16 @@ public class ProductsServiceProcess implements ProductsService {
 
 	@Override
 	public void findProducts(Model model) {
-		model.addAttribute("productList", productsEntityRepository.findAll(Sort.by(Sort.Order.desc("productNo"))).stream()
+		model.addAttribute("productList", productsEntityRepository.findAll(Sort.by(Sort.Order.desc("createdDate"))).stream()
+				.map(ProductsEntity :: toProductListDTO)
+				.collect(Collectors.toList()));
+	}
+
+	@Override
+	public void bestProducts(Model model) {
+		List<ProductsEntity> bestProducts = productsEntityRepository.findAll(Sort.by(Sort.Order.desc("saleSum")));
+		
+		model.addAttribute("bestProducts", bestProducts.stream()
 				.map(ProductsEntity :: toProductListDTO)
 				.collect(Collectors.toList()));
 	}

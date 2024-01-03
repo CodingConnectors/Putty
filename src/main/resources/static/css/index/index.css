@@ -1,10 +1,5 @@
 @charset "UTF-8";
 
-img {
-	background-size: contain;
-	background-repeat: no-repeat;
-}
-
 button {
 	width: 28px;
 	height: 28px;
@@ -22,36 +17,6 @@ button {
 
 .index-products-btn:hover {
 	transform: scale(1.15);
-}
-
-.swiper {
-	width: 100%;
-	height: 100%;
-}
-
-.swiper-slide {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.swiper-slide-img {
-	display: block;
-	width: 100%;
-	height: 650px;
-	object-fit: cover;
-}
-
-#index-swiper-img-1 {
-	background-image: url(/img/index/swiper/index-swiper-1.jpg);
-}
-
-#index-swiper-img-2 {
-	background-image: url(/img/index/swiper/index-swiper-2.jpg);
-}
-
-#index-swiper-img-3 {
-	background-image: url(/img/index/swiper/index-swiper-3.jpg);
 }
 
 .bestItem-section-2 {
@@ -182,9 +147,9 @@ button {
 }
 
 .item-li {
-	width: 290px;
-	height: 365px;
-	padding: 15px;
+	width: 280px;
+	height: 355px;
+	padding: 30px 20px;
 }
 
 .item-img-wrap {
@@ -192,10 +157,32 @@ button {
 }
 
 .best-item-img {
-	width: 290px;
-	height: 290px;
+	width: 280px;
+	height: 280px;
+	position: relative;
 	filter: brightness(1);
 	transition: 0.2s ease-in-out;
+}
+
+.best-medal {
+	width: 48px;
+	height: 48px;
+	margin: 5px;
+	position: absolute;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+#medal-gold {
+	background-image: url(/img/index/icon/medal-gold.png);
+}
+
+#medal-silver {
+	background-image: url(/img/index/icon/medal-silver.png);
+}
+
+#medal-bronze {
+	background-image: url(/img/index/icon/medal-bronze.png);
 }
 
 .newArrivals-item-img {

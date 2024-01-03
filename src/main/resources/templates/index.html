@@ -7,11 +7,11 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;400;600;800&family=Reem+Kufi:wght@400;600&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-		<link rel="stylesheet" href="/css/index/layout.css">
 		<link rel="stylesheet" href="/css/index/index.css">
 		<link rel="stylesheet" href="/css/index/index-modal.css">
+		<link rel="stylesheet" href="/css/index/layout.css">
+		<link rel="stylesheet" href="/css/index/swiper.css">
 		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-		<script src="/js/index/index.js"></script>
 		<script>
 			function modal() {
 				document.getElementById('modal-shopping-cart').style.visibility = "visible";
@@ -41,28 +41,33 @@
 			<div class="swiper mySwiper">
 		    	<div class="swiper-wrapper">
 		      		<div class="swiper-slide">
-				  		<canvas id="index-swiper-img-1" class="swiper-slide-img"></canvas>
+				  		<img id="index-swiper-img-1" class="swiper-slide-img"></img>
 			  		</div>
 		      		<div class="swiper-slide">
-				  		<canvas id="index-swiper-img-2" class="swiper-slide-img"></canvas>
+				  		<img id="index-swiper-img-2" class="swiper-slide-img"></img>
 			  		</div>
 		      		<div class="swiper-slide">
-				  		<canvas id="index-swiper-img-3" class="swiper-slide-img"></canvas>
+				  		<img id="index-swiper-img-3" class="swiper-slide-img"></img>
 			  		</div>
 		    	</div>
 		    	<div class="swiper-button-next"></div>
 		    	<div class="swiper-button-prev"></div>
+		    	<div class="swiper-pagination"></div>
 			</div>
 			<script>
 				var swiper = new Swiper(".mySwiper", {
-					loop: true,
+					effect: 'fade',
 					navigation: {
 						nextEl: ".swiper-button-next",
 						prevEl: ".swiper-button-prev",
 					},
+					pagination: {
+						el: ".swiper-pagination"
+					},
 					autoplay: {
 						delay: 5000
-					}
+					},
+					loop: true
 				});
 			</script>
 			<section class="bestItem-section">
@@ -130,7 +135,39 @@
 				<article class="bestItem-section-2 view-size flex">
 					<div class="inherit">
 						<div class="item-list-wrap flex">
-							<ul id="best-item-ul" class="item-ul flex space-between flex-wrap"></ul>
+							<ul id="best-item-ul" class="item-ul flex flex-wrap">
+								<li th:each="findBestProducts, pageSet : ${bestProducts}" th:if="${pageSet.index < 16}" class="item-li">
+									<div class="best-item-wrap">
+										<div class="item-img-wrap relative flex">
+											<img th:src="@{${findBestProducts.mainImgUrl}}" class="best-item-img" alt="상품 이미지">
+												<div th:if="${pageSet.index == 0}" id="medal-gold" class="best-medal">
+												</div>
+												<div th:if="${pageSet.index == 1}" id="medal-silver" class="best-medal">
+												</div>
+												<div th:if="${pageSet.index == 2}" id="medal-bronze" class="best-medal">
+												</div>
+											</img>
+											<div class="item-btn flex space-evenly">
+												<a href="#">
+													<button class="index-products-btn more-btn"></button>
+												</a>
+												<button class="index-products-btn shopping-cart-btn" onclick="modal()"></button>
+												<button class="index-products-btn favorite-btn favorite-btn-1"></button>
+											</div>
+										</div>
+										<div class="item-info-wrap">
+											<div class="item-info-1">
+												<a th:text="${findBestProducts.productName}" href="#">상품 이름</a>
+											</div>
+											<div class="item-info-2 flex center-1 start">
+												<span th:text="${findBestProducts.saleDiscount} + '%'" class="sale">할인율</span>
+												<span th:text="${findBestProducts.price} + '원'" class="price">정가</span>
+												<span th:text="${findBestProducts.price - (findBestProducts.price * findBestProducts.saleDiscount / 100)} + '원'" class="sale-price">판매가</span>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
 						</div>
 					</div>
 				</article>
@@ -147,7 +184,32 @@
 				<article class="newArrivals-section-2 view-size flex">
 					<div class="inherit">
 						<div class="item-list-wrap flex">
-							<ul id="newArrivals-item-ul" class="item-ul flex space-between flex-wrap"></ul>
+							<ul id="newArrivals-item-ul" class="item-ul flex flex-wrap">
+								<li th:each="findProducts, pageSet : ${productList}" th:if="${pageSet.index < 16}" class="item-li">
+									<div class="best-item-wrap">
+										<div class="item-img-wrap relative flex">
+											<img th:src="@{${findProducts.mainImgUrl}}" class="best-item-img" alt="상품 이미지"></img>
+											<div class="item-btn flex space-evenly">
+												<a href="#">
+													<button class="index-products-btn more-btn"></button>
+												</a>
+												<button class="index-products-btn shopping-cart-btn" onclick="modal()"></button>
+												<button class="index-products-btn favorite-btn favorite-btn-1"></button>
+											</div>
+										</div>
+										<div class="item-info-wrap">
+											<div class="item-info-1">
+												<a th:text="${findProducts.productName}" href="#">상품 이름</a>
+											</div>
+											<div class="item-info-2 flex center-1 start">
+												<span th:text="${findProducts.saleDiscount} + '%'" class="sale">할인율</span>
+												<span th:text="${findProducts.price} + '원'" class="price">정가</span>
+												<span th:text="${findProducts.price - (findProducts.price * findProducts.saleDiscount / 100)} + '원'" class="sale-price">판매가</span>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
 						</div>
 					</div>
 				</article>

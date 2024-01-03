@@ -32,13 +32,12 @@ button {
 	height: 45px;
 	padding-left: 15px;
 	border-radius: 5px 5px 0 0;
-	background-color: #FDF7E4;
+	background-color: #7D5A50;
 }
 
 .modal-shopping-cart-title > p {
 	font-size: 18px;
-	font-weight: 600;
-	color: #5F5F5F;
+	color: #FFF;
 }
 
 .modal-shopping-cart-close {

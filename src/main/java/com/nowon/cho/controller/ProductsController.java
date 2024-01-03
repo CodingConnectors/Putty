@@ -21,6 +21,14 @@ public class ProductsController {
 	
 	private final ProductsService productsService;
 	
+	@GetMapping()
+	public String indexProducts(Model model) {
+		productsService.bestProducts(model);
+		productsService.findProducts(model);
+		
+		return "index";
+	}
+	
 	@GetMapping("/productList")
 	public String productList(Model model) {
 		productsService.findProducts(model);
