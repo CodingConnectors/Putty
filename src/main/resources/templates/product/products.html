@@ -76,10 +76,10 @@
 					<div class="inherit">
 						<div class="item-list-wrap flex">
 							<ul id="best-item-ul" class="item-ul flex flex-wrap">
-								<li th:each="findProductsDTO, pageSet : ${productList}" th:if="${pageSet.index < 16}" class="item-li">
+								<li th:each="findProducts, pageSet : ${productList}" th:if="${pageSet.index < 16}" class="item-li">
 									<div class="best-item-wrap">
 										<div class="item-img-wrap relative flex">
-											<img th:src="@{${findProductsDTO.mainImgUrl}}" class="best-item-img" alt="상품 이미지"></img>
+											<img th:src="@{${findProducts.mainImgUrl}}" class="best-item-img" alt="상품 이미지"></img>
 											<div class="item-btn flex space-evenly">
 												<a href="#">
 													<button class="index-products-btn more-btn"></button>
@@ -90,12 +90,12 @@
 										</div>
 										<div class="item-info-wrap">
 											<div class="item-info-1">
-												<a th:text="${findProductsDTO.productName}" href="#">상품 이름</a>
+												<a th:text="${findProducts.productName}" href="#">상품 이름</a>
 											</div>
 											<div class="item-info-2 flex center-1 start">
-												<span th:text="${findProductsDTO.saleDiscount} + '%'" class="sale">할인율</span>
-												<span th:text="${findProductsDTO.price} + '원'" class="price">정가</span>
-												<span th:text="${findProductsDTO.price - (findProductsDTO.price * findProductsDTO.saleDiscount / 100)} + '원'" class="sale-price">판매가</span>
+												<span th:text="${findProducts.saleDiscount} + '%'" class="sale">할인율</span>
+												<span th:text="${findProducts.price} + '원'" class="price">정가</span>
+												<span th:text="${findProducts.price - (findProducts.price * findProducts.saleDiscount / 100)} + '원'" class="sale-price">판매가</span>
 											</div>
 										</div>
 									</div>
