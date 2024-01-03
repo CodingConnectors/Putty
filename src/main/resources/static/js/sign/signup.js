@@ -1,93 +1,204 @@
-// 유효성 검사 메서드
-    function checkAll() {
-		
-		window.onload = function() {
-		var join = document.join; //form데이터를 모두 join변수에 저장
-		
-		// 오류 문구 //errorId : span의 id들(각 요소마다 나타낼 오류를 표시하기 위함)
-		// error : class list의 하위 span을 모두 불러냄(일괄 처리를 위함 - 반복문)
-		var errorId = [ "emailError", "passwordError", "c_passwordError", "nameError", "tel_numError" ];
-		
-		
-        //변수에 저장
-        var email = document.getElementById("email")
-        var password = document.getElementById("password")
-        var c_password = document.getElementById("c_password")
-        var name = document.getElementById("name")
-		var tel_num = document.getElementById("tel_num")
-		
-		var emailError = document.getElementById("emailError")
-		var passwordError = document.getElementById("passwordError")
-		var c_passwordError = document.getElementById("c_passwordError")
-		var nameError = document.getElementById("nameError")
-		var tel_numError = document.getElementById("tel_numError")
-		var error = document.querySelectorAll('.list > span');
-		
-        // 정규식
-        // password
-        var regIdpassword = /^[a-zA-Z0-9~!@#$%^&*()_+|<>?:{}]{8,16}$/;
-        // 이름
-        var regName = /^[가-힣a-zA-Z]{2,15}$/;
-        // 이메일
-        var regEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-        // 휴대폰 번호
-        var regTel_num = /^[0-9]{10,11}$/;
+// signup.js
 
-        //메일주소 확인
-        if(email.value.length == 0){
-            alert("이메일을 입력해주세요.")
-            email.focus();
-            return false;
+// 이메일 유효성 검사를 위한 스크립트
+function validateEmail() {
+	var email = document.forms["signupForm"]["email"].value;
+    var emailError = document.getElementById("emailError");
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	
+	if (email === "") {
+        emailError.innerText = "를 입력해주세요.";
+        return false;
+    } else if (!emailRegex.test(email)) {
+        emailError.innerText = "를 올바르게 입력해주세요.";
+        return false;
+    } else {
+        emailError.innerText = "가 멋지네요.";
+        return true;
+    }
+}
+
+// 비밀번호 유효성 검사를 위한 스크립트
+function validatePassword() {
+    var password = document.forms["signupForm"]["password"].value;
+    var passwordError = document.getElementById("passwordError");
+    var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
+	
+	if (password === "") {
+        passwordError.innerText = "를 입력해주세요.";
+        return false;
+    } else if (!passwordRegex.test(password)) {
+        passwordError.innerText = "는 영문, 숫자, 특수문자를 조합해서 입력해주세요.(8~16자)";
+        return false;
+    } else {
+        passwordError.innerText = "가 완벽합니다.";
+        return true;
+    }
+}
+
+// 비밀번호 확인 유효성 검사를 위한 스크립트
+function validateConfirmPassword() {
+    var confirmPassword = document.forms["signupForm"]["c_password"].value;
+    var password = document.forms["signupForm"]["password"].value;
+    var cPasswordError = document.getElementById("c_passwordError");
+	
+	if (confirmPassword === "") {
+    	cPasswordError.innerText = "를 재입력해주세요.";
+    	return false;
+    } else if (confirmPassword !== password) {
+        cPasswordError.innerText = "가 일치하지 않습니다.";
+        return false;
+    } else {
+        cPasswordError.innerText = "가 일치합니다.";
+        return true;
+    }
+}
+
+// 이름 유효성 검사를 위한 스크립트
+function validateName() {
+    var name = document.forms["signupForm"]["name"].value;
+    var nameError = document.getElementById("nameError");
+    var nameRegex = /^[a-zA-Z가-힣]{2,20}$/;
+
+    if (name === "") {
+        nameError.innerText = "을 입력해주세요.";
+        return false;
+    } else if (!nameRegex.test(name)) {
+        nameError.innerText = "이 올바르지 않습니다.";
+        return false;
+    } else {
+        nameError.innerText = "이 예쁘네요.";
+        return true;
+    }
+}
+
+// 전화번호 유효성 검사를 위한 스크립트
+function validateTelNum() {
+    var telNum = document.forms["signupForm"]["tel_num"].value;
+    var telNumError = document.getElementById("tel_numError");
+    var telNumRegex = /^[0-9]{10,11}$/;
+	
+	if (telNum === "") {
+        telNumError.innerText = "를 입력해주세요.";
+        return false;
+    } else if (!telNumRegex.test(telNum)) {
+        telNumError.innerText = "는 -없이 입력해주세요.(10~11자)";
+        return false;
+    } else {
+        telNumError.innerText = "가 입력되었습니다.";
+        return true;
+    }
+}
+
+// 모든 유효성 검사와 약관 동의를 확인하는 스크립트
+function checkAll() {
+    // 모든 항목의 유효성 검사 수행
+    var isValid = validateEmail() && validatePassword() && validateConfirmPassword() && validateName() && validateTelNum();
+	
+    // 모든 약관 동의 체크 확인
+    var allCheck = document.getElementById("all_switch").checked;
+
+    if (isValid && allCheck) {
+        // 유효성 검사 및 약관 동의 모두 충족 시 리다이렉트 또는 DB 저장 수행
+        // 여기에 필요한 처리를 추가하세요
+        alert("회원가입이 완료되었습니다."); // 예시: 회원가입 완료 메시지
+        return true;
+    } else {
+        // 하나라도 조건을 만족하지 않을 경우 에러 메시지 출력
+        if (!isValid) {
+            alert("입력 정보를 확인해주세요."); // 예시: 입력 정보 오류 메시지
+        }
+        if (!allCheck) {
+            alert("약관에 동의해주세요."); // 예시: 약관 동의 오류 메시지
+        }
+        return false;
+    }
+}
+
+// 아코디언 기능을 위한 스크립트
+$(function () {
+    $('.drop_area').click(clickedBtnMenu);
+});
+
+function clickedBtnMenu() {
+    $(this).find('.terms_txt').slideToggle(112);
+}
+
+// 개별 체크박스에 기반한 checkAll 업데이트를 위한 스크립트
+document.addEventListener("DOMContentLoaded", function () {
+    const checkAll = document.getElementById("all_switch");
+    const checkBoxesNormal = document.querySelectorAll('.terms_agree .normal');
+
+    function updateCheckAll() {
+        checkAll.checked = Array.from(checkBoxesNormal).every((checkbox) => checkbox.checked);
+    }
+
+    checkAll.addEventListener('click', function () {
+        checkBoxesNormal.forEach((checkbox) => {
+            checkbox.checked = checkAll.checked;
+        });
+    });
+
+    checkBoxesNormal.forEach((checkbox) => {
+        checkbox.addEventListener('click', updateCheckAll);
+    });
+});
+
+// 체크 박스 누르면 색변환
+document.addEventListener("DOMContentLoaded", function () {
+    const checkAll = document.getElementById("all_switch");
+    const checkBoxesNormal = document.querySelectorAll('.terms_agree .normal');
+    const agreeAllContainer = document.querySelector('.agree_all');
+    const agreeCheckContainers = document.querySelectorAll('.agree_check');
+
+    function updateCheckAll() {
+        if (checkAll.checked) {
+            setCheckedStyle();
+        } else {
+            setUncheckedStyle();
+        }
+    }
+
+    function setCheckedStyle() {
+        agreeAllContainer.style.backgroundColor = "#BF9270";
+        agreeAllContainer.style.color = "white";
+        agreeCheckContainers.forEach(container => {
+            container.style.backgroundColor = "#BF9270";
+            container.style.color = "white";
+        });
+    }
+
+    function setUncheckedStyle() {
+        if (Array.from(checkBoxesNormal).every(checkbox => checkbox.checked)) {
+            agreeAllContainer.style.backgroundColor = "#BF9270";
+            agreeAllContainer.style.color = "white";
+        } else {
+            agreeAllContainer.style.backgroundColor = "";
+            agreeAllContainer.style.color = "";
         }
 
-        else if(!regEmail.test(email.value)){
-            alert("잘못된 이메일 형식입니다.")
-            email.focus();
-            return false;
-        }
+        agreeCheckContainers.forEach(container => {
+            const checkbox = container.querySelector('.normal');
+            if (checkbox.checked) {
+                container.style.backgroundColor = "#BF9270";
+                container.style.color = "white";
+            } else {
+                container.style.backgroundColor = "";
+                container.style.color = "";
+            }
+        });
+    }
 
-        //비밀번호 확인
-        if(password.value == ""){
-            alert("비밀번호를 입력하세요.")
-            password.focus();
-            return false;
-        }
-        //비밀번호 영어 대소문자 확인
-        else if(!regIdpassword.test(password.value)){
-            alert("4~12자 영문 대소문자, 숫자만 입력하세요.")
-            password.focus();
-            return false;
-        }
+    checkAll.addEventListener('click', function () {
+        checkBoxesNormal.forEach((checkbox) => {
+            checkbox.checked = checkAll.checked;
+        });
+        updateCheckAll();
+    });
 
-        //비밀번호 확인
-        if(c_password.value !== password.value){
-            alert("비밀번호와 동일하지 않습니다.")
-            c_password.focus();
-            return false;
-        }
-
-        //이름 확인 = 한글과 영어만 가능하도록
-        if(name.value == ""){
-            alert("이름을 입력하세요.")
-            name.focus();
-            return false;
-        }
-
-        else if(!regName.test(name.value)){
-            alert("최소 2글자 이상, 한글과 영어만 입력하세요.")
-            name.focus();
-            return false;
-        }
-        
-        if(tel_num.value == ""){
-            alert("휴대폰 번호를 입력하세요.")
-            tel_num.focus();
-            return false;
-        }
-        //휴대폰 번호 숫자만 입력했는지 확인
-        else if(!regTel_num.test(tel_num.value)){
-            alert("-없이 숫자만 입력하세요.")
-            tel_num.focus();
-            return false;
-        }
-       
+    checkBoxesNormal.forEach((checkbox) => {
+        checkbox.addEventListener('click', function () {
+        updateCheckAll();
+        });
+    });
+});

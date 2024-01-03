@@ -46,7 +46,7 @@
 .help_email_success{
 	width: 400px; height: 110px;
 	padding-top: 40px; padding-bottom: 41px;
-	border-bottom: 2px solid #fce18a;
+	border-bottom: 2px solid #BF9270;
 	font-size: 24px; letter-spacing: -.36px;
 	text-align: center; font-weight: 700;
 }
@@ -57,7 +57,7 @@
 	padding-top: 14px;
 	padding-bottom: 38px;
     text-align: center;
-    border-bottom: 2px solid #fce18a;
+    border-bottom: 2px solid #BF9270;
 }
 
 .notice_title{
@@ -81,24 +81,24 @@
 
 .help_box_pass{
 	width: 195px; height: 52px;
-	background-color: #fce18a;
+	background-color: #BF9270;
 	font-size: 16px; font-weight: 700; color: white;
 	border-radius: 10px;
 }
 
 .help_box_pass:hover{
-	background-color: white; color: #fce18a;
-	border: 2px solid #fce18a;
+	background-color: white; color: #BF9270;
+	border: 2px solid #BF9270;
 }
 
 .help_box_login{
 	width: 195px; height: 52px;
-	background-color: #fce18a;
+	background-color: #BF9270;
 	font-size: 16px; font-weight: 700; color: white;
 	border-radius: 10px; margin-left: 8px;
 }
 
 .help_box_login:hover{
-	background-color: white; color: #fce18a;
-	border: 2px solid #fce18a;
+	background-color: white; color: #BF9270;
+	border: 2px solid #BF9270;
 }
