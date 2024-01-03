@@ -90,6 +90,23 @@
 								</tbody>
 	
 							</table>
+							<div class="Paging_all" id="Paging_all">
+								<th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+									<div class="Paging" id="Paging">
+										<a th:if="${page != nowPage}" th:href="@{/member/faq_board(page= ${page - 1}, searchKeyword=${param.searchKeyword})}" th:text="${page}"></a>
+								
+										<strong th:if="${page == nowPage}" th:text="${page}" style="color : red"></strong>
+									</div>
+								</th:block>
+							</div>
+							
+							<div class="search_list" id="search_list">
+								<form th:action="@{/member/faq_board}" method="get">
+									<input type="text" name="searchKeyword" placeholder="내용을 입력하세요.">
+									<button type="submit">검색</button>
+									
+								</form>
+							</div>
 						</div>
 						
 					</div>

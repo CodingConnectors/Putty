@@ -1,15 +1,80 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/common-layout :: commonLayout(~{this::head},~{this::main})}">
+	
 <head>
 <meta charset="UTF-8">
 <title>게시글 상세 페이지</title>
-</head>
-<body>
-	
-	<h1 th:text="${board.title}">제목입니다.</h1>
-	<p th:text="${board.content}">내용이 들어갈 부분입니다.</p>
-	<a th:href="@{/member/board/delete(id = ${board.id})}">삭제</a>
-	<a th:href="@{/member/board/modify/{id}(id = ${board.id})}">수정</a>
+<link rel="stylesheet" href="/css/faq/faq_board.css">
+<link rel="stylesheet" href="/css/faq/boardview.css">
 
+</head>
+
+
+<body>
+	<main>
+		 <div class="myPage21">
+            <div class="myP_inner clearfix">
+                <div class="myP_left">
+                    <ul class="my_gnb">
+                        <!-- class = on 붙이면 활성화 -->
+                        <li class="depth1">
+                            <a href="/faq/faq_info" class="depth1_b_m">고객센터</a>
+                        </li>
+                        <li class="depth1 ">
+                            <a href="/member/faq_board" class="depth1_b_m">문의 게시판</a>
+                        </li>
+                        <li class="depth1 ">
+                            <a href="/faq/frequently_asked" class="depth1_b_m">자주 묻는 질문</a>
+                        </li>
+                        <li class="depth1 ">
+                            <a href="/faq/faq_notice" class="depth1_b_m">공지사항</a>
+                        </li>
+                        <li class="depth1">
+                            <a href="/member/faq_list" class="depth1_b_m">내가 한 질문</a>
+                        </li>
+                       
+                    </ul>
+                    <div class="cs_box">
+                        <h2>퍼티 상담센터</h2>
+                        <h3 class="SpqBlue">1588-8377</h3>
+                        <p>월~금 09:00~18:00</p>
+                        <p>주말, 공휴일 휴무</p>
+                        <a class="myP_SWbtn" href="/member/faq_board" target="_blank" style="margin-top:15px;">고객의소리</a>
+                    </div>
+                </div>
+                
+                
+                <div class="myP_right">
+					
+				    <div class="view_text" id="view_text">
+						
+						<div class="title_contai" id="title_contai">
+						
+				        <h1 th:text="${board.title}" id="title1" placeholder="제목을 입력해 주세요.">제목입니다.</h1>
+				       
+				       </div>
+				       
+				       
+				        
+				        <div class="content_contai" id="content_contai">
+				        
+				        <p th:text="${board.content}" id="content1">내용이 들어갈 부분입니다.</p>
+				        
+				        </div>
+				       
+				       
+				        
+				        <div class="option1" id="option1">
+				            <a th:href="@{${board.filepath}}" id="download1">다운받기</a>
+				            <a th:href="@{/member/board/delete(id = ${board.id})}" id="delete1">삭제</a>
+				            <a th:href="@{/member/board/modify/{id}(id = ${board.id})}" id="modify1">수정</a>
+				        </div>    
+				    </div>
+				</div>
+		   		 
+			</div><!-- myP_inner -->
+		</div><!-- myPage21 -->
+		
+	</main>
 </body>
 </html>

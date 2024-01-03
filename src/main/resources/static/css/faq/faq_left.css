@@ -126,12 +126,224 @@ ul, ol {
 body > main > div > div > div.myP_right > div > div > table > thead > tr > th:nth-child(3) > a{
 	
 	
-	color: red;
+	color: rgb(128, 64, 64);
+	 color: rgb(128, 64, 64);
+    font-weight: bold; /* Makes the text bold */
+    font-size: 1.2em; /* Adjust the font size as needed */
 }
 
 body > main > div > div > div.myP_right > div > div > table > thead > tr > th:nth-child(1),th:nth-child(2){
 	
 	color: rgb(128, 64, 0);
 	
+}
+
+/* Style for the entire contents box */
+.contents_box {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Style for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Style for table header */
+thead th {
+    background-color: #deb88721;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Style for table rows */
+tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+/* Style for table data cells */
+td {
+    padding: 10px;
+}
+
+/* Style for the "게시글 작성" link */
+.writing_text {
+    text-decoration: none;
+    color: #fff;
+    background-color: #BF9270;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Style for page number links */
+a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px;
+    margin: 0 5px;
+}
+
+/* Style for the active page number */
+strong {
+    color: red;
+}
+
+/* Style for the search form */
+form {
+    margin-top: 20px;
+}
+
+/* Style for the search input */
+input[name="searchKeyword"] {
+    padding: 8px;
+    width: 200px;
+}
+
+/* Style for the search button */
+button {
+    padding: 8px 15px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Responsive layout for small screens */
+@media screen and (max-width: 600px) {
+    table {
+        font-size: 14px;
+    }
+}
+
+/* Center the page numbers */
+.layout th {
+    text-align: center;
+}
+
+/* Add space around the search form */
+form {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Add more spacing for search input */
+input[name="searchKeyword"] {
+    padding: 10px;
+    width: 250px;
+}
+
+/* Add more spacing for the search button */
+button {
+    padding: 10px 20px;
+    margin-left: 10px;
+}
+
+/* Add space below the last post and above pagination */
+.myP_right .contents_box {
+    margin-bottom: 30px;
+}
+
+/* Reduce width of 글번호 column */
+thead th:first-child,
+tbody td:first-child {
+    width: 80px; /* Adjust the width as needed */
+}
+
+/* Center-align 글번호 numbers */
+td:first-child {
+    text-align: center;
+}
+
+
+/* Add space between page numbers and post list */
+#Paging {
+    margin-top: 20px;
+}
+
+
+/* Center-align and display page numbers in Paging_all horizontally */
+.Paging_all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+
+/* Style for page number links in Paging_all */
+.Paging_all a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px;
+    margin: 0 5px;
+}
+
+/* Style for the active page number in Paging_all */
+.Paging_all strong {
+    color: red;
+}
+
+/* Center-align and display page numbers in Paging_all horizontally */
+.Paging_all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+
+/* Style for page number links in Paging_all */
+.Paging_all a, .Paging_all strong {
+    text-decoration: none;
+    color: #333;
+    padding: 5px;
+    margin: 0 5px; /* Adjust the margin as needed */
+}
+
+/* Style for the active page number in Paging_all */
+.Paging_all strong {
+    color: red;
+}
+
+/* Style for the table header */
+thead {
+    text-align: center;
+}
+
+/* Style for "글번호" */
+thead th:first-child {
+    text-align: center;
+}
+
+/* Style for "게시글 작성" */
+thead th:last-child {
+	width: 160px;
+    text-align: right;
+}
+
+.search_list {
+    text-align: center;
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+
+/* Style for the search form input */
+.search_list input[name="searchKeyword"] {
+    padding: 8px;
+    width: 200px;
+}
+
+/* Style for the search form button */
+.search_list button {
+    padding: 8px 15px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
