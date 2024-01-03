@@ -26,7 +26,14 @@ public class PaymentCotroller {
 
 	@PostMapping
 	public String paymentPage(@ModelAttribute PaymentProductsDTO dto,Model model) {
+//		dto.getProductNo().forEach(a->System.out.println(a));
 		service.page(dto, model);
 		return "views/payment/payment";
+	}
+	
+	
+	@GetMapping("/suc")
+	public String successOpen() {
+		return "views/payment/success";
 	}
 }

@@ -44,6 +44,11 @@
 								<td>테스트가격</td>
 								<td>테스트수량</td>
 							</tr>
+							<tr th:each="list:${reqPaymentList}">
+								<td th:text="${list.productName}">테스트이름</td>
+								<td th:text="${list.price}">테스트가격</td>
+								<td>테스트수량</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>

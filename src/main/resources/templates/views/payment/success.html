@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/common-layout :: commonLayout(~{this::head},~{this::main} )}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+	<body>
+		<main>
+			<h1>결제완료</h1>
+			<div>
+				<span>결제가 완료되었습니다.</span>
+			</div>
+			<form action="/payment" method="post">
+				<input type="number" name="productNo"/>
+				<input type="number" name="productNo"/>
+				<button>전송</button>
+			</form>
+		</main>
+	</body>
+</html>

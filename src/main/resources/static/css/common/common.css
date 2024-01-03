@@ -217,25 +217,29 @@ header {
 footer {
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: blanchedalmond;
 }
 .footer {
 	width: 1280px;
 	height: 200px;
-	background-color: blanchedalmond;
 }
-.footer > .footer01 {
+.footer01 {
+	width: 100vw;
 	background-color: #424242;
 }
-.footer > .footer01 > ul {
+.footer01 > ul {
 	display: flex;
 	margin-left: 100px;
 }
-.footer > .footer01 > ul > li {
+.footer01 > ul > li {
 	padding: 10px;
 	color: antiquewhite;
 }
 .footer02 {
 	display: flex;
+	width: 1280px;
 	justify-content: space-between;
 	margin-top: 30px;
 }

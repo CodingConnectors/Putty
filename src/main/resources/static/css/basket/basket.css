@@ -54,6 +54,7 @@ tbody > tr > td:not(:nth-child(3)) {
 	height: 25px;
 	font-size: 14px;
 	background-color: burlywood;
+	cursor: pointer;
 	display: flex;
 	justify-content: center;
 	align-items: center;

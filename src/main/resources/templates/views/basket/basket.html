@@ -28,10 +28,10 @@
 				</thead>
 				<tbody>
 					<tr th:each="basket : ${basketList}">
-						<td><input type="checkbox" class="selectOrder" name="selectOrder" data-price="29000" data-discount="10" id=""/></td>
-						<td><img width="100px" src="/img/index/best_item/img-best-item-0.jpg"/></td>
-						<td th:text="${basket.productName}">D17 애견 패딩 코듀로이 패딩 브라운</td>
-						<td>29,000원</td>
+						<td><input type="checkbox" class="selectOrder" name="selectOrder" th:attr="data-productId=${basket.productNo}, data-price=${basket.price}, data-discount=${basket.saleDiscount}" /></td>
+						<td><img width="100px" th:src="@{${basket.mainImgUrl}}" /></td>
+						<td th:text="${basket.productName}">상품이름</td>
+						<td th:text="${basket.price}">가격</td>
 						<td><input type="number" value="1" min="1" class="product_volume" name="product_volume"/></td>
 						<td>
 							<p>
@@ -45,8 +45,8 @@
 						<td class="productPerTotal">0원</td>
 						<td>0원</td>
 						<td class="listOrderButton">
-							<a href="#">바로주문</a>
-							<a href="#">삭제</a>
+							<button class="directOrder" type="button">바로주문</button>
+							<button class="delBasket" type="button">삭제</button>
 						</td>
 					</tr>
 					<tr>

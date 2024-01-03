@@ -18,6 +18,9 @@ $('input[name="payment-gateway"]').change(function() {
     $(this).parent('label').css('outline', '3px solid burlywood');
 });
 
+
+
+
 function requestPay() {
 	let pg = document.querySelector('input[name="payment-gateway"]:checked').value;
 	let buyer_tel = document.querySelector('input[name="phone"]').value;
@@ -30,7 +33,24 @@ function requestPay() {
 	    amount: 100,
 	    buyer_tel: buyer_tel,
 	}
-	IMP.request_pay(data);
+	IMP.request_pay(data, rsp => {
+	    if (rsp.success) {
+	      // axios로 HTTP 요청
+	      axios({
+	        url: "{서버의 결제 정보를 받는 endpoint}",
+	        method: "post",
+	        headers: { "Content-Type": "application/json" },
+	        data: {
+	          imp_uid: rsp.imp_uid,
+	          merchant_uid: rsp.merchant_uid
+	        }
+	      }).then((data) => {
+			console.log("결제에 성공했습니다.")
+	        // 서버 결제 API 성공시 로직
+	        window.location.href = "/payment/suc";
+	      })
+	    } else {
+	      alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
+	    }
+	});
 }
-
-
