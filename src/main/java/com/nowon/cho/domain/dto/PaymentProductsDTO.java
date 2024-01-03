@@ -9,12 +9,6 @@ import lombok.Setter;
 @Setter
 public class PaymentProductsDTO {
 
-	List<PaymentProduct> products;
+	List<Long> productNo;
 }
 
-@Getter
-@Setter
-class PaymentProduct {
-	long productNo;
-	int product_volume; // 구매수량
-}

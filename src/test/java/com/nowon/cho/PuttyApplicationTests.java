@@ -28,10 +28,12 @@ class PuttyApplicationTests {
 	@Test
 	void 장바구니추가() {
 
-		basketRepo.save(BasketEntity.builder()
-				.memberNo(memberRepo.findById(1L).orElse(null))
-				.productNo(prodRepo.findById(4L).orElse(null))
-				.volume(2)
-				.build());
+		for(long i=1; i<=10; i++) {
+			basketRepo.save(BasketEntity.builder()
+					.memberNo(memberRepo.findById(22L).orElse(null))
+					.productNo(prodRepo.findById(i).orElse(null))
+					.volume(2)
+					.build());
+		}
 	}
 }

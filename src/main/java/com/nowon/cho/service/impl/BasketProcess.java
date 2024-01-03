@@ -38,11 +38,8 @@ public class BasketProcess implements BasketService {
 
 	@Override
 	public void findProduct(Model model) {
-		BasketEntityId key = new BasketEntityId();
-	    key.setMemberNo(1);
-	    key.setProductNo(3);
 
-	    MemberEntity memberEnti = memberRepo.findById(1L).orElse(null);
+	    MemberEntity memberEnti = memberRepo.findById(22L).orElse(null);
 	    List<BasketEntity> basketEntity = basketRepo.findByMemberNo(memberEnti);
 	    
 	    if (basketEntity != null) {
@@ -52,5 +49,15 @@ public class BasketProcess implements BasketService {
 	        System.out.println("basketEntity가 존재하지않습니다.");;
 	    }
 	}
+
+	@Override
+	public void deleteBasket(long productId) {
+		BasketEntityId key = new BasketEntityId();
+		key.setMemberNo(22L);
+		System.out.println(productId);
+		key.setProductNo(productId);
+		basketRepo.deleteById(key);
+	}
+
 
 }

@@ -10,4 +10,6 @@ public interface BasketService {
 
 	void findProduct(Model model);
 
+	void deleteBasket(long productId);
+
 }
