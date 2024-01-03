@@ -19,6 +19,10 @@ public class Board {
     
  //   private int member_no;
     
+    private String filename;
+    
+    private String filepath;
+    
    
     
  //   private String password;
