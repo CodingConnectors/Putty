@@ -1,21 +1,34 @@
 package com.nowon.cho.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.nowon.cho.domain.dto.MemberDTO;
+import com.nowon.cho.domain.entity.MemberEntity;
 import com.nowon.cho.domain.entity.MemberRepository;
+import com.nowon.cho.security.MemberRole;
 import com.nowon.cho.service.SignService;
 
+import lombok.RequiredArgsConstructor;
 
+
+@RequiredArgsConstructor
 @Service
 public class SignServiceProcess implements SignService {
 
 	@Autowired
-	private MemberRepository memberRepository;
-
+	private final MemberRepository memberRepository;
+	
+	private final PasswordEncoder passwordEncoder;
+	
 	@Override
 	public void saveMember(MemberDTO dto) {
-		memberRepository.save(dto.toMemberEntity());
+		memberRepository.save(dto.toMemberEntity(passwordEncoder).addRole(MemberRole.USER));
 	}
+	
+	public MemberEntity findByEmail(String email) {
+		return memberRepository.findByEmail(email);
+	}
+	
 }

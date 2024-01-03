@@ -1,5 +1,6 @@
 package com.nowon.cho.domain.entity;
 
+import java.lang.reflect.Member;
 import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.HashSet;
@@ -63,10 +64,11 @@ public class MemberEntity extends BaseEntity {
 	@Enumerated(EnumType.STRING)//DB에 저장유형을 문자로저장
 	@CollectionTable(name = "role")
 	@ElementCollection(fetch = FetchType.EAGER)//1:N MemberEntity에서만 접근가능한 내장테이블
-	private Set<MemberRole> roles=new HashSet<>();
+	private Set<MemberRole> memberRoles= new HashSet<>();
 	//편의메서드
 	public MemberEntity addRole(MemberRole role) {
-		roles.add(role);
+		memberRoles.add(role);
 		return this;
 	}
+	
 }

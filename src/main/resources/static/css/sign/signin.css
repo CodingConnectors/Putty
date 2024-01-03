@@ -78,15 +78,15 @@
 
 .signin_box{
 	width: 400px; height: 52px;
-	background-color: #fce18a;
+	background-color: #BF9270;
 	font-size: 16px; font-weight: 700; color: white;
 	border-radius: 10px; cursor: pointer;
 }
 
 .signin_box:hover{
 	background-color: white;
-	font-size: 16px; font-weight: 800; color: #fce18a;
-	border: #fce18a solid 2px;
+	font-size: 16px; font-weight: 800; color: #BF9270;
+	border: #BF9270 solid 2px;
 	border-radius: 10px; cursor: pointer;
 }
 
@@ -115,7 +115,7 @@
 
 .look_link:hover{
 	color: white;
-	background: #fce18a;
+	background: #BF9270;
 	border-radius: 10px;
 	font-weight: 700;
 }
@@ -129,7 +129,7 @@
 
 .social_signin_btn{
 	width: 400px; height: 52px; margin-bottom: 8px;
-	background-color: #fce18a;
+	background-color: #BF9270;
 	font-size: 16px; font-weight: 600; color: white;
 	border-radius: 10px; 
 }
@@ -137,8 +137,8 @@
 .social_signin_btn:hover{
 	width: 400px; height: 52px;
 	background-color: white;
-	color: #fce18a;
-	border: #fce18a solid 2px;
+	color: #BF9270;
+	border: #BF9270 solid 2px;
 }
 
 .signin_btn_txt{

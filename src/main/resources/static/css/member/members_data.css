@@ -28,7 +28,7 @@
 	display: flex; justify-content: center;
 	padding-bottom: 41px; height: 81px;
 	font-size: 32px; font-weight: 600;
-	border-bottom: 2px solid #fce18a;
+	border-bottom: 2px solid #BF9270;
 }
 
 /*///////////////////////////////////////////////*/
@@ -98,7 +98,7 @@
 
 .btn_post_code{
 	width: 100px; height: 35px;
-	background-color: #fce18a;
+	background-color: #BF9270;
 	font-size: 13px; font-weight: 700; color: white;
 	border-radius: 10px; cursor: pointer;
 	margin-left: 35px;
@@ -125,7 +125,7 @@
 	width: 400px; height: 50px;
 	margin-bottom: 20px;
 	background-color: white;
-	border: #fce18a solid 2px;
+	border: #BF9270 solid 2px;
 	border-radius: 10px; 
 	
 }
@@ -144,7 +144,7 @@
 	margin-bottom: 10px;
 	
 	background-color: white;
-	border: #fce18a solid 2px;
+	border: #BF9270 solid 2px;
 	border-radius: 10px;
 	user-select: none !important;
 }
@@ -166,7 +166,7 @@
 	padding: 16px 4px 16px 4px; margin-top: 10px;
 	
 	background-color: white;
-	border: #fce18a solid 2px;
+	border: #BF9270 solid 2px;
 	border-radius: 10px;
 	user-select: none !important;
 }
@@ -206,15 +206,15 @@
 
 .save_box{
 	width: 400px; height: 52px;
-	background-color: #fce18a;
+	background-color: #BF9270;
 	font-size: 16px; font-weight: 700; color: white;
 	border-radius: 10px; cursor: pointer;
 }
 
 .save_box:hover{
 	background-color: white;
-	font-size: 16px; font-weight: 800; color: #fce18a;
-	border: #fce18a solid 2px;
+	font-size: 16px; font-weight: 800; color: #BF9270;
+	border: #BF9270 solid 2px;
 	border-radius: 10px; cursor: pointer;
 }
 
@@ -225,14 +225,14 @@
 
 .del_box{
 	width: 400px; height: 52px;
-	background-color: #fce18a;
+	background-color: #BF9270;
 	font-size: 16px; font-weight: 700; color: white;
 	border-radius: 10px; cursor: pointer;
 }
 
 .del_box:hover{
 	background-color: white;
-	font-size: 16px; font-weight: 800; color: #fce18a;
-	border: #fce18a solid 2px;
+	font-size: 16px; font-weight: 800; color: #BF9270;
+	border: #BF9270 solid 2px;
 	border-radius: 10px; cursor: pointer;
 }

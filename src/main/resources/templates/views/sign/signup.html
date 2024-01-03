@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/css/sign/sign.css">
 	<link rel="stylesheet" href="/css/sign/signup.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-	<script src="signup.js"></script>
-	<!--<script 
-		src="https://code.jquery.com/jquery-3.4.1.js" 
-		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-		crossorigin="anonymous"></script>-->
+	<script src="/js/sign/signup.js"></script>
 </head>
 <body>
 <main>
@@ -23,39 +20,41 @@
 					<div class="signup_main_title">
 						회원가입
 					</div>
-				<form action="/signup" method="post" autocomplete="off" onsubmit="return checkAll()">
+				<form name="signupForm" action="/signup" method="post" autocomplete="off" onsubmit="return checkAll()">
 					<div class="user_data">
 						<div class="user_input">
 							<div class="input_title">이메일 주소<span id="emailError"></span></div>
 							<div class="input_item">
-								<input type="email" placeholder="ex)putty@cute.com" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex)putty@cute.com'" autocomplete="off" class="input_txt" name="email">
+								<input type="email" placeholder="ex)putty@cute.com" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex)putty@cute.com', validateEmail()" autocomplete="off" class="input_txt" name="email">
 							</div>
 						</div>
 						<div class="user_input">
 						<div class="input_title">비밀번호<span id="passwordError"></span></div>
 						<div class="input_item">
-							<input type="password"  maxlength='16' placeholder="영문, 숫자, 특수문자를 조합해서 입력해주세요.(8~16자)" onfocus="this.placeholder = ''" onblur="this.placeholder = '영문, 숫자, 특수문자를 조합해서 입력해주세요.(8~16자)'" autocomplete="off" class="input_txt" name="password">
+							<input type="password"  maxlength='16' placeholder="영문, 숫자, 특수문자를 조합해서 입력해주세요.(8~16자)" onfocus="this.placeholder = ''" onblur="this.placeholder = '영문, 숫자, 특수문자를 조합해서 입력해주세요.(8~16자)', validatePassword()" autocomplete="off" class="input_txt" name="password">
 						</div>
 						</div>
 						<div class="user_input">
-							<div class="input_title">비밀번호 확인<span id="c_passwordError"></span></div>
+							<div class="input_title">비밀번호<span id="c_passwordError"></span></div>
 							<div class="input_item">
-								<input type="password"  maxlength='16' placeholder="비밀번호를 재입력 해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 재입력 해주세요.'" autocomplete="off" class="input_txt" name="c_password">
+								<input type="password"  maxlength='16' placeholder="비밀번호를 재입력 해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 재입력 해주세요.', validateConfirmPassword()" autocomplete="off" class="input_txt" name="c_password">
 							</div>
 						</div>
 						<div class="user_input">
 							<div class="input_title">이름<span id="nameError"></div>
 							<div class="input_item">
-								<input type="text" placeholder="이름을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이름을 입력해주세요.'" autocomplete="off" class="input_txt" name="name">
+								<input type="text" placeholder="이름을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이름을 입력해주세요.', validateName()" autocomplete="off" class="input_txt" name="name">
 							</div>
 						</div>
 						<div class="user_input">
-							<div class="input_title">휴대폰 번호<span id="tel_numError"></div>
+							<div class="input_title">휴대폰 번호<span id="tel_numError"></span></div>
 							<div class="input_item">
-								<input type="tel" placeholder="휴대폰 번호를 입력해주세요. (-없이)" onfocus="this.placeholder = ''" onblur="this.placeholder = '휴대폰 번호를 입력해주세요. (-없이)'" autocomplete="off" class="input_txt" name="tel_num">
+								<input type="tel" placeholder="휴대폰 번호를 입력해주세요. (-없이)" onfocus="this.placeholder = ''" onblur="this.placeholder = '휴대폰 번호를 입력해주세요. (-없이)', validateTelNum()" autocomplete="off" class="input_txt" name="tel_num">
 							</div>
 						</div>
 					</div>
+					
+					
 					<div class="access_terms">
 						<div class="terms_title">약관</div>
 						<div class="agree_all">
@@ -405,65 +404,6 @@ o 로그 기록
 			</div>
 		</div>
 	</div>
-	
-	<script> //약관 아코디언
-		$(function () {
-				$('.drop_area').click(clickedBtnMenu);
-			});
-
-			function clickedBtnMenu() {
-				$(this).find('.terms_txt').slideToggle(112);
-			}
-	</script>
-	
-	<script> //약관 모두 동의
-			const checkAll = document.querySelector('.agree_all .all');
-			const checkBoxesNormal = document.querySelectorAll('.terms_agree .normal');
-			const checkBoxChecked = Array.from(checkBoxesNormal, (checkbox) => checkbox);
-			function paintCheckAll(y) {
-				checkBoxChecked.map((e) => (e.checked = y));
-			}
-			function onCheckAllClick() {
-				checkAll.checked ? paintCheckAll(true) : paintCheckAll(false);
-			}
-			function onBoxClick() {
-				let is_checked = true;
-				checkBoxChecked.forEach((box) => {
-					is_checked = box.checked && is_checked;
-				});
-				checkAll.checked = is_checked;
-			}
-			checkAll.addEventListener('click', onCheckAllClick);
-			checkBoxesNormal.forEach((checkbox) => checkbox.addEventListener('click', onBoxClick));
-	</script>
-	
-	<script> //약관 모두 동의
-		$('.checkbox_all .all').click(function () {
-				if ($(this).prop('checked')) {
-					$('.checkbox .normal').prop('checked', true);
-				} else {
-					$('.checkbox .normal').prop('checked', false);
-				}
-			});
-			$('.checkbox').on('click', '.normal', function () {
-				var is_checked = true;
-				$('.checkbox .normal').each(function () {
-					is_checked = is_checked && $(this).is(':checked');
-				});
-				$('.checkbox_all .all').prop('checked', is_checked);
-			});
-	</script>
-	
-	<!--<script>
-		$(document).ready(function () {
-			//회원가입 버튼(회원가입 기능 작동)
-			$(".join_button").click(function () {
-				$("#join_form").attr("action", "/member/join");
-				$("#join_form").submit();
-			});
-		});
-	</script>-->
-	
 </main>
 </body>
 </html>

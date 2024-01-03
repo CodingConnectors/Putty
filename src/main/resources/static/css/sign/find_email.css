@@ -47,7 +47,7 @@
 	display: flex; justify-content: center;
 	padding-bottom: 41px; height: 81px;
 	font-size: 32px; font-weight: 600;
-	border-bottom: 2px solid #fce18a;
+	border-bottom: 2px solid #BF9270;
 }
 
 /*///////////////////////////////////////////////*/
@@ -55,7 +55,7 @@
 .help_notice{
 	width: 400px; height: 92px;
 	padding-top: 28px; padding-bottom: 26px;
-	border-bottom: 2px solid #fce18a;
+	border-bottom: 2px solid #BF9270;
 }
 
 .notice_txt{
@@ -99,13 +99,13 @@
 
 .help_box{
 	width: 400px; height: 52px;
-	background-color: #fce18a;
+	background-color: #BF9270;
 	font-size: 16px; font-weight: 700; color: white;
 	border-radius: 10px; cursor: pointer;
 }
 
 .help_box:hover{
 	background-color: white;
-	color: #fce18a;
-	border: #fce18a solid 2px;
+	color: #BF9270;
+	border: #BF9270 solid 2px;
 }

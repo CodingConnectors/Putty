@@ -2,6 +2,9 @@ package com.nowon.cho.domain.dto;
 
 import java.time.LocalDateTime;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import com.nowon.cho.domain.entity.MemberEntity;
 
 import lombok.Getter;
@@ -27,11 +30,11 @@ public class MemberDTO {
 	
 	private LocalDateTime updatedDate;
 
-	public MemberEntity toMemberEntity() {
+	public MemberEntity toMemberEntity(PasswordEncoder passwordEncoder) {
 		return MemberEntity.builder()
 				.member_no(member_no)
 				.email(email)
-				.password(password)
+				.password(passwordEncoder.encode(password))
 				.name(name)
 				.tel_num(tel_num)
 				.createdDate(createdDate)
