@@ -41,13 +41,14 @@ public class ProductsEntity extends BaseEntity {
 	@Column(nullable = false)
 	private long price;
 	
-	@Lob
-	private String productContent;
-	
 	@Column(nullable = false)
 	private long productStock;
 	
 	private long saleDiscount;
+	
+	@Lob
+	private String productContent;
+	
 	private long saleSum;
 	private long wishlistCnt;
 	

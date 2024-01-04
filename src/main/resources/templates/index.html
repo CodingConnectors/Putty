@@ -114,10 +114,10 @@
 					<div class="inherit">
 						<div class="item-list-wrap flex">
 							<ul id="best-item-ul" class="item-ul flex flex-wrap">
-								<li th:each="findBestProducts, pageSet : ${bestProducts}" th:if="${pageSet.index < 16}" class="item-li">
+								<li th:each="findProducts, pageSet : ${bestProducts}" th:if="${pageSet.index < 16}" class="item-li">
 									<div class="best-item-wrap">
 										<div class="item-img-wrap relative flex">
-											<img th:src="@{${findBestProducts.mainImgUrl}}" class="best-item-img" alt="상품 이미지">
+											<img th:src="@{${findProducts.mainImgUrl}}" class="best-item-img" alt="상품 이미지">
 												<div th:if="${pageSet.index == 0}" id="medal-gold" class="best-medal">
 												</div>
 												<div th:if="${pageSet.index == 1}" id="medal-silver" class="best-medal">
@@ -131,19 +131,19 @@
 												</a>
 												<form action="/basket" method="post">
 													<button class="index-products-btn shopping-cart-btn"></button>
-													<input type="hidden" name="productNo" th:value="${findBestProducts.productNo}">
+													<input type="hidden" name="productNo" th:value="${findProducts.productNo}">
 												</form>
 												<button class="index-products-btn favorite-btn favorite-btn-1"></button>
 											</div>
 										</div>
 										<div class="item-info-wrap">
 											<div class="item-info-1">
-												<a th:text="${findBestProducts.productName}" href="#">상품 이름</a>
+												<a th:text="${findProducts.productName}" href="#">상품 이름</a>
 											</div>
 											<div class="item-info-2 flex center-1 start">
-												<span th:text="${findBestProducts.saleDiscount} + '%'" class="sale">할인율</span>
-												<span th:text="${findBestProducts.price} + '원'" class="price">정가</span>
-												<span th:text="${findBestProducts.price - (findBestProducts.price * findBestProducts.saleDiscount / 100)} + '원'" class="sale-price">판매가</span>
+												<span th:text="${findProducts.saleDiscount} + '%'" class="sale">할인율</span>
+												<span th:text="${findProducts.price} + '원'" class="price">정가</span>
+												<span th:text="${findProducts.price - (findProducts.price * findProducts.saleDiscount / 100)} + '원'" class="sale-price">판매가</span>
 											</div>
 										</div>
 									</div>
@@ -174,7 +174,10 @@
 												<a href="#">
 													<button class="index-products-btn more-btn"></button>
 												</a>
-												<button class="index-products-btn shopping-cart-btn" onclick="modal()"></button>
+												<form action="/basket" method="post">
+													<button class="index-products-btn shopping-cart-btn"></button>
+													<input type="hidden" name="productNo" th:value="${findProducts.productNo}">
+												</form>
 												<button class="index-products-btn favorite-btn favorite-btn-1"></button>
 											</div>
 										</div>
