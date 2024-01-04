@@ -14,7 +14,7 @@ public interface ProductsService {
 	
 	void productSave(ProductsDTO productsDTO, ProductsImgDTO productsImgDTO);
 	
-	void findProducts(Model model);
+	void findBestProducts(Model model);
 	
-	void bestProducts(Model model);
+	void findNewProducts(Model model);
 }

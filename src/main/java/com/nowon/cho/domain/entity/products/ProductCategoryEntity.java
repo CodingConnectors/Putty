@@ -1,11 +1,14 @@
 package com.nowon.cho.domain.entity.products;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -30,6 +33,6 @@ public class ProductCategoryEntity {
 	@Column(nullable = false)
 	private String productCategoryName;
 	
-	@ManyToOne
-	ProductsEntity productsEntity;
+	@OneToMany(mappedBy = "productCategoryEntity")
+	private List<ProductsEntity> products;
 }
