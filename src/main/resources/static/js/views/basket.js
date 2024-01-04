@@ -5,7 +5,7 @@ let checkboxes = document.querySelectorAll('input[name="selectOrder"]');
 checkboxes.forEach(function(checkbox) {
   checkbox.addEventListener('change', calculateTotal);
 });
-
+$('#selectOrderButton').click(selectProductPayment)
 //삭제버튼시 장바구니에서 물품 삭제
 $(".delBasket").on("click", function() {
     // 선택된 행에서 data-productId 속성 값을 가져옴
@@ -53,7 +53,44 @@ $('.directOrder').on('click',function() {
     // 폼이 더 이상 필요하지 않으면 제거
     document.body.removeChild(form);
 });
+
 //선택한 물품들을 결제페이지로 이동
+function selectProductPayment() {
+  // 선택된 체크박스들을 가져와서 처리
+    let selectedProducts = $('.selectOrder:checked');
+    let form = document.createElement('form');
+    
+    form.action='/payment';
+    form.method='post';
+    
+    // 선택된 상품들의 productNo를 배열에 담기
+    selectedProducts.each(function() {
+		let input = document.createElement('input');
+        let productNo = $(this).data('productid');
+	    input.name = 'productNo';
+	    input.value = productNo;
+        form.appendChild(input);
+    });
+    
+    // form을 body에 추가하고 자동으로 submit
+    document.body.appendChild(form);
+    form.submit();
+    
+    //console.log(JSON.stringify(paymentProductsDTO))
+	/*
+    // 서버로 데이터 전송
+    $.ajax({
+        url: '/payment',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(paymentProductsDTO),
+        success: function(response) {
+            // 서버 응답을 처리
+            window.location=response;
+        }
+	});
+	*/
+}
 
 //수량이 바뀌면 금액을 계산해주는 코드
 document.querySelectorAll('.product_volume').forEach(function (input) {

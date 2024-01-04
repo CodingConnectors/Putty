@@ -8,95 +8,102 @@
 	<script src="/js/views/basket.js" defer></script>
 </head>
 <body>
-<main>
+	<main>
 		<div class="main">
-			<form id="cartForm">
-			<table>
-				<thead>
-					<tr>
-						<th>선택</th>
-						<th>이미지</th>
-						<th>상품정보</th>
-						<th>가격</th>
-						<th>수량</th>
-						<th>할인금액</th>
-						<th>적립금</th>
-						<th>물건 금액</th>
-						<th>배송비</th>
-						<th>주문</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="basket : ${basketList}">
-						<td><input type="checkbox" class="selectOrder" name="selectOrder" th:attr="data-productId=${basket.productNo}, data-price=${basket.price}, data-discount=${basket.saleDiscount}" /></td>
-						<td><img width="100px" th:src="@{${basket.mainImgUrl}}" /></td>
-						<td th:text="${basket.productName}">상품이름</td>
-						<td th:text="${basket.price}">가격</td>
-						<td><input type="number" value="1" min="1" class="product_volume" name="product_volume"/></td>
-						<td>
-							<p>
-								<span>-</span>
-								<span class="discount">0</span>
-								<span>원</span>
-							</p>
-							<span class="discountPer">0%</span>
-						</td>
-						<td>0포인트</td>
-						<td class="productPerTotal">0원</td>
-						<td>0원</td>
-						<td class="listOrderButton">
-							<button class="directOrder" type="button">바로주문</button>
-							<button class="delBasket" type="button">삭제</button>
-						</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" class="selectOrder" name="selectOrder" data-price="49200" data-discount="10" id=""/></td>
-						<td><img width="100px" src="/img/index/new_arrival/img-new-arrival-0.jpg"/></td>
-						<td>고양이 곰돌이 마약 방석 M 1P 강아지 쿠션 하우스</td>
-						<td>49,200원</td>
-						<td><input type="number" value="1" min="1" class="product_volume" name="product_volume"/></td>
-						<td>
-							<p>
-								<span>-</span>
-								<span class="discount">0</span>
-								<span>원</span>
-							</p>
-							<span class="discountPer">0%</span>
-						</td>
-						<td>0포인트</td>
-						<td class="productPerTotal">0원</td>
-						<td>0원</td>
-						<td class="listOrderButton">
-							<a href="#">바로주문</a>
-							<a href="#">삭제</a>
-						</td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" class="selectOrder" name="selectOrder" data-price="231000" data-discount="10" id=""/></td>
-						<td><img width="100px" src="/img/index/best_item/img-best-item-0.jpg"/></td>
-						<td>고양이 캣휠 XL DIY 사이즈 E 네츄럴</td>
-						<td>231,000원</td>
-						<td><input type="number" value="1" min="1" class="product_volume" name="product_volume"/></td>
-						<td>
-							<p>
-								<span>-</span>
-								<span class="discount">0</span>
-								<span>원</span>
-							</p>
-							<span class="discountPer">0%</span>
-						</td>
-						<td>0포인트</td>
-						<td class="productPerTotal">0원</td>
-						<td>0원</td>
-						<td class="listOrderButton">
-							<a href="#">바로주문</a>
-							<a href="#">삭제</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			<form id="cartForm" method="post">
+				<table>
+					<thead>
+						<tr>
+							<th>선택</th>
+							<th>이미지</th>
+							<th>상품정보</th>
+							<th>가격</th>
+							<th>수량</th>
+							<th>할인금액</th>
+							<th>적립금</th>
+							<th>물건 금액</th>
+							<th>배송비</th>
+							<th>주문</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="basket : ${basketList}">
+							<td><input type="checkbox" class="selectOrder" name="selectOrder" th:attr="data-productId=${basket.productNo}, data-price=${basket.price}, data-discount=${basket.saleDiscount}" /></td>
+							<td><img width="100px" th:src="@{${basket.mainImgUrl}}" /></td>
+							<td th:text="${basket.productName}">상품이름</td>
+							<td th:text="${basket.price}">가격</td>
+							<td><input type="number" value="1" min="1" class="product_volume" name="product_volume"/></td>
+							<td>
+								<p>
+									<span>-</span>
+									<span class="discount">0</span>
+									<span>원</span>
+								</p>
+								<span class="discountPer">0%</span>
+							</td>
+							<td>0포인트</td>
+							<td class="productPerTotal">0원</td>
+							<td>0원</td>
+							<td class="listOrderButton">
+								<button class="directOrder" type="button">바로주문</button>
+								<button class="delBasket" type="button">삭제</button>
+							</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" class="selectOrder" name="selectOrder" data-price="49200" data-discount="10" id=""/></td>
+							<td><img width="100px" src="/img/index/new_arrival/img-new-arrival-0.jpg"/></td>
+							<td>고양이 곰돌이 마약 방석 M 1P 강아지 쿠션 하우스</td>
+							<td>49,200원</td>
+							<td><input type="number" value="1" min="1" class="product_volume" name="product_volume"/></td>
+							<td>
+								<p>
+									<span>-</span>
+									<span class="discount">0</span>
+									<span>원</span>
+								</p>
+								<span class="discountPer">0%</span>
+							</td>
+							<td>0포인트</td>
+							<td class="productPerTotal">0원</td>
+							<td>0원</td>
+							<td class="listOrderButton">
+								<a href="#">바로주문</a>
+								<a href="#">삭제</a>
+							</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" class="selectOrder" name="selectOrder" data-price="231000" data-discount="10" id=""/></td>
+							<td><img width="100px" src="/img/index/best_item/img-best-item-0.jpg"/></td>
+							<td>고양이 캣휠 XL DIY 사이즈 E 네츄럴</td>
+							<td>231,000원</td>
+							<td><input type="number" value="1" min="1" class="product_volume" name="product_volume"/></td>
+							<td>
+								<p>
+									<span>-</span>
+									<span class="discount">0</span>
+									<span>원</span>
+								</p>
+								<span class="discountPer">0%</span>
+							</td>
+							<td>0포인트</td>
+							<td class="productPerTotal">0원</td>
+							<td>0원</td>
+							<td class="listOrderButton">
+								<a href="#">바로주문</a>
+								<a href="#">삭제</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</form>
-			
+				<form action="/payment" method="post">
+					<input type="checkbox" value="1">
+					<input type="checkbox" value="2">
+					<input type="checkbox" value="3">
+					<input type="checkbox" value="4">
+					<button>전송</button>
+				</form>
+				
 			<div id="settlement">
 				<ul>
 					<li>
@@ -122,7 +129,7 @@
 				</div>
 			</div>
 			<div class="totalOrderButton">
-				<a href="#"><div>선택주문하기</div></a>
+				<button type="button" id="selectOrderButton"><div>선택주문하기</div></button>
 				<a href="#"><div>전체주문하기</div></a>
 			</div>
 		</div>

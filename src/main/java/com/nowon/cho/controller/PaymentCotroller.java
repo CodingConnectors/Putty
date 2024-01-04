@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nowon.cho.domain.dto.PaymentProductsDTO;
@@ -26,8 +27,10 @@ public class PaymentCotroller {
 
 	@PostMapping
 	public String paymentPage(@ModelAttribute PaymentProductsDTO dto,Model model) {
-//		dto.getProductNo().forEach(a->System.out.println(a));
+//		System.out.println("list>>>>:"+dto.getProductNo());
+//		dto.getProductNo().forEach(a->System.out.println(a)); 
 		service.page(dto, model);
+		
 		return "views/payment/payment";
 	}
 	
