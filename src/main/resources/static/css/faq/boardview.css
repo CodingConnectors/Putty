@@ -125,7 +125,7 @@ ul, ol {
 
 /* Style for the entire view_text box */
 .view_text {
-    margin: 20px;
+
     padding: 100px; /* Adjust the padding to your desired value */
     border: 1px solid #BF9270;
     border-radius: 8px;

@@ -1,6 +1,7 @@
 package com.nowon.cho.faq.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.nowon.cho.faq.entity.Board;
@@ -41,34 +43,8 @@ public class BoardController {
     }
     
 	@GetMapping("/member/faq_board")
-	public String faq_board(Model model, 
-			@PageableDefault(page = 0, size = 5, sort = "id", direction = Direction.DESC) Pageable pageable,
-			String searchKeyword
-			) {	
-		
-		Page<Board> list = null;
-		
-		if(searchKeyword == null) {
-			
-			list = boardService.boardList(pageable);
-			
-		}
-		else {
-			
-			list = boardService.boardSearchList(searchKeyword, pageable);
-			
-		}
-		
-		int nowPage = list.getPageable().getPageNumber() + 1;
-		int startPage = Math.max(nowPage - 4, 1);
-		int endPage = Math.min(nowPage + 5, list.getTotalPages());
-
-		//리스트
-		model.addAttribute("list", list);
-		model.addAttribute("nowPage", nowPage);
-		model.addAttribute("startPage", startPage);
-		model.addAttribute("endPage", endPage);
-		
+	public String faq_board(Model model,String searchKeyword,@RequestParam(defaultValue = "1") int page,@RequestParam(defaultValue = "3") int limit) {	
+		boardService.boardList(model,searchKeyword,page, limit);
 		return "faq/faq_board";
 	}
 	
