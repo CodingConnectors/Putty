@@ -6,6 +6,8 @@ build/
 !**/src/test/**/build/
 
 ### STS ###
+application.properties
+.gitignore
 .apt_generated
 .classpath
 .factorypath
