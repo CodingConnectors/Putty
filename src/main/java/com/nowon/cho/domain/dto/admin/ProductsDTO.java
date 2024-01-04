@@ -1,5 +1,6 @@
 package com.nowon.cho.domain.dto.admin;
 
+import com.nowon.cho.domain.entity.products.ProductCategoryEntity;
 import com.nowon.cho.domain.entity.products.ProductsEntity;
 
 import lombok.Getter;
