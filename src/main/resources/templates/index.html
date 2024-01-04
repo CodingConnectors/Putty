@@ -12,29 +12,7 @@
 		<link rel="stylesheet" href="/css/index/layout.css">
 		<link rel="stylesheet" href="/css/index/swiper.css">
 		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-		<script>
-			function modal() {
-				document.getElementById('modal-shopping-cart').style.visibility = "visible";
-			}
-			
-			function modalClose() {
-				document.getElementById('modal-shopping-cart').style.visibility = "hidden";
-			}
-			
-			$(document).ready(function() {
-				let favorite = true;
 		
-				$('.favorite-btn').click(function() {
-	    			favorite = !favorite;
-		
-	    			if (favorite) {
-	    				$(this).removeClass('favorite-btn-2').addClass('favorite-btn-1');
-	    			} else {
-	    				$(this).removeClass('favorite-btn-1').addClass('favorite-btn-2');
-	    			}
-				});
-			});
-		</script>
 	</head>
 	<body>
 		<main>
@@ -151,7 +129,10 @@
 												<a href="#">
 													<button class="index-products-btn more-btn"></button>
 												</a>
-												<button class="index-products-btn shopping-cart-btn" onclick="modal()"></button>
+												<form action="/basket" method="post">
+													<button class="index-products-btn shopping-cart-btn"></button>
+													<input type="hidden" name="productNo" th:value="${findBestProducts.productNo}">
+												</form>
 												<button class="index-products-btn favorite-btn favorite-btn-1"></button>
 											</div>
 										</div>
