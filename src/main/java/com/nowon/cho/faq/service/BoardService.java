@@ -136,9 +136,18 @@ public class BoardService {
 		boardRepository.deleteById(id);
 		
 	}
-
 	
+	//URI 파라미터 유틸 메서드
+	/*
+	public String makeURI(int page){
 	
-	
+		UriComponents ucp = UriComponentsbuilder.newInstance().queryParam("pageNum",page)
+			.queryParam("cpp", paging.getCpp())
+			.queryParam("keyword", paging.getKeyword())
+			.queryParam("condition", paging.getCondition())
+			.build();
+		return ucp.toUriString();
+	}
+	*/
 
 }
