@@ -35,5 +35,10 @@ public class SignServiceProcess implements SignService {
 	public MemberEntity findByEmailAndPassword(String email, String password) {
 		return memberRepository.findByEmailAndPassword(email, password);
 	}
+
+	@Override
+	public boolean existsByEmail(String email) {
+		return memberRepository.existsByEmail(email);
+	}
 	
 }

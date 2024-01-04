@@ -52,7 +52,7 @@ public class SecurityConfig {
 		
 		  .authorizeHttpRequests((authorize) -> authorize
 		  .antMatchers("/css/**","/img/**","/js/**").permitAll()//접근가능
-		  .antMatchers("/","/signup","/find_email","/find_email_after",
+		  .antMatchers("/","/signup","/common/**","/find_email","/find_email_after",
 		  "/find_password","/find_password_after").permitAll()//접근가능
 		  .antMatchers("/basket").permitAll()//접근가능
 		  .antMatchers("/faq/faq_info","/faq/frequently_asked","/faq/faq_notice").permitAll()//접근가능

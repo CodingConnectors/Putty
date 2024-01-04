@@ -1,22 +1,57 @@
 // signup.js
 
 // 이메일 유효성 검사를 위한 스크립트
-function validateEmail() {
-	var email = document.forms["signupForm"]["email"].value;
+async function validateEmail() {
+    var email = document.forms["signupForm"]["email"].value;
     var emailError = document.getElementById("emailError");
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-	
-	if (email === "") {
+
+    if (email === "") {
         emailError.innerText = "를 입력해주세요.";
+        emailError.className = "error-message";
         return false;
     } else if (!emailRegex.test(email)) {
         emailError.innerText = "를 올바르게 입력해주세요.";
+        emailError.className = "warning-message";
         return false;
-    } else {
-        emailError.innerText = "가 멋지네요.";
-        return true;
+    }
+
+    try {
+        // 비동기적으로 중복 검사
+        var isExisted = await existsByEmail(email);
+		console.log("checkEmail-result: "+isExisted);
+        if (isExisted) {
+            emailError.innerText = "가 이미 존재합니다.";
+            emailError.className = "warning-message";
+            return false;
+        } else {
+            emailError.innerText = "가 멋지네요.";
+            emailError.className = "success-message";
+            return true;
+        }
+    } catch (error) {
+        console.error("Error during email duplicate check:", error);
+        return false;
     }
 }
+
+// 이메일 중복성 검사를 위한 스크립트
+function existsByEmail(email) {
+    return new Promise(function (resolve, reject) {
+        $.ajax({
+            url: "/common/check-email",  // 중복 검사를 위한 서버 URL
+            type: "post",
+            data: {email: email},
+            success: function (isExisted) {
+                resolve(isExisted);
+            },
+            error: function (xhr, status, error) {
+                reject(error);
+            }
+        });
+    });
+}
+
 
 // 비밀번호 유효성 검사를 위한 스크립트
 function validatePassword() {
@@ -26,15 +61,19 @@ function validatePassword() {
 	
 	if (password === "") {
         passwordError.innerText = "를 입력해주세요.";
+        passwordError.className = "error-message"; // 빨간색
         return false;
     } else if (!passwordRegex.test(password)) {
         passwordError.innerText = "는 영문, 숫자, 특수문자를 조합해서 입력해주세요.(8~16자)";
+        passwordError.className = "warning-message"; // 주황색
         return false;
     } else {
         passwordError.innerText = "가 완벽합니다.";
+        passwordError.className = "success-message"; // 파란색
         return true;
     }
 }
+
 
 // 비밀번호 확인 유효성 검사를 위한 스크립트
 function validateConfirmPassword() {
@@ -44,12 +83,15 @@ function validateConfirmPassword() {
 	
 	if (confirmPassword === "") {
     	cPasswordError.innerText = "를 재입력해주세요.";
+    	cPasswordError.className = "error-message";
     	return false;
     } else if (confirmPassword !== password) {
         cPasswordError.innerText = "가 일치하지 않습니다.";
+        cPasswordError.className = "warning-message";
         return false;
     } else {
         cPasswordError.innerText = "가 일치합니다.";
+        cPasswordError.className = "success-message"
         return true;
     }
 }
@@ -62,30 +104,36 @@ function validateName() {
 
     if (name === "") {
         nameError.innerText = "을 입력해주세요.";
+        nameError.className = "error-message";
         return false;
     } else if (!nameRegex.test(name)) {
         nameError.innerText = "이 올바르지 않습니다.";
+        nameError.className = "warning-message";
         return false;
     } else {
         nameError.innerText = "이 예쁘네요.";
+        nameError.className = "success-message";
         return true;
     }
 }
 
 // 전화번호 유효성 검사를 위한 스크립트
 function validateTelNum() {
-    var telNum = document.forms["signupForm"]["tel_num"].value;
-    var telNumError = document.getElementById("tel_numError");
+    var telNum = document.forms["signupForm"]["telNum"].value;
+    var telNumError = document.getElementById("telNumError");
     var telNumRegex = /^[0-9]{10,11}$/;
 	
 	if (telNum === "") {
         telNumError.innerText = "를 입력해주세요.";
+        telNumError.className = "error-message";
         return false;
     } else if (!telNumRegex.test(telNum)) {
         telNumError.innerText = "는 -없이 입력해주세요.(10~11자)";
+        telNumError.className = "warning-message";
         return false;
     } else {
         telNumError.innerText = "가 입력되었습니다.";
+        telNumError.className = "success-message";
         return true;
     }
 }

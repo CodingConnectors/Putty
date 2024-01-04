@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nowon.cho.domain.dto.MemberDTO;
 import com.nowon.cho.domain.entity.MemberEntity;
@@ -70,4 +71,10 @@ public class SignController {
 		return "views/sign/find_password_after";
 	}
 	
+	//이메일 중복 검사
+	@ResponseBody
+	@PostMapping("/common/check-email")
+	public boolean checkEmail(String email) {
+		return signservice.existsByEmail(email);
+	}
 }
