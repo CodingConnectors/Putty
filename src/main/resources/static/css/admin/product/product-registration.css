@@ -10,6 +10,7 @@ body {
 }
 
 input {
+	border: 1px solid #D8D9DA;
 	outline: none;
 }
 
@@ -29,7 +30,7 @@ input {
 }
 
 .admin-products-body {
-	height: 795px;
+	height: 845px;
 	border: 1px solid #6B7282;
 	background-color: #FFF;
 }
@@ -46,14 +47,14 @@ input {
 }
 
 .admin-products-body-main-wrap {
-	height: 675px;
+	height: 725px;
 	justify-content: center;
 	align-items: center;
 }
 
 .admin-products-body-main {
 	width: 1230px;
-	height: 626px;
+	height: 676px;
 	position: relative;
 	border: 1px solid#A9A9A9;
 }
@@ -102,13 +103,24 @@ input {
 .product-input-name {
 	width: 500px;
 	height: 30px;
-	border: 1px solid #D8D9DA;
 }
 
 .product-input-num {
 	width: 150px;
 	height: 30px;
+}
+
+.product-input-select {
+	width: 122px;
+	height: 32px;
 	border: 1px solid #D8D9DA;
+	outline: none;
+	font-size: 16px;
+}
+
+.product-input-select > option {
+	/*padding-left: 5px;*/
+	font-size: inherit;
 }
 
 .admin-product-img {

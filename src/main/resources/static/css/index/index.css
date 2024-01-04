@@ -19,13 +19,18 @@ button {
 	transform: scale(1.15);
 }
 
-.bestItem-section-2 {
-	width: 1280px;
+.product-section {
+	width: 1320px;
 	margin: 0 auto;
+	padding-bottom: 100px;
 }
 
-.newArrivals-section {
-	padding-bottom: 100px;
+.product-section-1 {
+	padding-bottom: 50px;
+}
+
+.product-section-2 {
+	width: 1320px;
 }
 
 .category {
@@ -147,8 +152,8 @@ button {
 }
 
 .item-li {
-	width: 280px;
-	height: 355px;
+	width: 290px;
+	height: 362.5px;
 	padding: 30px 20px;
 }
 
@@ -157,8 +162,8 @@ button {
 }
 
 .best-item-img {
-	width: 280px;
-	height: 280px;
+	width: 290px;
+	height: 290px;
 	position: relative;
 	filter: brightness(1);
 	transition: 0.2s ease-in-out;

@@ -20,6 +20,8 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.nowon.cho.domain.dto.admin.ProductsDTO;
 import com.nowon.cho.domain.dto.admin.ProductsImgDTO;
+import com.nowon.cho.domain.entity.products.ProductCategoryEntity;
+import com.nowon.cho.domain.entity.products.ProductCategoryEntityRepository;
 import com.nowon.cho.domain.entity.products.ProductsEntity;
 import com.nowon.cho.domain.entity.products.ProductsEntityRepository;
 import com.nowon.cho.domain.entity.products.ProductsImgEntity;
@@ -35,6 +37,7 @@ public class ProductsServiceProcess implements ProductsService {
 	private final AmazonS3Client amazonS3Client;
 	private final ProductsEntityRepository productsEntityRepository;
 	private final ProductsImgEntityRepository productsImgEntityRepository;
+	private final ProductCategoryEntityRepository productCategoryEntityRepository;
 	
 	@Value("${cloud.aws.s3.bucket}")
 	private String BUCKET_NAME;
@@ -91,6 +94,11 @@ public class ProductsServiceProcess implements ProductsService {
 						.build());
 			}
 		}
+		
+		productCategoryEntityRepository.save(ProductCategoryEntity.builder()
+				.productCategoryName(productsDTO.getProductCategoryName())
+				.productsEntity(productsEntity)
+				.build());
 	}
 
 	private String tempToProductImg(ProductsImgDTO productsImgDTO, int i) {
