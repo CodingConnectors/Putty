@@ -1,0 +1,87 @@
+@charset "UTF-8";
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f8f8;
+  color: #333;
+  margin: 0;
+}
+
+h1, h2 {
+  color: #007bff;
+}
+
+hr {
+  border: 1px solid #ddd;
+}
+
+section {
+  margin: 20px 0;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+input, select, button {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#dept-search {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+ul.company {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li.department:hover {
+  background-color: #e0e0e0;
+}
+
+ul.team {
+  display: none;
+  padding-left: 20px;
+}
+
+ul.team.expanded {
+  display: block !important;
+}
+
+li.department {
+  cursor: pointer;
+  margin-bottom: 5px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ddd; /* Border added */
+  transition: background-color 0.3s;
+}
+
+li.department:nth-child(odd) {
+  background-color: #f4f4f4; /* Light Gray */
+}
+
+li.department:nth-child(even) {
+  background-color: #e0e0e0; /* Dark Gray */
+}
+
+li.department:hover {
+  background-color: #c0c0c0; /* Gray on hover */
+}

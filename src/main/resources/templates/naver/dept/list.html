@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>조직배치 | Putty</title>
+
+<link rel="stylesheet" href="/css/naver/naver_organization.css">
+
+<style>
+	li{list-style: none;}
+	*{margin:0; padding:0}
+	input,select,button{
+		margin: 5px 0;
+		padding: 0.8em;
+	}
+	body{padding: 1em;}
+
+	ul {
+      list-style-type: none;
+      padding-left: 20px;
+    }
+    .department, .team {
+      cursor: pointer;
+    }
+    .team {
+      display: none;
+    }
+    .expanded {
+      display: block !important;
+    }
+    #dept-search{
+		line-height: 2em;
+	}
+</style>
+
+
+</head>
+<body>
+	<h1>부서배치 및 부서배치도</h1>
+	<hr>
+	<section>
+		<h2>부서등록</h2>
+		<div>
+			<form action="/naver/dept" method="post" >
+				<p>
+					<input type="text" name="name" placeholder="부서이름">
+				</p>
+				<p>
+					<input type="text" name="deptExternalKey" placeholder="부서외부기 ex)dept0000">
+				</p>
+				<p>
+					<select name="parentDeptExternalKey">
+						<th:block th:each="dto:${list}">
+						<option th:value="${dto.externalKey}">[[${dto.name}]]</option>
+						</th:block>
+					</select>
+				</p>
+				<p>
+					<input type="text" name="dispOrd" placeholder="조직도 순서 ex> 1, 2, 3 숫자만">
+				</p>
+				<p>
+					<button type="submit">부서등록</button>
+				</p>
+			</form>
+		</div>
+	</section>
+	<hr>
+	
+	<section id="dept-search">
+		<h2>부서조회</h2>
+		<div id="organization">
+			<ul class="company">
+				<li class="department" th:each="element : ${list}" th:if="${element.parentDeptNo eq '#'}">
+					<span th:text="${element.name+'('+element.externalKey+')' }"></span>
+					<ul class="team expanded">
+						<li class="department" th:each="team : ${list}" th:if="${team.parentDeptNo eq element.deptNo}">
+							<span th:text="${team.name+'('+team.externalKey+')' }"></span>
+							<ul class="team expanded">
+								<li class="department" th:each="part : ${list}" th:if="${part.parentDeptNo eq team.deptNo}">
+									<span th:text="${part.name+'('+part.externalKey+')' }"></span>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</section>
+	<hr>
+	<script>
+			
+	document.addEventListener("DOMContentLoaded", function () {
+		const departments = document.querySelectorAll(".department");
+		const teams = document.querySelectorAll(".team");
+		teams.forEach((team) => {
+			team.addEventListener("click", function (event) {
+				// 팀 클릭 시 이벤트 처리
+				event.stopPropagation(); // 이벤트 전파 방지
+			});
+		});
+
+		departments.forEach((department) => {
+			department.addEventListener("click", function () {
+				this.querySelector(".team").classList.toggle("expanded");
+			});
+		});
+	});
+	</script>
+	
+	
+	
+</body>
+</html>

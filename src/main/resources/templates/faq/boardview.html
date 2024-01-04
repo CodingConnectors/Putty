@@ -66,8 +66,9 @@
 				        
 				        <div class="option1" id="option1">
 				            <a th:href="@{${board.filepath}}" id="download1">다운받기</a>
-				            <a th:href="@{/member/board/delete(id = ${board.id})}" id="delete1">삭제</a>
 				            <a th:href="@{/member/board/modify/{id}(id = ${board.id})}" id="modify1">수정</a>
+				            <a th:href="@{/member/board/delete(id = ${board.id})}" id="delete1">삭제</a>
+				           
 				        </div>    
 				    </div>
 				</div>
