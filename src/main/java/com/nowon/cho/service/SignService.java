@@ -9,4 +9,6 @@ public interface SignService {
 
 	MemberEntity findByEmailAndPassword(String email, String password);
 
+	boolean existsByEmail(String email);
+
 }

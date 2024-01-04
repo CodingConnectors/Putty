@@ -1,5 +1,17 @@
 @charset "UTF-8";
 
+.error-message {
+    color: red; /* 빨간색 */
+}
+
+.success-message {
+    color: blue; /* 파란색 */
+}
+
+.warning-message {
+    color: orange; /* 주황색 */
+}
+
 .container_signup{
 	margin:0px auto 0; height: 1157px; width: 1440px;
 	box-sizing: border-box;

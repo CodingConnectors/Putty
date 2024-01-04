@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -58,7 +59,7 @@ public class MemberEntity extends BaseEntity {
 	@Column(columnDefinition = "timestamp(6) null")
 	private LocalDateTime updatedDate;
 	
-	@Column(nullable = false, columnDefinition = "CHAR(1) default 'N'")
+	@Column(columnDefinition = "CHAR(1) default 'N'")
 	private char cancel;
 	
 	//role
