@@ -13,6 +13,7 @@ public class ProductsDTO {
 	private long price;
 	private long saleDiscount;
 	private long productStock;
+	private String productCategoryName;
 	private String productContent;
 	
 	public ProductsEntity toProductsEntity() {
