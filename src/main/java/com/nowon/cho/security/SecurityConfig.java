@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @EnableWebSecurity
 public class SecurityConfig {
@@ -30,7 +31,9 @@ public class SecurityConfig {
 	 * DB에 같은 username이 있다면 DB에서 해당하는 객체를 생성(username, password, roll)하고 반환
 	 */
 	@Bean 
-	UserDetailsService memberDetailsService() { return new MyMemberDetailsService(); }
+	UserDetailsService memberDetailsService() { 
+		return new MyMemberDetailsService(); 
+	}
 	 
 	
 	
@@ -42,11 +45,11 @@ public class SecurityConfig {
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.csrf(csrf->csrf.disable()) // CSRF 비활성화
-			
+			/*
 			.authorizeHttpRequests((authorize) -> authorize
 			.antMatchers("/**").permitAll())//접근가능
-			
-		/*
+			*/
+		
 		  .authorizeHttpRequests((authorize) -> authorize
 		  .antMatchers("/css/**","/img/**","/js/**").permitAll()//접근가능
 		  .antMatchers("/","/signup","/find_email","/find_email_after",
@@ -61,7 +64,7 @@ public class SecurityConfig {
 		  
 		  .anyRequest().authenticated()//나머지는 인증(로그인)해야해요 
 		  )
-		  */
+		  
 		  
 		  //.formLogin(Customizer.withDefaults())
 		  

@@ -16,7 +16,7 @@ import lombok.ToString;
 @ToString
 public class MemberDTO {
 	
-	private long member_no;
+	private long memberNo;
 	
 	private String email;
 	
@@ -24,7 +24,7 @@ public class MemberDTO {
 	
 	private String name;
 	
-	private String tel_num;
+	private String telNum;
 	
 	private LocalDateTime createdDate;
 	
@@ -32,11 +32,11 @@ public class MemberDTO {
 
 	public MemberEntity toMemberEntity(PasswordEncoder passwordEncoder) {
 		return MemberEntity.builder()
-				.member_no(member_no)
+				.memberNo(memberNo)
 				.email(email)
 				.password(passwordEncoder.encode(password))
 				.name(name)
-				.tel_num(tel_num)
+				.telNum(telNum)
 				.createdDate(createdDate)
 				.updatedDate(updatedDate)
 				.build();

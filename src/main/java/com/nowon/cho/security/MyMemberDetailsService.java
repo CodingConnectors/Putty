@@ -28,18 +28,21 @@ public class MyMemberDetailsService implements UserDetailsService {
 			System.out.println("존재하지 않는 회원입니다.");
 		}else {
 			System.out.println("존재하는 회원입니다.");
+			// 콘솔에 member_no 출력
+            System.out.println("Logged in user's member_no: " + member.getMemberNo());
 		}
 		
 		/*
 		 * DB에 해당하는 사용자가 있으면 사용자의 ROLE(권한)을 객체에 넣어 반환.
 		 * Spring.io Security 를 참고하여 ROLE을 반환타입에 맞게 변환해준다.
 		 */
+		/*
 		Set<SimpleGrantedAuthority> grnatedAuthority = member.getMemberRoles().stream()
 				.map((myRole) -> new SimpleGrantedAuthority("ROLE_"+myRole.name()))
 				.collect(Collectors.toSet());
+		*/
 		
-		
-		return new User(email, member.getPassword(), grnatedAuthority);
+		return new MyUserDetails(member);
 	}
 	
 }

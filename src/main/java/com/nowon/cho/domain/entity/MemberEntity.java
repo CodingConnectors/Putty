@@ -41,7 +41,7 @@ public class MemberEntity extends BaseEntity {
 	
 	@Id
 	@GeneratedValue(generator = "gen_seq_mem", strategy = GenerationType.SEQUENCE)
-	private long member_no;
+	private long memberNo;
 	@Column(nullable = false, unique = true)
 	private String email;
 	@Column(nullable = false)
@@ -49,7 +49,7 @@ public class MemberEntity extends BaseEntity {
 	@Column(nullable = false)
 	private String name;
 	@Column(nullable = false)
-	private String tel_num;
+	private String telNum;
 	
 	@CreationTimestamp
 	@Column(columnDefinition = "timestamp(6) null" , nullable = false)
@@ -58,6 +58,9 @@ public class MemberEntity extends BaseEntity {
 	@Column(columnDefinition = "timestamp(6) null")
 	private LocalDateTime updatedDate;
 	
+	@Column(nullable = false, columnDefinition = "CHAR(1) default 'N'")
+	private char cancel;
+	
 	//role
 	@Builder.Default
 	//@Enumerated 선언하지 않으면 ordinal(숫자)로 저장됨
@@ -65,6 +68,8 @@ public class MemberEntity extends BaseEntity {
 	@CollectionTable(name = "role")
 	@ElementCollection(fetch = FetchType.EAGER)//1:N MemberEntity에서만 접근가능한 내장테이블
 	private Set<MemberRole> memberRoles= new HashSet<>();
+	
+	
 	//편의메서드
 	public MemberEntity addRole(MemberRole role) {
 		memberRoles.add(role);
