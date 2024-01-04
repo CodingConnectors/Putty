@@ -28,9 +28,9 @@ class PuttyApplicationTests {
 	@Test
 	void 장바구니추가() {
 
-		for(long i=1; i<=10; i++) {
+		for(long i=1; i<=11; i++) {
 			basketRepo.save(BasketEntity.builder()
-					.memberNo(memberRepo.findById(22L).orElse(null))
+					.memberNo(memberRepo.findById(31L).orElse(null))
 					.productNo(prodRepo.findById(i).orElse(null))
 					.volume(2)
 					.build());

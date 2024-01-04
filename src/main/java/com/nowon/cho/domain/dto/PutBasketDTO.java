@@ -8,7 +8,7 @@ import lombok.Setter;
 public class PutBasketDTO {
 
 	private long member;
-	private long product;
+	private long productNo;
 	private long volume;
 	
 	public void setVolume() {
