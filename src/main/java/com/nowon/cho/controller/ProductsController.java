@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,15 +24,15 @@ public class ProductsController {
 	
 	@GetMapping()
 	public String indexProducts(Model model) {
-		productsService.bestProducts(model);
-		productsService.findProducts(model);
+		productsService.findBestProducts(model);
+		productsService.findNewProducts(model);
 		
 		return "index";
 	}
 	
-	@GetMapping("/productList")
-	public String productList(Model model) {
-		productsService.findProducts(model);
+	@GetMapping("/products")
+	public String productList(@RequestParam(name = "productCategoryName") Model model) {
+		productsService.findNewProducts(model);
 		return "product/products";
 	}
 	

@@ -20,8 +20,6 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.nowon.cho.domain.dto.admin.ProductsDTO;
 import com.nowon.cho.domain.dto.admin.ProductsImgDTO;
-import com.nowon.cho.domain.entity.products.ProductCategoryEntity;
-import com.nowon.cho.domain.entity.products.ProductCategoryEntityRepository;
 import com.nowon.cho.domain.entity.products.ProductsEntity;
 import com.nowon.cho.domain.entity.products.ProductsEntityRepository;
 import com.nowon.cho.domain.entity.products.ProductsImgEntity;
@@ -37,7 +35,6 @@ public class ProductsServiceProcess implements ProductsService {
 	private final AmazonS3Client amazonS3Client;
 	private final ProductsEntityRepository productsEntityRepository;
 	private final ProductsImgEntityRepository productsImgEntityRepository;
-	private final ProductCategoryEntityRepository productCategoryEntityRepository;
 	
 	@Value("${cloud.aws.s3.bucket}")
 	private String BUCKET_NAME;
@@ -75,6 +72,19 @@ public class ProductsServiceProcess implements ProductsService {
 		return productImg;
 	}
 
+	private String tempToProductImg(ProductsImgDTO productsImgDTO, int i) {
+		String bucketKey = UPLOAD_PATH
+				+ UUID.randomUUID().toString()
+				+ productsImgDTO.getOrgName()[i].substring(productsImgDTO.getOrgName()[i].lastIndexOf("."));
+		
+		CopyObjectRequest copyObjectRequest = new CopyObjectRequest(BUCKET_NAME, productsImgDTO.getTempKey()[i], BUCKET_NAME, bucketKey);
+		
+		amazonS3Client.copyObject(copyObjectRequest.withCannedAccessControlList(CannedAccessControlList.PublicRead));
+		amazonS3Client.deleteObject(BUCKET_NAME, productsImgDTO.getTempKey()[i]);
+		
+		return bucketKey;
+	}
+	
 	@Override
 	public void productSave(ProductsDTO productsDTO, ProductsImgDTO productsImgDTO) {
 		ProductsEntity productsEntity = productsEntityRepository.save(productsDTO.toProductsEntity());
@@ -94,38 +104,20 @@ public class ProductsServiceProcess implements ProductsService {
 						.build());
 			}
 		}
-		
-		productCategoryEntityRepository.save(ProductCategoryEntity.builder()
-				.productCategoryName(productsDTO.getProductCategoryName())
-				.productsEntity(productsEntity)
-				.build());
 	}
-
-	private String tempToProductImg(ProductsImgDTO productsImgDTO, int i) {
-		String bucketKey = UPLOAD_PATH
-				+ UUID.randomUUID().toString()
-				+ productsImgDTO.getOrgName()[i].substring(productsImgDTO.getOrgName()[i].lastIndexOf("."));
-		
-		CopyObjectRequest copyObjectRequest = new CopyObjectRequest(BUCKET_NAME, productsImgDTO.getTempKey()[i], BUCKET_NAME, bucketKey);
-		
-		amazonS3Client.copyObject(copyObjectRequest.withCannedAccessControlList(CannedAccessControlList.PublicRead));
-		amazonS3Client.deleteObject(BUCKET_NAME, productsImgDTO.getTempKey()[i]);
-		
-		return bucketKey;
-	}
-
+	
 	@Override
-	public void findProducts(Model model) {
-		model.addAttribute("productList", productsEntityRepository.findAll(Sort.by(Sort.Order.desc("createdDate"))).stream()
-				.map(ProductsEntity :: toProductListDTO)
-				.collect(Collectors.toList()));
-	}
-
-	@Override
-	public void bestProducts(Model model) {
+	public void findBestProducts(Model model) {
 		List<ProductsEntity> bestProducts = productsEntityRepository.findAll(Sort.by(Sort.Order.desc("saleSum")));
 		
 		model.addAttribute("bestProducts", bestProducts.stream()
+				.map(ProductsEntity :: toProductListDTO)
+				.collect(Collectors.toList()));
+	}
+	
+	@Override
+	public void findNewProducts(Model model) {
+		model.addAttribute("newProducts", productsEntityRepository.findAll(Sort.by(Sort.Order.desc("createdDate"))).stream()
 				.map(ProductsEntity :: toProductListDTO)
 				.collect(Collectors.toList()));
 	}
