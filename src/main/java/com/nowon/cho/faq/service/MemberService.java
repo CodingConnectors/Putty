@@ -26,10 +26,10 @@ public class MemberService {
 
 	    private MemberDTO mapToMemberDTO(MemberEntity memberEntity) {
 	        MemberDTO memberDTO = new MemberDTO();
-	        memberDTO.setMember_no(memberEntity.getMember_no());
+	        memberDTO.setMemberNo(memberEntity.getMemberNo());
 	        memberDTO.setEmail(memberEntity.getEmail());
 	        memberDTO.setName(memberEntity.getName());
-	        memberDTO.setTel_num(memberEntity.getTel_num());
+	        memberDTO.setTelNum(memberEntity.getTelNum());
 	        memberDTO.setCreatedDate(memberEntity.getCreatedDate());
 	        memberDTO.setUpdatedDate(memberEntity.getUpdatedDate());
 	        return memberDTO;

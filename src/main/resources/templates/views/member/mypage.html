@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<link rel="stylesheet" href="/css/member/member.css">
 	<link rel="stylesheet" href="/css/member/mypage.css">
@@ -18,24 +17,24 @@
 					<div class="mypage_main_title">
 						마이 페이지
 					</div>
-				<div class="user_data">
+				<div class="user_data" sec:authorize="isAuthenticated()">
 					<div class="user_input">
 						<div class="input_title">이메일 주소</div>
 						<div class="input_item">
-							<input type="text" class="input_txt" id="email" name="email" value="${members.email }" readonly>
+							<input type="text" class="input_txt" id="email" name="email" th:value="${#authentication.name }" readonly>
 						</div>
 					</div>
 					
 					<div class="user_input">
 						<div class="input_title">이름</div>
 						<div class="input_item">
-							<input type="text" class="input_txt" id="name" name="name" value="${members.name }" readonly>
+							<input type="text" class="input_txt" id="name" name="name" th:value="${#authentication.principal.name }" readonly>
 						</div>
 					</div>
 					<div class="user_input">
 						<div class="input_title">휴대폰 번호</div>
 						<div class="input_item">
-							<input type="text" class="input_txt" id="tel_num" name="tel_num" value="${members.tel_num }" readonly>
+							<input type="text" class="input_txt" id="tel_num" name="telNum" th:value="${#authentication.principal.telNum }" readonly>
 						</div>
 					</div>
 					<div class="user_input_address">

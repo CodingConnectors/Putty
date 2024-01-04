@@ -1,12 +1,19 @@
 package com.nowon.cho.controller;
 
+import java.lang.reflect.Member;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nowon.cho.domain.dto.MemberDTO;
+import com.nowon.cho.domain.entity.MemberEntity;
 import com.nowon.cho.service.SignService;
 
 
@@ -41,14 +48,6 @@ public class SignController {
 		return "views/sign/find_password";
 	}
 	
-	//로그인하기
-	@PostMapping("/signin")
-	public String signin(String email, String password) {
-		System.out.println(email);
-		System.out.println(password);
-		return "redirect:/";
-	}
-	
 	//회원가입 하기
 	@PostMapping("/signup")
 	public String signup(MemberDTO dto) throws Exception {
@@ -69,12 +68,6 @@ public class SignController {
 		System.out.println(tel_num);
 		System.out.println(email);
 		return "views/sign/find_password_after";
-	}
-	
-	//로그아웃 하기
-	@RequestMapping("signout")
-	public String signout() {
-		return "redirect:/";
 	}
 	
 }
