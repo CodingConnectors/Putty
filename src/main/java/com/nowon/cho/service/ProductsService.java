@@ -18,5 +18,5 @@ public interface ProductsService {
 	
 	void findNewProducts(Model model);
 	
-	void findProductsByCategory(Model model);
+	void findProductsByCategory(String category, Model model);
 }

@@ -70,8 +70,4 @@ public class ProductsEntity extends BaseEntity {
 				.mainImgUrl("https://0idealisawsbucket.s3.ap-northeast-2.amazonaws.com/" + mainImg.getBucketKey())
 				.build();
 	}
-	
-	public FindProductsDTO findProductsByCategory() {
-		return null;
-	}
 }

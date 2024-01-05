@@ -11,25 +11,25 @@ button {
 	cursor: pointer;
 }
 
-.index-products-btn {
+.index-product-btn {
 	transition: 0.1s ease-in-out;
 }
 
-.index-products-btn:hover {
+.index-product-btn:hover {
 	transform: scale(1.15);
 }
 
-.product-section {
+.products-section {
 	width: 1320px;
 	margin: 0 auto;
 	padding-bottom: 100px;
 }
 
-.product-section-1 {
+.products-section-1 {
 	padding-bottom: 50px;
 }
 
-.product-section-2 {
+.products-section-2 {
 	width: 1320px;
 }
 
@@ -154,7 +154,7 @@ button {
 .item-li {
 	width: 290px;
 	height: 362.5px;
-	padding: 30px 20px;
+	padding: 50px 20px;
 }
 
 .item-img-wrap {

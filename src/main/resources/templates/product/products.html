@@ -17,7 +17,7 @@
 					<div class="inherit">
 						<div class="item-list-wrap flex">
 							<ul id="best-item-ul" class="item-ul flex flex-wrap">
-								<li th:each="findProducts, pageSet : ${productList}" th:if="${pageSet.index < 16}" class="item-li">
+								<li th:each="findProducts, pageSet : ${productsByCategory}" th:if="${pageSet.index < 16}" class="item-li">
 									<div class="best-item-wrap">
 										<div class="item-img-wrap relative flex">
 											<img th:src="@{${findProducts.mainImgUrl}}" class="best-item-img" alt="상품 이미지"></img>
