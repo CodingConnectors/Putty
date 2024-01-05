@@ -1,9 +1,8 @@
 package com.nowon.cho.domain.entity;
 
-import java.lang.reflect.Member;
 import java.time.LocalDateTime;
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -18,11 +17,9 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.nowon.cho.domain.entity.MemberEntity;
 import com.nowon.cho.security.MemberRole;
 
 import lombok.AllArgsConstructor;
@@ -59,8 +56,9 @@ public class MemberEntity extends BaseEntity {
 	@Column(columnDefinition = "timestamp(6) null")
 	private LocalDateTime updatedDate;
 	
-	@Column(columnDefinition = "CHAR(1) default 'N'")
-	private char cancel;
+	
+	@Column(columnDefinition = "CHAR(1) null default 'N'")
+	private Character cancel;
 	
 	//role
 	@Builder.Default
