@@ -11,4 +11,6 @@ public interface SignService {
 
 	boolean existsByEmail(String email);
 
+	MemberEntity getMemberByMemberNo(String memberNo);
+
 }

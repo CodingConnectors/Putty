@@ -19,21 +19,24 @@
 				<div class="signin_title">
 					<div class="signin_title_img"><a href="/"><img src="/img/sign/favicon.png"></a></div>
 				</div>
-				<form action='/signin' method="post">
+				<div th:if="${param.error}" style="font-size:16px; background-color: red; color: white; padding: 1em;display: flex;justify-content: center; " >
+					입력정보가 일치하지 않습니다.
+				</div>
+				<form action='/signin' method="post" name="signinForm">
 					<div class="email_input">
-						<div class="input_title">이메일 주소</div>
+						<div class="input_title">이메일 주소<span id="emailError"></span></div>
 						<div class="input_item">
-							<input type="email" placeholder="ex)putty@cute.com" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex)putty@cute.com'" autocomplete="off" class="input_txt" name="email">
+							<input type="email" placeholder="ex)putty@cute.com" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ex)putty@cute.com', validateEmail()" autocomplete="off" class="input_txt" name="email">
 						</div>
 					</div>
 					<div class="pass_input">
-						<div class="input_title">비밀번호</div>
+						<div class="input_title">비밀번호<span id="passwordError"></span></div>
 						<div class="input_item">
-							<input type="password"  maxlength='16' placeholder="영문, 숫자, 특수문자를 조합해서 입력해주세요.(8~16자)" onfocus="this.placeholder = ''" onblur="this.placeholder = '영문, 숫자, 특수문자를 조합해서 입력해주세요.(8~16자)'" autocomplete="off" class="input_txt" name="password">
+							<input type="password"  maxlength='16' placeholder="영문, 숫자, 특수문자를 조합해서 입력해주세요.(8~16자)" onfocus="this.placeholder = ''" onblur="this.placeholder = '영문, 숫자, 특수문자를 조합해서 입력해주세요.(8~16자)', validatePassword()" autocomplete="off" class="input_txt" name="password">
 						</div>
 					</div>
 					<div class="signin_btn_box">
-						<input type="submit" value="로그인" class="signin_box"></input>
+						<input type="submit" value="로그인" class="signin_box" onclick="return validateLoginForm()"></input>
 					</div>
 				</form>
 				<ul class="look_box">
@@ -66,8 +69,9 @@
 			</div>
 		</div>
 	</div>
-	
-	<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+</main>
+
+<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 	
 	<script>
 		const naverLogin = new naver.LoginWithNaverId(
@@ -105,6 +109,5 @@
 	});
 	</script>
 
-</main>
 </body>
 </html>
