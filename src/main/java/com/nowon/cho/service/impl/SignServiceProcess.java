@@ -40,5 +40,10 @@ public class SignServiceProcess implements SignService {
 	public boolean existsByEmail(String email) {
 		return memberRepository.existsByEmail(email);
 	}
+
+	@Override
+	public MemberEntity getMemberByMemberNo(String memberNo) {
+		return null;
+	}
 	
 }

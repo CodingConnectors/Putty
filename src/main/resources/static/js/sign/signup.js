@@ -21,7 +21,7 @@ async function validateEmail() {
         var isExisted = await existsByEmail(email);
 		console.log("checkEmail-result: "+isExisted);
         if (isExisted) {
-            emailError.innerText = "가 이미 존재합니다.";
+            emailError.innerText = "를 사용하실 수 없습니다.";
             emailError.className = "warning-message";
             return false;
         } else {

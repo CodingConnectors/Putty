@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+.error-message {
+    color: red; /* 빨간색 */
+}
+
+.warning-message {
+    color: orange; /* 주황색 */
+}
+
 .container_signin{
 	margin:107px auto 0; height: 754px; width: 1440px;
 	box-sizing: border-box;

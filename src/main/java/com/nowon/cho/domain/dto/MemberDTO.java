@@ -2,7 +2,6 @@ package com.nowon.cho.domain.dto;
 
 import java.time.LocalDateTime;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.nowon.cho.domain.entity.MemberEntity;

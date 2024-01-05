@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.nowon.cho.domain.dto.MemberDTO;
 import com.nowon.cho.service.SignService;
 
-
-
 @Controller
 public class SignController {
 	
@@ -71,4 +69,5 @@ public class SignController {
 	public boolean checkEmail(String email) {
 		return signservice.existsByEmail(email);
 	}
+	
 }
