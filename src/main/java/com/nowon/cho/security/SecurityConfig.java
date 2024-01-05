@@ -1,16 +1,14 @@
 package com.nowon.cho.security;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.authentication.AuthenticationDetailsSource;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 @EnableWebSecurity
 public class SecurityConfig {
@@ -52,7 +50,7 @@ public class SecurityConfig {
 		
 		  .authorizeHttpRequests((authorize) -> authorize
 		  .antMatchers("/css/**","/img/**","/js/**").permitAll()//접근가능
-		  .antMatchers("/","/signup","/common/**","/find_email","/find_email_after",
+		  .antMatchers("/","/signin","/signup","/common/**","/find_email","/find_email_after",
 		  "/find_password","/find_password_after").permitAll()//접근가능
 		  .antMatchers("/basket").permitAll()//접근가능
 		  .antMatchers("/faq/faq_info","/faq/frequently_asked","/faq/faq_notice").permitAll()//접근가능
