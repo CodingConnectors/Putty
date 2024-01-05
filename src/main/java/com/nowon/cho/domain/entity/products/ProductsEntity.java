@@ -67,6 +67,7 @@ public class ProductsEntity extends BaseEntity {
 				.productName(productName)
 				.price(price)
 				.saleDiscount(saleDiscount)
+				.productCategory(productCategory)
 				.mainImgUrl("https://0idealisawsbucket.s3.ap-northeast-2.amazonaws.com/" + mainImg.getBucketKey())
 				.build();
 	}

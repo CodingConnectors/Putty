@@ -8,7 +8,6 @@
 		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;400;600;800&family=Reem+Kufi:wght@400;600&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 		<link rel="stylesheet" href="/css/index/index.css">
-		<link rel="stylesheet" href="/css/index/index-modal.css">
 		<link rel="stylesheet" href="/css/index/layout.css">
 		<link rel="stylesheet" href="/css/index/swiper.css">
 		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -47,8 +46,8 @@
 					loop: true
 				});
 			</script>
-			<section class="products-section">
-				<article class="products-section-1 view-size flex">
+			<section class="product-section">
+				<article class="product-section-1 view-size flex">
 					<div class="inherit">
 						<div class="category center-3">
 							<p class="category-1">BEST ITEM</p>
@@ -109,14 +108,14 @@
 						</div>
 					</div>
 				</article>
-				<article class="products-section-2 flex">
+				<article class="product-section-2 flex">
 					<div class="inherit">
-						<div class="item-list-wrap flex">
-							<ul id="best-item-ul" class="item-ul flex flex-wrap">
-								<li th:each="findProducts, pageSet : ${bestProducts}" th:if="${pageSet.index < 16}" class="item-li">
-									<div class="best-item-wrap">
-										<div class="item-img-wrap relative flex">
-											<img th:src="@{${findProducts.mainImgUrl}}" class="best-item-img" alt="상품 이미지">
+						<div class="product-list-wrap flex">
+							<ul class="product-ul flex flex-wrap">
+								<li th:each="findProducts, pageSet : ${bestProducts}" th:if="${pageSet.index < 16}" class="product-li">
+									<div class="product-wrap">
+										<div class="product-img-wrap relative flex">
+											<img th:src="@{${findProducts.mainImgUrl}}" class="product-img" alt="상품 이미지">
 												<div th:if="${pageSet.index == 0}" id="medal-gold" class="best-medal">
 												</div>
 												<div th:if="${pageSet.index == 1}" id="medal-silver" class="best-medal">
@@ -124,8 +123,8 @@
 												<div th:if="${pageSet.index == 2}" id="medal-bronze" class="best-medal">
 												</div>
 											</img>
-											<div class="item-btn flex space-evenly">
-												<a href="#">
+											<div class="product-btn flex space-evenly">
+												<a th:href="@{|/categories/${findProducts.productCategory}/products/${findProducts.productNo}|}">
 													<button class="index-product-btn more-btn"></button>
 												</a>
 												<form action="/basket" method="post">
@@ -135,11 +134,11 @@
 												<button class="index-product-btn favorite-btn favorite-btn-1"></button>
 											</div>
 										</div>
-										<div class="item-info-wrap">
-											<div class="item-info-1">
+										<div class="product-info-wrap">
+											<div class="product-info-1">
 												<a th:text="${findProducts.productName}" href="#">상품 이름</a>
 											</div>
-											<div class="item-info-2 flex center-1 start">
+											<div class="product-info-2 flex center-1 start">
 												<span th:text="${findProducts.saleDiscount} + '%'" class="sale">할인율</span>
 												<span th:text="${findProducts.price} + '원'" class="price">정가</span>
 												<span th:text="${findProducts.price - (findProducts.price * findProducts.saleDiscount / 100)} + '원'" class="sale-price">판매가</span>
@@ -163,14 +162,14 @@
 				</article>
 				<article class="product-section-2 flex">
 					<div class="inherit">
-						<div class="item-list-wrap flex">
-							<ul id="newArrivals-item-ul" class="item-ul flex flex-wrap">
-								<li th:each="findProducts, pageSet : ${newProducts}" th:if="${pageSet.index < 16}" class="item-li">
-									<div class="best-item-wrap">
-										<div class="item-img-wrap relative flex">
-											<img th:src="@{${findProducts.mainImgUrl}}" class="best-item-img" alt="상품 이미지"></img>
-											<div class="item-btn flex space-evenly">
-												<a href="#">
+						<div class="product-list-wrap flex">
+							<ul class="product-ul flex flex-wrap">
+								<li th:each="findProducts, pageSet : ${newProducts}" th:if="${pageSet.index < 16}" class="product-li">
+									<div class="product-wrap">
+										<div class="product-img-wrap relative flex">
+											<img th:src="@{${findProducts.mainImgUrl}}" class="product-img" alt="상품 이미지"></img>
+											<div class="product-btn flex space-evenly">
+												<a th:href="@{|/categories/${findProducts.productCategory}/products/${findProducts.productNo}|}">
 													<button class="index-product-btn more-btn"></button>
 												</a>
 												<form action="/basket" method="post">
@@ -180,11 +179,11 @@
 												<button class="index-product-btn favorite-btn favorite-btn-1"></button>
 											</div>
 										</div>
-										<div class="item-info-wrap">
-											<div class="item-info-1">
+										<div class="product-info-wrap">
+											<div class="product-info-1">
 												<a th:text="${findProducts.productName}" href="#">상품 이름</a>
 											</div>
-											<div class="item-info-2 flex center-1 start">
+											<div class="product-info-2 flex center-1 start">
 												<span th:text="${findProducts.saleDiscount} + '%'" class="sale">할인율</span>
 												<span th:text="${findProducts.price} + '원'" class="price">정가</span>
 												<span th:text="${findProducts.price - (findProducts.price * findProducts.saleDiscount / 100)} + '원'" class="sale-price">판매가</span>
