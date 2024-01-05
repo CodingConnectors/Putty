@@ -24,20 +24,47 @@ $('input[name="payment-gateway"]').change(function() {
 function requestPay() {
 	let pg = document.querySelector('input[name="payment-gateway"]:checked').value;
 	let buyer_tel = document.querySelector('input[name="phone"]').value;
-	console.log(buyer_tel)
+	let amount = document.getElementById('totalPrice').getAttribute('data-total-price');
+	//결제id생성
+	let payuid = generateUUID();
+	// 예제 사용
+	/*console.log(uuid);
+	console.log(amount)*/
+	
+	/*
+	let PaymentProductsDTO = {
+		productNo: [1],
+		volume: [1]
+	}
+	
+	$.ajax({
+		url: "/payment/pay",
+		method: "post",
+        contentType: 'application/json',
+		data: JSON.stringify(PaymentProductsDTO),
+		success: function(response) {
+	        // 성공적으로 응답을 받았을 때 수행할 코드
+	        console.log("Payment successful:", response);
+	    },
+	    error: function(xhr, status, error) {
+	        // 에러가 발생했을 때 수행할 코드
+	        console.error("Payment error:", status, error);
+	    }
+	})
+	*/
 	let data={
 	    pg: pg,
 	    pay_method: "card",
-	    merchant_uid: "test_lqohvy6f",
+	    merchant_uid: payuid,
 	    name: "테스트 결제",
-	    amount: 100,
+	    amount: amount,
 	    buyer_tel: buyer_tel,
 	}
 	IMP.request_pay(data, rsp => {
 	    if (rsp.success) {
 	      // axios로 HTTP 요청
 	      axios({
-	        url: "{서버의 결제 정보를 받는 endpoint}",
+	        url: "/payment/pay",
 	        method: "post",
 	        headers: { "Content-Type": "application/json" },
 	        data: {
@@ -45,7 +72,6 @@ function requestPay() {
 	          merchant_uid: rsp.merchant_uid
 	        }
 	      }).then((data) => {
-			console.log("결제에 성공했습니다.")
 	        // 서버 결제 API 성공시 로직
 	        window.location.href = "/payment/suc";
 	      })
@@ -53,4 +79,12 @@ function requestPay() {
 	      alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
 	    }
 	});
+}
+
+function generateUUID() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0,
+      v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
 }

@@ -11,6 +11,7 @@ import lombok.ToString;
 @Setter
 public class PaymentProductsDTO {
 
-	List<Long> productNo;
+	private List<Long> productNo;
+	private List<Long> volume;
 }
 
