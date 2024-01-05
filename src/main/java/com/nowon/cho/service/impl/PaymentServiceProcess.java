@@ -33,7 +33,7 @@ public class PaymentServiceProcess implements PaymentService {
 		System.out.println(products.toString());
 
 		// 이후 로직에서 조회한 엔터티들을 활용
-		model.addAttribute("reqPaymentList", products.stream().map(ProductsEntity::toProductListDTO)
+		model.addAttribute("reqPaymentList", products.stream().map(ProductsEntity::findProducts)
 				.collect(Collectors.toList()));
 	}
 
