@@ -111,14 +111,19 @@ public class ProductsServiceProcess implements ProductsService {
 		List<ProductsEntity> bestProducts = productsEntityRepository.findAll(Sort.by(Sort.Order.desc("saleSum")));
 		
 		model.addAttribute("bestProducts", bestProducts.stream()
-				.map(ProductsEntity :: toProductListDTO)
+				.map(ProductsEntity :: findProducts)
 				.collect(Collectors.toList()));
 	}
 	
 	@Override
 	public void findNewProducts(Model model) {
 		model.addAttribute("newProducts", productsEntityRepository.findAll(Sort.by(Sort.Order.desc("createdDate"))).stream()
-				.map(ProductsEntity :: toProductListDTO)
+				.map(ProductsEntity :: findProducts)
 				.collect(Collectors.toList()));
+	}
+
+	@Override
+	public void findProductsByCategory(Model model) {
+		
 	}
 }

@@ -31,7 +31,7 @@ public class ProductsController {
 	}
 	
 	@GetMapping("/products")
-	public String productList(@RequestParam(name = "productCategoryName") Model model) {
+	public String productList(@RequestParam(name = "productCategory") Model model) {
 		productsService.findNewProducts(model);
 		return "product/products";
 	}

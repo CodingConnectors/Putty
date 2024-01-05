@@ -63,7 +63,7 @@ public class BasketProcess implements BasketService {
 		    List<BasketEntity> basketEntity = basketRepo.findByMemberNo(memberEnti);
 		    
 		    if (basketEntity != null) {
-		        model.addAttribute("basketList", basketEntity.stream().map(enti->enti.getProductNo().toProductListDTO()).collect(Collectors.toList()));
+		        model.addAttribute("basketList", basketEntity.stream().map(enti->enti.getProductNo().findProducts()).collect(Collectors.toList()));
 		    } else {
 		        // 엔터티가 찾아지지 않은 경우를 처리할 수 있도록
 		        System.out.println("basketEntity가 존재하지않습니다.");;

@@ -56,7 +56,7 @@ public class ProductsEntity extends BaseEntity {
 	@OneToMany(mappedBy = "productsEntity")
 	private List<ProductsImgEntity> imgs;
 	
-	public FindProductsDTO toProductListDTO() {
+	public FindProductsDTO findProducts() {
 		ProductsImgEntity mainImg = imgs.stream()
 				.filter(img -> img.isImgType() == true)
 				.findFirst()
@@ -69,5 +69,9 @@ public class ProductsEntity extends BaseEntity {
 				.saleDiscount(saleDiscount)
 				.mainImgUrl("https://0idealisawsbucket.s3.ap-northeast-2.amazonaws.com/" + mainImg.getBucketKey())
 				.build();
+	}
+	
+	public FindProductsDTO findProductsByCategory() {
+		return null;
 	}
 }
