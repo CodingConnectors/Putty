@@ -5,7 +5,10 @@
 	</head>
 	<body>
 		<main>
-			
+			<p th:text="${product.get().productName}">상품 이름</p>
+			<p th:text="${product.get().price}">상품 가격</p>
+			<p th:text="${product.get().saleDiscount}">할인율</p>
+			<p th:text="${product.get().price} - (${product.get().price} * ${product.get().saleDiscount} / 100)">판매가</p>
 		</main>
 	</body>
 </html>

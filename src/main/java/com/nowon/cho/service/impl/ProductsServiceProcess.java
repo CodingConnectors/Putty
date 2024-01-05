@@ -106,6 +106,19 @@ public class ProductsServiceProcess implements ProductsService {
 	}
 	
 	@Override
+	public void findProductsByCategory(String productCategory, Model model) {
+		model.addAttribute("productsByCategory", productsEntityRepository.findAll(Sort.by(Sort.Order.desc("createdDate"))).stream()
+				.filter(productsEntity -> productsEntity.getProductCategory().equals(productCategory))
+				.map(ProductsEntity :: findProducts)
+				.collect(Collectors.toList()));
+	}
+	
+	@Override
+	public void findProduct(long productNo, Model model) {
+		model.addAttribute("product", productsEntityRepository.findById(productNo));
+	}
+	
+	@Override
 	public void findBestProducts(Model model) {
 		model.addAttribute("bestProducts", productsEntityRepository.findAll(Sort.by(Sort.Order.desc("saleSum"))).stream()
 				.map(ProductsEntity :: findProducts)
@@ -115,14 +128,6 @@ public class ProductsServiceProcess implements ProductsService {
 	@Override
 	public void findNewProducts(Model model) {
 		model.addAttribute("newProducts", productsEntityRepository.findAll(Sort.by(Sort.Order.desc("createdDate"))).stream()
-				.map(ProductsEntity :: findProducts)
-				.collect(Collectors.toList()));
-	}
-
-	@Override
-	public void findProductsByCategory(String category, Model model) {
-		model.addAttribute("productsByCategory", productsEntityRepository.findAll(Sort.by(Sort.Order.desc("createdDate"))).stream()
-				.filter(productsEntity -> productsEntity.getProductCategory().equals(category))
 				.map(ProductsEntity :: findProducts)
 				.collect(Collectors.toList()));
 	}

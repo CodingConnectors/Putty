@@ -21,6 +21,7 @@ public class FindProductsDTO {
 	private String productName;
 	private long price;
 	private long saleDiscount;
+	private String productCategory;
 	private List<ProductsImgEntity> imgs;
 	private String mainImgUrl;
 }

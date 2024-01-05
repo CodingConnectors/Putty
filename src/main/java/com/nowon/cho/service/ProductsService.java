@@ -14,9 +14,11 @@ public interface ProductsService {
 	
 	void productSave(ProductsDTO productsDTO, ProductsImgDTO productsImgDTO);
 	
+	void findProductsByCategory(String productCategory, Model model);
+	
+	void findProduct(long productNo, Model model);
+	
 	void findBestProducts(Model model);
 	
 	void findNewProducts(Model model);
-	
-	void findProductsByCategory(String category, Model model);
 }

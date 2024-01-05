@@ -30,10 +30,24 @@ public class ProductsController {
 		return "index";
 	}
 	
-	@GetMapping("/categories/{category}")
-	public String productList(@PathVariable String category, Model model) {
-		productsService.findProductsByCategory(category, model);
+	@GetMapping("/categories/{productCategory}")
+	public String productsByCategory(@PathVariable String productCategory, Model model) {
+		productsService.findProductsByCategory(productCategory, model);
+		
 		return "product/products";
+	}
+	
+	@GetMapping("/categories/{productCategory}/products/{productNo}")
+	public String productDetail(@PathVariable long productNo, Model model) {
+		productsService.findProduct(productNo, model);
+		
+		return "product/product-detail";
+	}
+	
+	@PostMapping("/temp-product-img")
+	@ResponseBody
+	public Map<String, String> productsTemp(MultipartFile multipartFile) {
+		return productsService.tempUpload(multipartFile);
 	}
 	
 	@PostMapping("/products")
@@ -41,11 +55,5 @@ public class ProductsController {
 		productsService.productSave(productsDTO, productsImgDTO);
 		
 		return "redirect:/admin/product-registration";
-	}
-	
-	@PostMapping("/temp-product-img")
-	@ResponseBody
-	public Map<String, String> productsTemp(MultipartFile multipartFile) {
-		return productsService.tempUpload(multipartFile);
 	}
 }
