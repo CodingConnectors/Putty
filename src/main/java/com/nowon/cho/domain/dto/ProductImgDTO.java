@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 public class ProductImgDTO {
 
-	String[] tempKey;
-	String[] orgName;
+	private String[] tempKey;
+	private String[] orgName;
 }

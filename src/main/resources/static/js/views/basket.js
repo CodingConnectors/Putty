@@ -5,9 +5,23 @@ let checkboxes = document.querySelectorAll('input[name="selectOrder"]');
 checkboxes.forEach(function(checkbox) {
   checkbox.addEventListener('change', calculateTotal);
 });
+//선택주문 클릭시 선택상품주문
 $('#selectOrderButton').click(selectProductPayment)
 //삭제버튼시 장바구니에서 물품 삭제
-$(".delBasket").on("click", function() {
+$(".delBasket").on("click", deleteBasket) 
+
+//수량이 바뀌면 금액을 계산해주는 코드
+document.querySelectorAll('.product_volume').forEach(function (input) {
+    updateProductPerTotal(input);
+    input.addEventListener('change', function () {
+        updateProductPerTotal(input);
+        calculateTotal();
+    });
+});
+
+
+//삭제 버튼 기능
+function deleteBasket() {
     // 선택된 행에서 data-productId 속성 값을 가져옴
     var productId = $(this).closest("tr").find(".selectOrder").data("productid");
 
@@ -26,7 +40,7 @@ $(".delBasket").on("click", function() {
             // 원하는 동작 수행
         }
     });
-});
+};
 //바로주문 버튼 클릭시 주문
 $('.directOrder').on('click',function() {
     var productNo = $(this).closest("tr").find(".selectOrder").data("productid");
@@ -54,16 +68,16 @@ $('.directOrder').on('click',function() {
     document.body.removeChild(form);
 });
 
-//선택한 물품들을 결제페이지로 이동
+//선택한 물품들을 주문
 function selectProductPayment() {
   // 선택된 체크박스들을 가져와서 처리
     let selectedProducts = $('.selectOrder:checked');
+    //form을 생성하고 설정
     let form = document.createElement('form');
-    
     form.action='/payment';
     form.method='post';
     
-    // 선택된 상품들의 productNo를 배열에 담기
+    // 선택된 상품들의 productNo를 input에 추가하고 form에 등록
     selectedProducts.each(function() {
 		let input = document.createElement('input');
         let productNo = $(this).data('productid');
@@ -92,20 +106,17 @@ function selectProductPayment() {
 	*/
 }
 
-//수량이 바뀌면 금액을 계산해주는 코드
-document.querySelectorAll('.product_volume').forEach(function (input) {
-    updateProductPerTotal(input);
-    input.addEventListener('change', function () {
-        updateProductPerTotal(input);
-        calculateTotal();
-    });
-});
-
 
 function updateProductPerTotal(volume) {
-    let price = volume.closest('tr').querySelector('.selectOrder').getAttribute("data-price");
-    let discount = volume.value * price / volume.closest('tr').querySelector('.selectOrder').getAttribute("data-discount");
+    let roundDigit = 10;
+    
+    let price = volume.closest('tr').querySelector('.selectOrder').getAttribute("data-price")*1;
+    let discount = Math.round(volume.value * price * (volume.closest('tr').querySelector('.selectOrder')
+    	.getAttribute("data-discount")/100)/roundDigit)*roundDigit;
     let perTotal =  volume.value * price - discount;
+    
+    volume.closest('tr').querySelector('.indiPrice')
+        .textContent = price.toLocaleString('ko-KR') + "원";
     volume.closest('tr').querySelector('.productPerTotal')
         .textContent = perTotal.toLocaleString('ko-KR') + "원";
     volume.closest('tr').querySelector('.discount')
@@ -123,14 +134,15 @@ function calculateTotal() {
   
   let totalPrice = 0;
   let totalDisCount = 0;
+  let roundDigit = 10;
 
   checkedCheckboxes.forEach(function(checkbox) {
     // 각 체크된 상품의 가격을 가져와서 더합니다.
     let price = parseInt(checkbox.getAttribute("data-price"));
-    let volume = checkbox.closest('tr').querySelector('.product_volume').value;;
+    let volume = checkbox.closest('tr').querySelector('.product_volume').value;
     
     let perTotal = price*volume;
-    let disCount = perTotal / 10;
+    let disCount = Math.round((perTotal * (checkbox.getAttribute("data-discount")/100))/roundDigit)*roundDigit;
     
     
     totalDisCount += disCount;

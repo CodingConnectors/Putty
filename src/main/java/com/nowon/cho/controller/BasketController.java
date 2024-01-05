@@ -1,7 +1,6 @@
 package com.nowon.cho.controller;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nowon.cho.domain.dto.PutBasketDTO;
-import com.nowon.cho.security.MyUserDetails;
 import com.nowon.cho.service.BasketService;
 
 import lombok.RequiredArgsConstructor;

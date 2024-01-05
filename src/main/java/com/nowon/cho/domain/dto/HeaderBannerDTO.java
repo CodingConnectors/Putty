@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 public class HeaderBannerDTO {
 
-	String[] tempKey;
-	String[] orgName;
+	private String[] tempKey;
+	private String[] orgName;
 }
