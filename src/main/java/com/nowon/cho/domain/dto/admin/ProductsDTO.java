@@ -1,6 +1,5 @@
 package com.nowon.cho.domain.dto.admin;
 
-import com.nowon.cho.domain.entity.products.ProductCategoryEntity;
 import com.nowon.cho.domain.entity.products.ProductsEntity;
 
 import lombok.Getter;
@@ -14,7 +13,7 @@ public class ProductsDTO {
 	private long price;
 	private long saleDiscount;
 	private long productStock;
-	private String productCategoryName;
+	private String productCategory;
 	private String productContent;
 	
 	public ProductsEntity toProductsEntity() {
@@ -23,6 +22,7 @@ public class ProductsDTO {
 				.price(price)
 				.saleDiscount(saleDiscount)
 				.productStock(productStock)
+				.productCategory(productCategory)
 				.productContent(productContent)
 				.build();
 	}
