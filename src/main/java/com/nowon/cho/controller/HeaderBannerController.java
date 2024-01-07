@@ -15,17 +15,19 @@ import com.nowon.cho.service.HeaderBannerService;
 public class HeaderBannerController {
 	
 	@Autowired
-	HeaderBannerService hbs;
+	private HeaderBannerService hbs;
 
 	@GetMapping ("/admin/header-banner/save")
 	public String hbc() {
 		return "admin/header-banner/save";
 	}
-	@GetMapping("/admin/header-banne/find")
+	
+	@GetMapping("/common/header-banne/find")
 	@ResponseBody
 	public List<String> find() {
 		return hbs.find();
 	}
+	
 	@PostMapping ("/admin/header-banner/save")
 	public String save(HeaderBannerDTO headerBannerDTO) {
 		hbs.save(headerBannerDTO);

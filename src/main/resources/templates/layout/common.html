@@ -8,7 +8,11 @@
 	<link href="/css/common/common.css" rel="stylesheet"/>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+	<script src="/webjars/stomp-websocket/stomp.min.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/css/common/chatbot.css" />
+	<script src="/js/chatbot/chatbot.js" defer></script>
 	<script>
 		$(function() {
 			
@@ -31,7 +35,7 @@
 			
 			//헤드배너이미지 불러오기
 			$.ajax({
-				url: '/admin/header-banne/find',
+				url: '/common/header-banne/find',
 				method: 'GET',
 				dataType: 'JSON',
 				success: function(data) {
@@ -174,7 +178,7 @@
 			<div class="footer02">
 				<div id="footer02-1"><img src="/img/common/logo.png"></div>
 				<div id="footer02-2">
-					<div class="footer-phone">010-8888-8888</div>
+					<div class="footer-phone">02.6953.2002</div>
 					<div class="footer02-content">
 						<p>평일 오전 09:20 ~ 오후 5:50</p>
 						<p>점심시간 오후 13:10 ~ 오후 14:00</p>
@@ -195,5 +199,47 @@
 			</div>
 		</div>
 	</footer>
+	<article id="chat-bot">
+		<section id="conversation">
+			<div class="wrap flex between">
+				<div class="c-header flex between col-center">
+					<p class="help flex col-center">
+						<span>HELP</span>
+					</p>
+					<p><b>그린챗봇</b></p>
+					<p id="closebox"></p>
+				</div>
+				
+				<div class="c-content flex">
+					<div class="c-container">
+						<div class="user-question flex">
+							<span>배고픕니다 밥주세요</span>
+						</div>
+						<div class="user-answer">
+							<span>드렸습니다~</span>
+							<div class="answer-link">
+								<div class="answer-question">회원문의</div>
+								<div class="answer-question">결제문의</div>
+								<div class="answer-question">영업문의</div>
+							</div>
+						</div>
+						<div class="user-question flex">
+							<span>배송이 너무 늦습니다 뭔가 문제가 있나요?</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="c-question flex center col-center">
+					<div class="chat-input flex col-center">
+						<input id="chatbotInput" type="text" placeholder="질문을 입력하세요">
+						<button id="chatbotInputbutton"></button>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div id="toggle-menu">
+			<div id="chatbot-toggle"></div>
+		</div>
+	</article>
 </body>
 </html>

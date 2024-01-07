@@ -11,6 +11,7 @@ import lombok.ToString;
 @Setter
 public class PaymentProductsDTO {
 
+	private String imp_uid;
 	private List<Long> productNo;
 	private List<Long> volume;
 }
