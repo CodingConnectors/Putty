@@ -32,9 +32,10 @@ public class PaymentCotroller {
 		return "views/payment/payment";
 	}
 	@PostMapping("/pay")
-	public @ResponseBody String requestPayInfo(@RequestBody PaymentProductsDTO dto) {
+	public @ResponseBody String requestPayInfo(@RequestBody PaymentProductsDTO dto, String imp_uid) {
 		System.out.println(dto);
-		return "views/payment/payment";
+		System.out.println(imp_uid);
+		return "redirect:/basket";
 	}
 	
 	

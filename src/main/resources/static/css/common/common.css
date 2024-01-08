@@ -219,7 +219,7 @@ footer {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	background-color: blanchedalmond;
+	background-color: rgb(125, 90, 80, 0.5);
 	margin-top: 100px;
 }
 .footer {
@@ -233,6 +233,9 @@ footer {
 .footer01 > ul {
 	display: flex;
 	margin-left: 100px;
+	width: 1280px;
+	height: 100%;
+	margin: 0 auto;
 }
 .footer01 > ul > li {
 	padding: 10px;
@@ -245,7 +248,7 @@ footer {
 	margin-top: 30px;
 }
 .footer02-content>p{
-	color: #999999;
+	color: #424242;
 }
 .footer-phone {
 	font-size: 22px;

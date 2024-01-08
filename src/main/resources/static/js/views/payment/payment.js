@@ -1,7 +1,6 @@
 /**
  * 
  */
-
 IMP.init("imp55174178");
 
 document.getElementById('payment-button').addEventListener('click',requestPay)

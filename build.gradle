@@ -22,20 +22,27 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.webjars:stomp-websocket:2.3.4'
+	implementation 'org.webjars:sockjs-client:1.5.1'
+	implementation 'org.webjars:webjars-locator-core:0.55'
+	
 	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
 	
+	implementation 'org.springframework.boot:spring-boot-starter-amqp'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 	testImplementation 'org.springframework.security:spring-security-test'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.amqp:spring-rabbit-test'
 }
 
 tasks.named('bootBuildImage') {

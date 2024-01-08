@@ -4,18 +4,28 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	.sucbox {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 1000px;
+		height: 500px;
+		background-color: #e9e9e9;
+		
+		margin: 150px auto 250px auto;
+		border: 8px solid burlywood;
+		border-radius: 20px;
+		
+		font-size: 28px;
+	}
+</style>
 </head>
 	<body>
 		<main>
-			<h1>결제완료</h1>
-			<div>
+			<div class="sucbox">
 				<span>결제가 완료되었습니다.</span>
 			</div>
-			<form action="/payment" method="post">
-				<input type="number" name="productNo"/>
-				<input type="number" name="productNo"/>
-				<button>전송</button>
-			</form>
 		</main>
 	</body>
 </html>
