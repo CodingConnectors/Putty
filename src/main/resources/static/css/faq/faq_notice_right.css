@@ -1,6 +1,19 @@
 @charset "UTF-8";
 
-#header > .navi02 > .header-input {
-    
-    visibility: hidden;
+.notice_list {
+	
+	width: 100%;
+}
+
+.notice_day{
+	
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 5px;
+}
+
+.q_tit{
+	
+	margin:5px 5px 0 5px;
+	
 }
