@@ -6,6 +6,11 @@
     width: 1000px;
 }
 
+#header > .navi02 > .header-input {
+    
+    visibility: hidden;
+}
+
 .question_tab_list li a .icon_wrap {
     margin: 15px auto 0;
     display: inline-block;

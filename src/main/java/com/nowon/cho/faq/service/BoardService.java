@@ -5,30 +5,41 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.services.s3.model.PutObjectResult;
+import com.nowon.cho.domain.dto.BoardSaveDTO;
+import com.nowon.cho.domain.entity.MemberEntity;
+import com.nowon.cho.domain.entity.MemberRepository;
 import com.nowon.cho.faq.entity.Board;
 import com.nowon.cho.faq.repository.BoardRepository;
 import com.nowon.cho.utils.PageData;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class BoardService {
 	
-	@Autowired
-	private BoardRepository boardRepository;
-	
+	private final BoardRepository boardRepository;
+	private final MemberRepository memberRepository;
 	
 	//글 작성 (로컬)
 	/*public void write(Board board, MultipartFile file) throws Exception{
@@ -71,32 +82,45 @@ public class BoardService {
     @Value("${cloud.aws.s3.upload-path}")
     private String uploadPath;
     
-    public void write(Board board, MultipartFile file) throws Exception {
-        UUID uuid = UUID.randomUUID();
+    //게시글 저장 로직
+    public void write(Authentication authentication, BoardSaveDTO dto, MultipartFile file, Model model) {
+    	String email=authentication.getName();// 로그인시 id(이메일) 식별자
+    	MemberEntity member=memberRepository.findByEmail(email);//작성자 정보
+    	
+    	UUID uuid = UUID.randomUUID();
         String fileName = uuid + "_" + file.getOriginalFilename();
 
         // AWS S3에 파일 업로드
-        uploadFileToS3(fileName, file);
+        PutObjectResult result=uploadFileToS3(fileName, file);
+    	System.out.println(">>>>"+result);
+    	
+    	//toEntity에 작성자(Member객체), s3버킷객체, s3경로+버킷 setting
+    	boardRepository.save(dto.toEntity(member, fileName, uploadPath+fileName));
+		
+	}
+    
+   
+    	
+    
 
-        // board 엔터티에 파일 정보 설정
-        board.setFilename(fileName);
-        board.setFilepath("/files/" + fileName);
 
-        // 나머지 저장 로직 수행
-        boardRepository.save(board);
-    }
-
-    private void uploadFileToS3(String fileName, MultipartFile file) throws IOException {
+    private PutObjectResult uploadFileToS3(String fileName, MultipartFile file) {
         String s3Key = uploadPath + fileName;
 
         ObjectMetadata metadata = new ObjectMetadata();	
         metadata.setContentLength(file.getSize());
         metadata.setContentType(file.getContentType());
 
-        PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, s3Key, file.getInputStream(), metadata)
-                .withCannedAcl(CannedAccessControlList.PublicRead);
-
-        s3Client.putObject(putObjectRequest);
+        PutObjectRequest putObjectRequest=null;
+		try {
+			putObjectRequest = new PutObjectRequest(bucketName, s3Key, file.getInputStream(), metadata)
+			        .withCannedAcl(CannedAccessControlList.PublicRead);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		//PutObjectResult result;
+		return s3Client.putObject(putObjectRequest);
     }
 	
     
@@ -136,6 +160,36 @@ public class BoardService {
 		boardRepository.deleteById(id);
 		
 	}
+
+
+
+
+	//게시글 수정
+	@Transactional
+	public void updateBoard(Integer id, Board board, MultipartFile file, Model model) {
+		 // 필요한 로직에 따라 업데이트 수행
+	    Board boardTemp = boardRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Board not found with id: " + id));
+	    boardTemp.setTitle(board.getTitle());
+	    boardTemp.setContent(board.getContent());
+	    
+	    // 파일 업로드 관련 로직 수정
+	    UUID uuid = UUID.randomUUID();
+	    String fileUuid = uuid.toString();
+	    String originalFileName = file.getOriginalFilename();
+	    boardTemp.setFileUuid(fileUuid);
+	    boardTemp.setOriginalFileName(originalFileName);
+
+	    PutObjectResult result = uploadFileToS3(fileUuid + "_" + originalFileName, file);
+	    System.out.println(">>>>" + result);
+
+	    // 업데이트된 게시물을 저장
+	    boardRepository.save(boardTemp);
+		
+	}
+
+	
+
+	
 	
 	//URI 파라미터 유틸 메서드
 	/*

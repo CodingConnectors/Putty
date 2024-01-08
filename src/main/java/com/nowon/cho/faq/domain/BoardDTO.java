@@ -24,6 +24,7 @@ public class BoardDTO {
     private String content;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
-    private String author; // 작성자 정보
+    private String authorEmail; // 작성자 정보
+    private String authorName; // 작성자 정보
 	
 }

@@ -4,15 +4,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
-<title>리뷰 게시판 | 퍼티</title>
+<title>내가 한 질문 | 퍼티</title>
 
 <link rel="stylesheet" href="/css/faq/faq_left.css">
-<link rel="stylesheet" href="/css/faq/freq_right.css">
+<link rel="stylesheet" href="/css/faq/faq_board.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Gothic&family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
 
 
 </head>
@@ -51,7 +52,54 @@
                 </div>
                 	<div class="myP_right">
 						<div class="contents_box">
-               			 	
+               			 	<span class="layout">
+							<table>
+							    <thead style="line-height: 30px;">
+							        <tr>
+							            <th>글번호</th>
+							            <th>작성자</th>
+							            <th>제목</th>
+							            <th><a class="writing_text" href="/member/board/write">게시글 작성</a></th>
+							        </tr>
+							    </thead>
+							    <tbody style="line-height: 30px;">
+							        <tr th:each="board : ${myPost}">
+							            <td th:text="${board.id}">1</td>
+							            <td>
+										    <span th:text="${#strings.substring(board.member.email,0,4)+'***'}">
+										        이메일
+										    </span>
+										    <span>([[${board.member.name}]])</span>
+										</td>
+							            <td>
+							                <a th:text="${board.title}" th:href="@{/member/board/view(id=${board.id})}"></a>
+							            </td>
+							        </tr>
+							        <tr th:if="${#lists.isEmpty(myPost)}">
+							            <td colspan="3">게시글이 존재하지 않습니다.</td>
+							        </tr>
+							    </tbody>
+							</table>
+							
+							<div th:unless="${#lists.isEmpty(list)}" class="Paging_all" id="Paging_all">
+								<th:block th:each="page : ${#numbers.sequence(pd.from, pd.to)}">
+									<div class="Paging" id="Paging">
+										<a th:if="${page != pd.page}" th:href="@{/member/faq_board(page= ${page}, searchKeyword=${param.searchKeyword})}" th:text="${page}"></a>
+								
+										<strong th:if="${page == pd.page}" th:text="${page}" style="color : red"></strong>
+									</div>
+								</th:block>
+							</div>
+							
+							<div class="search_list" id="search_list">
+								<form th:action="@{/member/faq_board}" method="get">
+									<input type="text" name="searchKeyword" placeholder="내용을 입력하세요.">
+									<button type="submit">검색</button>
+									
+								</form>
+								
+								</div>
+							</span>
               			
               				
               
@@ -61,7 +109,17 @@
 				</div><!-- myP_inner -->
 			</div><!-- myPage21 -->
 	
-	
+		
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="/js/faq/faq_board.js"></script>	
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    
+    var message = /*[[${param.write}]]*/null;
+    if(message!=null)alert("글 작성이 완료되었습니다.");
+    
+    /*]]>*/
+</script>	
 	
 	
 </main>

@@ -13,6 +13,10 @@ div {
     display: block;
 }
 
+#header > .navi02 > .header-input {
+    
+    visibility: hidden;
+}
 
 
 .myPage21 {
