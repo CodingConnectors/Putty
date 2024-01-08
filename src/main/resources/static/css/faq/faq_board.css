@@ -13,6 +13,11 @@ box-sizing: border-box;
 
 }
 
+#header > .navi02 > .header-input {
+    
+    visibility: hidden;
+}
+
 body{
 	font-family: 'Jost', noto sans, -apple-system, 'Malgun Gothic', '맑은 고딕', helvetica, 'Apple SD Gothic Neo', sans-serif;
     font-weight: 400;

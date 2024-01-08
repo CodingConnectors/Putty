@@ -52,7 +52,7 @@
                             <a href="/faq/faq_notice" class="depth1_b_m">공지사항</a>
                         </li>
                         <li class="depth1">
-                            <a href="/member/faq_list" class="depth1_b_m">내가 한 질문</a>
+                            <a href="#" class="depth1_b_m">내가 한 질문</a>
                         </li>
                        
                     </ul>
@@ -68,7 +68,7 @@
        			 	<!-- 게시글 리스트 -->
 				<div class="myP_right">
 					<div class="contents_box">
-						<div class="layout">
+						<span class="layout">
 							<table>
 								<thead style="line-height: 30px;">
 									<tr>
@@ -82,7 +82,12 @@
 								<tbody style="line-height: 30px;">
 									<tr th:each="board : ${list}">
 										<td th:text="${board.id}">1</td> <!--localhost:8080/board/view?id=:board.id-->
-										<td th:text="${board.author}">작성자</td>
+										<td >
+											<span th:text="${#strings.substring(board.authorEmail,0,3)+'***'}">
+												이메일
+											</span>
+											<span>([[${board.authorName}]])</span>
+										</td>
 										
 										<td>
 											<a th:text="${board.title}" th:href="@{/member/board/view(id=${board.id})}"></a>
@@ -112,7 +117,9 @@
 									<button type="submit">검색</button>
 									
 								</form>
-							</div>
+								
+								</div>
+							</span>
 						</div>
 						
 					</div>
@@ -124,12 +131,17 @@
 			</div><!-- myPage21 -->
 	
 	
-	
-	
-</main>
-
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="/js/faq/faq_board.js"></script>
+<script src="/js/faq/faq_board.js"></script>	
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    
+    var message = /*[[${param.write}]]*/null;
+    if(message!=null)alert("글 작성이 완료되었습니다.");
+    
+    /*]]>*/
+</script>	
+</main>
 
 </body>
 

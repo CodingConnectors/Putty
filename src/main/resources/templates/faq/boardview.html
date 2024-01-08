@@ -30,7 +30,7 @@
                             <a href="/faq/faq_notice" class="depth1_b_m">공지사항</a>
                         </li>
                         <li class="depth1">
-                            <a href="/member/faq_list" class="depth1_b_m">내가 한 질문</a>
+                            <a href="#" class="depth1_b_m">내가 한 질문</a>
                         </li>
                        
                     </ul>
@@ -65,7 +65,8 @@
 				       
 				        
 				        <div class="option1" id="option1">
-				            <a th:href="@{${board.filepath}}" id="download1">다운받기</a>
+				            <a th:href="@{/files/{fileName}(fileName=${board.fileUuid + '_' + board.originalFileName})}" id="download1">다운받기</a>
+
 				            <a th:href="@{/member/board/modify/{id}(id = ${board.id})}" id="modify1">수정</a>
 				            <a th:href="@{/member/board/delete(id = ${board.id})}" id="delete1">삭제</a>
 				           

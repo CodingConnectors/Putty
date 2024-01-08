@@ -12,6 +12,11 @@
 
 }
 
+#header > .navi02 > .header-input {
+    
+    visibility: hidden;
+}
+
 
 body{
 	font-family: 'Noto Sans KR', sans-serif;

@@ -1,4 +1,4 @@
-package com.nowon.cho.controller;
+	package com.nowon.cho.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,10 +28,6 @@ public class FaqController {
 		return "faq/faq_notice";
 	}
 	
-	@GetMapping("/member/faq_list")
-	public String faq_list() {
-		return "faq/faq_list";
-	}
 	
 
 }
