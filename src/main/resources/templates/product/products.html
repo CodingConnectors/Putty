@@ -17,29 +17,29 @@
 					<div class="inherit">
 						<div class="product-list-wrap flex">
 							<ul class="product-ul flex flex-wrap">
-								<li th:each="findProducts, pageSet : ${productsByCategory}" th:if="${pageSet.index < 16}" class="product-li">
+								<li th:each="Products, pageSet : ${productsByCategory}" th:if="${pageSet.index < 16}" class="product-li">
 									<div class="product-wrap">
 										<div class="product-img-wrap relative flex">
-											<img th:src="@{${findProducts.mainImgUrl}}" class="product-img" alt="상품 이미지"></img>
+											<img th:src="@{${Products.mainImgUrl}}" class="product-img" alt="상품 이미지"></img>
 											<div class="product-btn flex space-evenly">
-													<a th:href="@{|/categories/${findProducts.productCategory}/products/${findProducts.productNo}|}">
+													<a th:href="@{|/categories/${Products.productCategory}/products/${Products.productNo}|}">
 														<button class="index-product-btn more-btn"></button>
 													</a>
 												<form action="/basket" method="post">
 													<button class="index-product-btn shopping-cart-btn"></button>
-													<input type="hidden" name="productNo" th:value="${findProducts.productNo}">
+													<input type="hidden" name="productNo" th:value="${Products.productNo}">
 												</form>
 												<button class="index-product-btn favorite-btn favorite-btn-1"></button>
 											</div>
 										</div>
 										<div class="product-info-wrap">
 											<div class="product-info-1">
-												<a th:text="${findProducts.productName}" href="#">상품 이름</a>
+												<a th:text="${Products.productName}" href="#">상품 이름</a>
 											</div>
 											<div class="product-info-2 flex center-1 start">
-												<span th:text="${findProducts.saleDiscount} + '%'" class="sale">할인율</span>
-												<span th:text="${findProducts.price} + '원'" class="price">정가</span>
-												<span th:text="${findProducts.price - (findProducts.price * findProducts.saleDiscount / 100)} + '원'" class="sale-price">판매가</span>
+												<span th:text="${Products.saleDiscount} + '%'" class="sale">할인율</span>
+												<span th:text="${Products.price} + '원'" class="price">정가</span>
+												<span th:text="${Products.price - (Products.price * Products.saleDiscount / 100)} + '원'" class="sale-price">판매가</span>
 											</div>
 										</div>
 									</div>

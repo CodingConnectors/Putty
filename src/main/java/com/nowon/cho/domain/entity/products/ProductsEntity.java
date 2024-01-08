@@ -60,7 +60,7 @@ public class ProductsEntity extends BaseEntity {
 		ProductsImgEntity mainImg = imgs.stream()
 				.filter(img -> img.isImgType() == true)
 				.findFirst()
-				.get();
+				.orElse(null);
 		
 		return FindProductsDTO.builder()
 				.productNo(productNo)
