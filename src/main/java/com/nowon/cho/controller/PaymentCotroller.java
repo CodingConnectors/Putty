@@ -28,6 +28,7 @@ public class PaymentCotroller {
 
 	@PostMapping
 	public String paymentPage(@ModelAttribute PaymentProductsDTO dto,Model model) {
+//		System.out.println(dto);
 		service.page(dto, model);
 		return "views/payment/payment";
 	}

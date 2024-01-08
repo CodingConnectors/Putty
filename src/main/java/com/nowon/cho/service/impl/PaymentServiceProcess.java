@@ -27,18 +27,23 @@ public class PaymentServiceProcess implements PaymentService {
 	@Override
 	public void page(PaymentProductsDTO dto, Model model) {
 		
-		List<ProductsEntity> products = prodRepo.findAllById(dto.getProductNo());
-		
+		dto.setProducts( prodRepo.findAllById(dto.getProductNo()) );
+		List<PaymentPageDTO> paymentPageList = new ArrayList<>();
+	    for (int i = 0; i < dto.getProducts().size(); i++) {
+	        PaymentPageDTO paymentPageDTO = toPaymentPageDTO(dto.getProducts().get(i), dto.getVolume().get(i));
+	        paymentPageList.add(paymentPageDTO);
+	    }
 		//모델에 리스트 추가
-		model.addAttribute("reqPaymentList", products.stream().map(ProductsEntity-> toPaymentPageDTO(ProductsEntity))
-				.collect(Collectors.toList()));
-		model.addAttribute("totalPays", paysProcess(products));
+
+	    model.addAttribute("reqPaymentList", paymentPageList);
+		model.addAttribute("totalPays", paysProcess(paymentPageList));
 	}
 
 	
-	private totalPayDTO paysProcess(List<ProductsEntity> products) {
-		long productAmount = products.stream().mapToLong(ProductsEntity::getPrice).sum();
-		long discountAmount = products.stream().mapToLong(enti -> (long) (enti.getPrice() * (1.0*enti.getSaleDiscount()/100)) ).sum();
+	private totalPayDTO paysProcess(List<PaymentPageDTO> paymentPageList) {
+		
+		long productAmount = paymentPageList.stream().mapToLong(paylist->paylist.getPrice()*paylist.getVolume()).sum();
+		long discountAmount = paymentPageList.stream().mapToLong(paylist -> (long) (paylist.getPrice() * (1.0*paylist.getSaleDiscount()/100)) * paylist.getVolume() ).sum();
 		long totalPrice = productAmount - discountAmount;
 		return totalPayDTO.builder()
 				.productAmount(productAmount)
@@ -46,22 +51,24 @@ public class PaymentServiceProcess implements PaymentService {
 				.discountAmount(discountAmount)
 				.totalPrice(totalPrice)
 				.build();
+		
 	}
 
 
-	private PaymentPageDTO toPaymentPageDTO(ProductsEntity productsEntity) {
-		ProductsImgEntity mainImg = productsEntity.getImgs().stream()
-				.filter(img -> img.isImgType() == true)
-				.findFirst()
-				.get();
-		
-		return PaymentPageDTO.builder()
-				.productNo(productsEntity.getProductNo())
-				.productName(productsEntity.getProductName())
-				.price(productsEntity.getPrice())
-				.saleDiscount(productsEntity.getSaleDiscount())
-				.mainImgUrl("https://0idealisawsbucket.s3.ap-northeast-2.amazonaws.com/" + mainImg.getBucketKey())
-				.build();
+	private PaymentPageDTO toPaymentPageDTO(ProductsEntity productsEntity, long volume) {
+	    ProductsImgEntity mainImg = productsEntity.getImgs().stream()
+	            .filter(img -> img.isImgType() == true)
+	            .findFirst()
+	            .orElse(null); // ProductsImgEntity가 없을 경우에 대한 처리 추가할 수 있음
+	    
+	    return PaymentPageDTO.builder()
+	            .productNo(productsEntity.getProductNo())
+	            .productName(productsEntity.getProductName())
+	            .price(productsEntity.getPrice())
+	            .saleDiscount(productsEntity.getSaleDiscount())
+	            .mainImgUrl("https://0idealisawsbucket.s3.ap-northeast-2.amazonaws.com/" + (mainImg != null ? mainImg.getBucketKey() : ""))
+	            .volume(volume) // volume 추가
+	            .build();
 	}
 
 
