@@ -2,6 +2,7 @@ package com.nowon.cho.service.impl;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -115,7 +116,20 @@ public class ProductsServiceProcess implements ProductsService {
 	
 	@Override
 	public void findProduct(long productNo, Model model) {
-		model.addAttribute("product", productsEntityRepository.findById(productNo));
+		ProductsEntity productsEntity = productsEntityRepository.findById(productNo).orElse(null);
+		
+		ProductsImgEntity mainImg = productsEntity.getImgs().stream()
+				.filter(img -> img.isImgType() == true)
+				.findFirst()
+				.orElse(null);
+		
+		List<String> imgUrls = productsEntity.getImgs().stream()
+				.map(img -> "https://0idealisawsbucket.s3.ap-northeast-2.amazonaws.com/" + img.getBucketKey())
+				.collect(Collectors.toList());
+		
+		model.addAttribute("product", productsEntity);
+		model.addAttribute("mainImg", "https://0idealisawsbucket.s3.ap-northeast-2.amazonaws.com/" + mainImg.getBucketKey());
+		model.addAttribute("subImg", imgUrls);
 	}
 	
 	@Override

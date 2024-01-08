@@ -2,13 +2,111 @@
 <htmlxmlns:th="http://www.thymeleaf.org"
 	th:replace="~{layout/common-layout :: commonLayout(~{this::head},~{this::main} )}">
 	<head>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;400;600;800&family=Reem+Kufi:wght@400;600&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="/css/index/layout.css">
+		<link rel="stylesheet" href="/css/products/product-detail.css">
+		<script>
+			function orderCount(type) {
+				const resultElement = document.getElementById('productCnt');
+				
+				let volume = resultElement.value;
+				
+				if (type === 'minus') {
+					volume = Math.max(1, volume - 1);
+				} else if (type === 'plus') {
+					volume = parseInt(volume) + 1;
+				}
+				
+				resultElement.value = volume;
+				
+				orderAmount();
+			}
+			
+			function orderAmount() {
+				const productCnt = parseInt(document.getElementById('productCnt').value);
+				const price = parseInt(document.getElementById('price').value);
+				const saleDiscount = parseInt(document.getElementById('saleDiscount').value);
+				
+				const updatePrice = (price - (price * saleDiscount / 100)) * productCnt;
+				
+				const orderAmountElement = document.getElementById('sale-price');
+				
+				orderAmountElement.innerText = updatePrice + '원';
+			}
+			
+			document.addEventListener('DOMContentLoaded', function() {
+				orderAmount();
+			});
+		</script>
 	</head>
 	<body>
 		<main>
-			<p th:text="${product.get().productName}">상품 이름</p>
-			<p th:text="${product.get().price}">상품 가격</p>
-			<p th:text="${product.get().saleDiscount}">할인율</p>
-			<p th:text="${product.get().price} - (${product.get().price} * ${product.get().saleDiscount} / 100)">판매가</p>
+			<div class="product-detail-container view-size">
+				<div class="product-detail-wrap flex space-between">
+					<div class="product-img-wrap">
+						<div class="product-img">
+							<img th:src="${mainImg}" alt="상품 이미지">
+						</div>
+						<div class="product-subImg flex center-1">
+							<img th:each="subImg : ${subImg}" th:src="${subImg}" alt="상품 이미지">
+						</div>
+					</div>
+					<div class="product-info-wrap flex-wrap">
+						<div class="product-name">
+							<span th:text="${product.productName}">상품 이름</span>
+						</div>
+						<div class="product-sale-price flex">
+							<div>
+								<span th:text="${product.saleDiscount} + '%'">할인율</span>
+								<span th:text="${product.price}" class="price">정가</span>
+							</div>
+							<span th:text="${product.price - (product.price * product.saleDiscount / 100)} + '원'" class="sale-price">상품 가격</span>
+						</div>
+						<div class="product-info-order">
+							<div class="product-info-order-head flex">
+								<span>상세 정보</span>
+							</div>
+							<div class="product-info-order-body">
+								<ul>
+									<li>
+										<span>상품평</span>
+									</li>
+									<li>
+										<span>쿠폰</span>
+									</li>
+									<li>
+										<span>적립금</span>
+									</li>
+									<li>
+										<span>배송비</span>
+									</li>
+								</ul>
+							</div>
+							<div class="product-order-head flex">
+								<span>주문 정보</span>
+							</div>
+							<div class="product-order-body-container flex center-1">
+								<div class="product-order-body-wrap flex space-between">
+									<span th:text="${product.productName}">상품 이름</span>
+									<div class="order-cnt flex center-1 center-2">
+										<button class="order-cnt-minus" onclick="orderCount('minus')">-</button>
+										<input type="text" id="productCnt" value="1">
+										<button class="order-cnt-plus" onclick="orderCount('plus')">+</button>
+									</div>
+									<div class="flex">
+										<span id="sale-price">판매가</span>
+										<span>(적립금)</span>
+										<input type="hidden" id="price" th:value="${product.price}">
+										<input type="hidden" id="saleDiscount" th:value="${product.saleDiscount}">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</main>
 	</body>
 </html>

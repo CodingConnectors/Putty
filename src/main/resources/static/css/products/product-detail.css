@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+.product-detail-container {
+	padding-top: 80px;
+}
+
+.product-img {
+	padding-bottom: 5px;
+}
+
+.product-img > img {
+	width: 600px;
+	height: 600px;
+}
+
+.product-subImg {
+	padding-top: 5px;
+}
+
+.product-subImg > img {
+	width: 100px;
+	height: 100px;
+	padding: 0 5px;
+}
+
+.product-info-wrap {
+	width: 600px;
+}
+
+.product-name {
+	font-size: 26px;
+	font-weight: 600;
+	padding-bottom: 20px;
+}
+
+.product-sale-price > div {
+	padding-right: 20px;
+}
+
+.price {
+	font-size: 18px;
+	font-weight: 400;
+	color: #A9A9A9;
+	text-decoration: line-through;
+}
+
+.product-sale-price {
+	border-bottom: 1px solid #DCDCDC;
+	padding: 20px 0;
+	font-size: 26px;
+	font-weight: 600;
+}
+
+.product-info-order {
+	padding-top: 20px;
+}
+
+.product-info-order-head {
+	height: 35px;
+	border-bottom: 2px solid #DCDCDC;
+}
+
+.product-info-order-head > span {
+	height: 35px;
+	line-height: 35px;
+	border-bottom: 2px solid #7D5A50;
+	font-size: 18px;
+}
+
+.product-info-order-body > ul > li {
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #DCDCDC;
+	
+}
+
+.product-info-order-body > ul > li > span {
+	font-size: 14px;
+	color: #A9A9A9;
+}
+
+.product-info-order-body > ul > li > span::before {
+	padding: 0 5px;
+	font-size: 14px;
+	color: #696969;
+	content: '·';
+}
+
+.product-order-head {
+	height: 35px;
+	border-bottom: 3px solid #DCDCDC;
+	padding-top: 20px;
+}
+
+.product-order-head > span {
+	height: 35px;
+	line-height: 35px;
+	border-bottom: 2px solid #7D5A50;
+	font-size: 18px;
+}
+
+.product-order-body-container {
+	line-height: 30px;
+	padding: 20px 0;
+	border-bottom: 1px solid #DCDCDC;
+	background-color: #FAFAFA;
+}
+
+.product-order-body-container > div {
+	position: relative;
+}
+
+.product-order-body-wrap {
+	width: 580px;
+}
+
+.order-cnt {
+	position: relative;
+}
+
+.order-cnt > input {
+	width: 90px;
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid #A9A9A9;
+	text-align: center;
+	outline: none;
+	font-size: 14px;
+}
+
+.order-cnt > button {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	border: none;
+	outline: none;
+	background-color: #FAFAFA;
+	cursor: pointer;
+}
+
+.order-cnt-minus {
+	border-right: 1px solid #A9A9A9 !important;
+	left: 1px;
+}
+
+.order-cnt-plus {
+	border-left: 1px solid #A9A9A9 !important;
+	right: 1px;
+}
+
+#price, #saleDiscount {
+	display: none;
+}
