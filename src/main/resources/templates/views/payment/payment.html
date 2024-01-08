@@ -37,14 +37,16 @@
 								<th>이름</th>
 								<th>가격</th>
 								<th>수량</th>
+								<th>지불가격</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="list:${reqPaymentList}">
 								<td><img th:src="@{${list.mainImgUrl}}"></td>
 								<td th:text="${list.productName}">이름</td>
-								<td data-th-text="${#numbers.formatInteger(list.price, 3, 'COMMA')}+'원'">0가격</td>
-								<td>테스트수량</td>
+								<td data-th-text="${#numbers.formatInteger(list.price, 3, 'COMMA')}+'원'">가격</td>
+								<td th:text="${list.volume}">수량</td>
+								<td data-th-text="${#numbers.formatInteger(list.price*list.volume*(1-1.0*list.saleDiscount/100), 3, 'COMMA')}+'원'">지불가격</td>
 							</tr>
 						</tbody>
 					</table>

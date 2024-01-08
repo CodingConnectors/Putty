@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class RabbitListener {
 
 	@Autowired
-	SimpMessagingTemplate simpMessagingTemplate;
+	private SimpMessagingTemplate simpMessagingTemplate;
 	
 	public void receiveMessage(MyMessage message) {
 //		System.out.println(">>>수신된 메세지: "+message);

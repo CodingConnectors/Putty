@@ -68,7 +68,8 @@ function requestPay() {
 	        headers: { "Content-Type": "application/json" },
 	        data: {
 	          imp_uid: rsp.imp_uid,
-	          merchant_uid: rsp.merchant_uid
+	          merchant_uid: rsp.merchant_uid,
+	          productNo: [1,2,3]
 	        }
 	      }).then((data) => {
 	        // 서버 결제 API 성공시 로직

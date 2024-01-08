@@ -52,11 +52,16 @@ $('.directOrder').on('click',function() {
     form.style.display = 'none'; // 화면에 표시되지 않도록 설정
 
     // 폼에 데이터 추가
-    var input = document.createElement('input');
+    let input = document.createElement('input');
+	let inputv = document.createElement('input');
+	let volume = $(this).closest("tr").find('.product_volume').val();
     input.type = 'hidden';
     input.name = 'productNo';
     input.value = productNo;
     form.appendChild(input);
+    inputv.name = 'volume';
+    inputv.value = volume;
+    form.appendChild(inputv);
 
     // body에 form 추가
     document.body.appendChild(form);
@@ -80,10 +85,15 @@ function selectProductPayment() {
     // 선택된 상품들의 productNo를 input에 추가하고 form에 등록
     selectedProducts.each(function() {
 		let input = document.createElement('input');
+		let inputv = document.createElement('input');
         let productNo = $(this).data('productid');
+        let volume = $(this).closest("tr").find('.product_volume').val();
 	    input.name = 'productNo';
 	    input.value = productNo;
         form.appendChild(input);
+	    inputv.name = 'volume';
+	    inputv.value = volume;
+        form.appendChild(inputv);
     });
     
     // form을 body에 추가하고 자동으로 submit
