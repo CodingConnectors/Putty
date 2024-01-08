@@ -57,10 +57,10 @@ public class SecurityConfig {
 			*/
 		
 		  .authorizeHttpRequests((authorize) -> authorize
-		  .antMatchers("/css/**","/img/**","/js/**").permitAll()//접근가능
+		  .antMatchers("/css/**","/img/**","/js/**","/webjars/**").permitAll()//접근가능
 		  .antMatchers("/","/signin","/signup","/common/**","/find_email","/find_email_after",
 		  "/find_password","/find_password_after").permitAll()//접근가능
-		  .antMatchers("/basket").permitAll()//접근가능
+		  .antMatchers("/basket","/topic/**","/message/**","/green-bot/**").permitAll()//접근가능
 		  .antMatchers("/faq/faq_info","/faq/frequently_asked","/faq/faq_notice").permitAll()//접근가능
 		  
 		  //유저권한 접근 
