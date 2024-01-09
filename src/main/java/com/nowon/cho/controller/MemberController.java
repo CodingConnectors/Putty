@@ -39,7 +39,7 @@ public class MemberController {
 	
 	@PostMapping("/members/address")
     public String saveAddress(Authentication auth, AddressDTO dto) throws Exception {
-		addressservice.saveAddress(auth,dto );
+		addressservice.saveAddress(auth, dto );
         return "redirect:/members";
     }
 	
