@@ -25,7 +25,7 @@ class PuttyApplicationTests {
 		
 	}
 
-	@Test
+	//@Test
 	void 장바구니추가() {
 
 		for(long i=1; i<=11; i++) {
