@@ -2,7 +2,7 @@
 
 - 배포 URL : http://15.164.89.121:8080
 - 테스트 ID : ttest@putty.com
-- 테스트 PassWord : putty123$
+- Password : putty123$
 
 ## 프로젝트 소개 
 - 디자인은 애견샵 퍼피독을 참고하고
