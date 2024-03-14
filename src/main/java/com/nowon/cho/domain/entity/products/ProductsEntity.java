@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.amazonaws.services.s3.AmazonS3Client;
 import com.nowon.cho.domain.dto.admin.FindProductsDTO;
 import com.nowon.cho.domain.entity.BaseEntity;
 
@@ -53,10 +55,10 @@ public class ProductsEntity extends BaseEntity {
 	private long saleSum;
 	private long wishlistCnt;
 	
-	@OneToMany(mappedBy = "productsEntity")
+	@OneToMany(mappedBy = "productsEntity", fetch = FetchType.EAGER)
 	private List<ProductsImgEntity> imgs;
 	
-	public FindProductsDTO findProducts() {
+	public FindProductsDTO findProducts(String bUCKET_NAME, AmazonS3Client amazonS3Client) {
 		ProductsImgEntity mainImg = imgs.stream()
 				.filter(img -> img.isImgType() == true)
 				.findFirst()
@@ -68,7 +70,7 @@ public class ProductsEntity extends BaseEntity {
 				.price(price)
 				.saleDiscount(saleDiscount)
 				.productCategory(productCategory)
-				.mainImgUrl("https://0idealisawsbucket.s3.ap-northeast-2.amazonaws.com/" + mainImg.getBucketKey())
+				.mainImgUrl(amazonS3Client.getUrl(bUCKET_NAME, mainImg.getBucketKey()).toString().substring(6))
 				.build();
 	}
 }

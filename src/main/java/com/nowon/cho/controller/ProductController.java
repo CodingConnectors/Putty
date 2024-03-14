@@ -15,13 +15,14 @@ import com.nowon.cho.domain.dto.ProductDTO;
 import com.nowon.cho.domain.dto.ProductImgDTO;
 import com.nowon.cho.service.ProductService;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 public class ProductController {
 
-	@Autowired
-	ProductService pds;
+	private final ProductService pds;
 
-	
 	@GetMapping("/admin/product-registration")
 	public String productRegistration() {
 		return "admin/product/product-registration";

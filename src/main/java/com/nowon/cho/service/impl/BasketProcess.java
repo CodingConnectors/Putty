@@ -3,11 +3,13 @@ package com.nowon.cho.service.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.amazonaws.services.s3.AmazonS3Client;
 import com.nowon.cho.domain.dto.PutBasketDTO;
 import com.nowon.cho.domain.entity.BasketEntity;
 import com.nowon.cho.domain.entity.BasketRepository;
@@ -27,6 +29,10 @@ public class BasketProcess implements BasketService {
 	private final BasketRepository basketRepo;
 	private final MemberRepository memberRepo;
 	private final ProductsEntityRepository prodRepo;
+	private final AmazonS3Client amazonS3Client;
+	
+	@Value("${cloud.aws.s3.bucket}")
+	private String BUCKET_NAME;
 	
 	@Override
 	public void putProduct(Authentication auth, PutBasketDTO dto) {
@@ -63,7 +69,7 @@ public class BasketProcess implements BasketService {
 		    List<BasketEntity> basketEntity = basketRepo.findByMemberNo(memberEnti);
 		    
 		    if (basketEntity != null) {
-		        model.addAttribute("basketList", basketEntity.stream().map(enti->enti.getProductNo().findProducts()).collect(Collectors.toList()));
+		        model.addAttribute("basketList", basketEntity.stream().map(enti->enti.getProductNo().findProducts(BUCKET_NAME,amazonS3Client)).collect(Collectors.toList()));
 		    } else {
 		        // 엔터티가 찾아지지 않은 경우를 처리할 수 있도록
 		        System.out.println("basketEntity가 존재하지않습니다.");;
