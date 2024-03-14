@@ -1,6 +1,6 @@
 # Putty
 
-- 배포 URL : http://15.164.89.121:8080
+- 배포 URL : https://manjuu.shop:8443
 - 테스트 ID : ttest@putty.com
 - Password : putty123$
 
