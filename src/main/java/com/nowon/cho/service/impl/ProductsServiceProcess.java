@@ -73,6 +73,7 @@ public class ProductsServiceProcess implements ProductsService {
 	}
 
 	private String tempToProductImg(ProductsImgDTO productsImgDTO, int i) {
+		System.out.println(productsImgDTO);
 		String bucketKey = UPLOAD_PATH
 				+ UUID.randomUUID().toString()
 				+ productsImgDTO.getOrgName()[i].substring(productsImgDTO.getOrgName()[i].lastIndexOf("."));
@@ -110,7 +111,7 @@ public class ProductsServiceProcess implements ProductsService {
 	public void findProductsByCategory(String productCategory, Model model) {
 		model.addAttribute("productsByCategory", productsEntityRepository.findAll(Sort.by(Sort.Order.desc("createdDate"))).stream()
 				.filter(productsEntity -> productsEntity.getProductCategory().equals(productCategory))
-				.map(ProductsEntity :: findProducts)
+				.map(pEn -> pEn.findProducts(BUCKET_NAME, amazonS3Client))
 				.collect(Collectors.toList()));
 	}
 	
@@ -124,25 +125,25 @@ public class ProductsServiceProcess implements ProductsService {
 				.orElse(null);
 		
 		List<String> imgUrls = productsEntity.getImgs().stream()
-				.map(img -> "https://0idealisawsbucket.s3.ap-northeast-2.amazonaws.com/" + img.getBucketKey())
+				.map(img -> amazonS3Client.getUrl(BUCKET_NAME, img.getBucketKey()).toString().substring(6) )
 				.collect(Collectors.toList());
 		
 		model.addAttribute("product", productsEntity);
-		model.addAttribute("mainImg", "https://0idealisawsbucket.s3.ap-northeast-2.amazonaws.com/" + mainImg.getBucketKey());
+		model.addAttribute("mainImg", amazonS3Client.getUrl(BUCKET_NAME, mainImg.getBucketKey()).toString().substring(6));
 		model.addAttribute("subImg", imgUrls);
 	}
 	
 	@Override
 	public void findBestProducts(Model model) {
 		model.addAttribute("bestProducts", productsEntityRepository.findAll(Sort.by(Sort.Order.desc("saleSum"))).stream()
-				.map(ProductsEntity :: findProducts)
+				.map(pEn -> pEn.findProducts(BUCKET_NAME, amazonS3Client))
 				.collect(Collectors.toList()));
 	}
 	
 	@Override
 	public void findNewProducts(Model model) {
 		model.addAttribute("newProducts", productsEntityRepository.findAll(Sort.by(Sort.Order.desc("createdDate"))).stream()
-				.map(ProductsEntity :: findProducts)
+				.map(pEn -> pEn.findProducts(BUCKET_NAME, amazonS3Client))
 				.collect(Collectors.toList()));
 	}
 }
