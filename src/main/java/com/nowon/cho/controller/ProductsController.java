@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 public class ProductsController {
 	
 	private final ProductsService productsService;
-	
+
 	@GetMapping()
 	public String indexProducts(Model model) {
 		productsService.findBestProducts(model);

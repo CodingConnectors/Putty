@@ -70,7 +70,7 @@ public class ProductsEntity extends BaseEntity {
 				.price(price)
 				.saleDiscount(saleDiscount)
 				.productCategory(productCategory)
-				.mainImgUrl(amazonS3Client.getUrl(bUCKET_NAME, mainImg.getBucketKey()).toString().substring(6))
+				.mainImgUrl(amazonS3Client.getUrl(bUCKET_NAME, mainImg.getBucketKey()).toString())
 				.build();
 	}
 }
