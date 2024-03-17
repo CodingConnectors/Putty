@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.nowon.cho.domain.entity.BaseEntity;
-import com.nowon.cho.domain.entity.ProductEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

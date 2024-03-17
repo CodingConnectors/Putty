@@ -65,7 +65,7 @@ public class ProductsServiceProcess implements ProductsService {
 		amazonS3Client.putObject(putObjectRequest.withCannedAcl(CannedAccessControlList.PublicRead));
 		
 		Map<String, String> productImg = new HashMap<>();
-		productImg.put("url", amazonS3Client.getUrl(BUCKET_NAME, bucketKey).toString().substring(6));
+		productImg.put("url", amazonS3Client.getUrl(BUCKET_NAME, bucketKey).toString());
 		productImg.put("tempKey", bucketKey);
 		productImg.put("orgName", orgName);
 		
@@ -125,11 +125,11 @@ public class ProductsServiceProcess implements ProductsService {
 				.orElse(null);
 		
 		List<String> imgUrls = productsEntity.getImgs().stream()
-				.map(img -> amazonS3Client.getUrl(BUCKET_NAME, img.getBucketKey()).toString().substring(6) )
+				.map(img -> amazonS3Client.getUrl(BUCKET_NAME, img.getBucketKey()).toString() )
 				.collect(Collectors.toList());
-		
+		System.out.println(">>>>>>>>>"+amazonS3Client.getResourceUrl(BUCKET_NAME, mainImg.getBucketKey()));
 		model.addAttribute("product", productsEntity);
-		model.addAttribute("mainImg", amazonS3Client.getUrl(BUCKET_NAME, mainImg.getBucketKey()).toString().substring(6));
+		model.addAttribute("mainImg", amazonS3Client.getUrl(BUCKET_NAME, mainImg.getBucketKey()).toString());
 		model.addAttribute("subImg", imgUrls);
 	}
 	

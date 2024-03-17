@@ -55,7 +55,7 @@ public class HeaderBannerProcess implements HeaderBannerService {
 
 	@Override
 	public List<String> find() {
-		return hbRepo.findAll().stream().map(headerBannerEn->client.getUrl(bucketName, headerBannerEn.getBucketKey()).toString().substring(6))
+		return hbRepo.findAll().stream().map(headerBannerEn->client.getUrl(bucketName, headerBannerEn.getBucketKey()).toString())
 				.collect(Collectors.toList());
 	}
 

@@ -3,11 +3,7 @@ package com.nowon.cho.service.impl;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -15,27 +11,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
-import com.amazonaws.services.s3.model.CopyObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.nowon.cho.domain.dto.ProductDTO;
-import com.nowon.cho.domain.dto.ProductImgDTO;
-import com.nowon.cho.domain.entity.ProductEntity;
-import com.nowon.cho.domain.entity.ProductEntityRepository;
-import com.nowon.cho.domain.entity.ProductImgEntity;
-import com.nowon.cho.domain.entity.ProductImgRepository;
 import com.nowon.cho.service.ProductService;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class ProductServiceProcess implements ProductService {
 
 
-	@Autowired
-	private AmazonS3Client client;
-	@Autowired
-	ProductEntityRepository productRepo;
-	@Autowired
-	ProductImgRepository productImgRepo;
+	private final AmazonS3Client client;
 	
 	@Value("${cloud.aws.s3.bucket}")
 	private String bucketName;
@@ -71,34 +58,7 @@ public class ProductServiceProcess implements ProductService {
 	}
 
 	@Override
-	public void save(ProductDTO productDTO, ProductImgDTO productImgDTO) {
-		ProductEntity productEn = productRepo.save(productDTO.toEntity());
-		
-		for(int i=0; i<productImgDTO.getOrgName().length; i++) {
-			if(!productImgDTO.getOrgName()[i].equals("")) {
-				String uploadKey=s3FromTempToImages(productImgDTO, i);
-				productImgRepo.save(ProductImgEntity.builder()
-										.bucketKey(uploadKey)
-										.orgName(productImgDTO.getOrgName()[i])
-										.productEn(productEn)
-										.build());
-			}
-		}
-	}
-	private String s3FromTempToImages(ProductImgDTO productImgDTO, int i) {
-		String uploadKey = uploadPath
-							+ UUID.randomUUID().toString()
-							+ productImgDTO.getOrgName()[i].substring(productImgDTO.getOrgName()[i].lastIndexOf("."));
-		
-		
-		CopyObjectRequest cor=new CopyObjectRequest(bucketName, productImgDTO.getTempKey()[i], bucketName, uploadKey);
-		client.copyObject(cor.withCannedAccessControlList(CannedAccessControlList.PublicRead));
-		client.deleteObject(bucketName,productImgDTO.getTempKey()[i]);
-		return uploadKey;
-	}
-
-	@Override
 	public void findAll(Model model) {
-		model.addAttribute("list",productRepo.findAll().stream().map(ProductEntity::toListDTO).collect(Collectors.toList()));
+//		model.addAttribute("list",productRepo.findAll().stream().map(ProductEntity::toListDTO).collect(Collectors.toList()));
 	}
 }
