@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.amazonaws.services.s3.AmazonS3Client;
 import com.nowon.cho.domain.dto.PaymentPageDTO;
 import com.nowon.cho.domain.dto.PaymentProductsDTO;
 import com.nowon.cho.domain.dto.totalPayDTO;
@@ -23,6 +25,11 @@ import lombok.RequiredArgsConstructor;
 public class PaymentServiceProcess implements PaymentService {
 	
 	private final ProductsEntityRepository prodRepo;
+
+	private final AmazonS3Client amazonS3Client;
+	
+	@Value("${cloud.aws.s3.bucket}")
+	private String butcketName;
 
 	@Override
 	public void page(PaymentProductsDTO dto, Model model) {
@@ -66,7 +73,7 @@ public class PaymentServiceProcess implements PaymentService {
 	            .productName(productsEntity.getProductName())
 	            .price(productsEntity.getPrice())
 	            .saleDiscount(productsEntity.getSaleDiscount())
-	            .mainImgUrl("https://0idealisawsbucket.s3.ap-northeast-2.amazonaws.com/" + (mainImg != null ? mainImg.getBucketKey() : ""))
+	            .mainImgUrl(amazonS3Client.getUrl(butcketName, mainImg.getBucketKey()).toString())
 	            .volume(volume) // volume 추가
 	            .build();
 	}
