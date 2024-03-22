@@ -8,6 +8,9 @@
 - 디자인은 애견샵 퍼피독을 참고하고
 - 기능은 컴퓨존을 참고하여 만든 쇼핑몰입니다.
 
+<img src="https://github.com/CodingConnectors/Putty/assets/141596791/d1e22e96-99e2-4b6d-8a64-00525a8d753f">
+
+
 ## 개발 기간
 23.11.24 ~ 24.01.08
 
